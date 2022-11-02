@@ -1,8 +1,9 @@
 project:
   type: website
+  output-dir: docs
 
 website:
-  title: "R_workshop"
+  title: "FACE-IT R workshop"
   navbar:
     left:
       - href: index.qmd
