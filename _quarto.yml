@@ -38,11 +38,12 @@ website:
       contents:
         - file: content.qmd
         - file: why_R.qmd
-        # - href: plots.qmd
-        # - href: maps.qmd
-        # - href: tidy.qmd
-        # - href: summary.qmd
-        # - href: brief.qmd
+        - file: plots.qmd
+        - file: maps.qmd
+        - file: tidy.qmd
+        - file: summary.qmd
+        - file: brief.qmd
+        - file: bonus.qmd
       
 format:
   html:
