@@ -3,23 +3,84 @@ title: "GitHub with RStudio"
 sidebar: false
 ---
 
-## Quarto
+It may seem like a detour to be setting up a [GitHub](https://github.com/) account on our way to an **R** workshop, but this online tool is centrally important to the best practices for working in RStudio, as we shall see below. If you already have a GitHub account, wonderful! Much of the following information is probably already known to you. So rather spend this time helping the people next to you through the process. Much of the content in this module is taken from the wonderful online book [Happy Git and GitHub for the useR](https://happygitwithr.com/index.html), which provides a much more in-depth view of what Git is and the many ways we can use it. For practical purposes, in this module we are going to focus directly on what we need to know to use GitHub in order to manage our Rprojects.
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+At the outset of this module we must acknowledge that there are many other Git based online (and desktop) resources that one may use in an R/RStudio workflow. We choose to focus on GitHub in this workshop because it is the best integrated, supported, and documented option. Meaning that not only is it the easiest to use 'out of the box', if we encounter any issues after this workshop it will be easiest to search for solutions for GitHub. Note however that GitHub is owned by Microsoft, which is why many people have switched over to [GitLab](https://about.gitlab.com/). If anyone is interested in the finer points of this discussion, please let the instructor know.
 
-## Running Code
+## Create a GitHub account
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+As with any online resource in the digital age, we must first setup an account. To do so, go to the [GitHub]() home page, click 'Sign up' in the top right, and follow the prompts. You will need an e-mail address to complete this process, but there is otherwise no cost **BONUS:** if you have an academic e-mail address you should be able to register for an academic account, which provides some of the benefits of a paid account, but for free! If you experience any issues in this process try consulting the [GitHub help page](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account).
 
-```{r}
-1 + 1
+## Install Git
+
+The Git software comes standard on MacOS and all Linux distributions. If you have one of these Operating Systems, run the following code in a Bash shell (i.e. Terminal) to check that you have it:
+
+``` bash
+which git
 ```
 
-You can add options to executable code like this
+And if you do, check your version:
 
-```{r}
-#| echo: false
-2 * 2
+``` bash
+git --version
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+Close RStudio before proceeding with the installation of Git for a specific Operating System.
+
+### Windows
+
+There is a one-stop-shop for all of your Git needs in the form of [Git for Windows](https://gitforwindows.org/). Navigate to this page, download the file, and follow the prompts to install. Generally the default options are acceptable, with two important considerations:
+
+1.  For the 'Adjusting your PATH environment' prompt, ensure that you choose 'Git from the command line and also from 3rd-party software'
+
+2.  The ideal location to install Git is `C:/Program Files`, doing otherwise may cause problems later on
+
+If you already have Git installed for Windows, run the following line in your Terminal to check that it is up-to-date:
+
+``` bash
+git update-git-for-windows
+```
+
+### MacOS
+
+Open a Terminal and run:
+
+``` bash
+xcode-select --install
+```
+
+### Linux
+
+Ubuntu or Debian Linux:
+
+``` bash
+sudo apt-get install git
+```
+
+Fedora or RedHat Linux:
+
+``` bash
+sudo yum install git
+```
+
+### Set user info
+
+With Git installed, we need to tell it our username and e-mail. This isn't linked to anything else on our computer, but it will appear during our workflow between RStudio and Github. Primarily this information is useful when we are working on a project with other people so they can see who made what changes when. Preferably one should use the same e-mail account here as that for used for the GitHub account.
+
+In a Terminal:
+
+``` bash
+git config --global user.name 'Jane Doe'
+git config --global user.email 'jane@example.com'
+git config --global --list
+```
+
+## Test the connection
+
+Now that we have a GitHub account and we have installed Git on our computer, it's time to connect them.
+
+### Create a GitHub repo
+
+Go back to your GitHub account and click the green 'New' button.
+
+## GitHub and RStudio

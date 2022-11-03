@@ -20,69 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -93,6 +30,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./content.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -128,7 +66,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -150,11 +88,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./R_RStudio.html">
- <span class="menu-text">Using R</span></a>
+ <span class="menu-text">R+RStudio</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./GitHub.html">
- <span class="menu-text">Using GitHub</span></a>
+ <span class="menu-text">GitHub</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./content.html" aria-current="page">
@@ -187,12 +125,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content.html" class="sidebar-item-text sidebar-link">Course content</a>
+  <a href="./content.html" class="sidebar-item-text sidebar-link">Content</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./why_R.html" class="sidebar-item-text sidebar-link active">Why R?</a>
   </div>
 </li>
     </ul>
@@ -204,8 +147,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link active" data-scroll-target="#quarto">Quarto</a></li>
-  <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code">Running Code</a></li>
+  <li><a href="#why-use-r" id="toc-why-use-r" class="nav-link active" data-scroll-target="#why-use-r">Why use R?</a>
+  <ul class="collapse">
+  <li><a href="#some-negatives-of-using-r" id="toc-some-negatives-of-using-r" class="nav-link" data-scroll-target="#some-negatives-of-using-r">Some negatives of using R</a></li>
+  <li><a href="#the-challenge-learning-to-program-in-r" id="toc-the-challenge-learning-to-program-in-r" class="nav-link" data-scroll-target="#the-challenge-learning-to-program-in-r">The challenge: learning to program in R</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -229,28 +175,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
+<section id="why-use-r" class="level2">
+<h2 class="anchored" data-anchor-id="why-use-r">Why use R?</h2>
+<p>As scientists, we are increasingly driven to analyse and manipulate datasets. As these datasets grow in size our analyses are becoming more sophisticated. There are many statistical packages on the market that one can use, but R is becoming the global standard. There are several reasons for this trend:</p>
+<ol type="1">
+<li><p>It is <strong>free</strong>, which is nice if you despise commercial software such as Microsoft Office, as we do — in fact, this entire document was written in Rmarkdown and the files supporting this Workshop material can be edited on <em>any</em> computer using a variety of operating systems such as Mac OS X, Linux and Microsoft Windows</p></li>
+<li><p>It is powerful, flexible and robust; it is developed and used by leading academic statisticians</p></li>
+<li><p>It contains advanced statistical routines not yet available in other software</p></li>
+<li><p>The cutting-edge statistical routines open up scientific possibilities in creative new ways</p></li>
+<li><p>It has state-of-the-art graphics</p></li>
+<li><p>Users continually extend the functionality by updating existing packages and adding new ones and make these available for free</p></li>
+<li><p>It does not depend on a pointy-and-clicky interface, such as SPSS, and requires one to write scripts — more on the advantages of scripts later</p></li>
+</ol>
+<p>It is truly amazing that such a powerful and comprehensive package is freely available and we are indebted to the developers of R for going down this path.</p>
+<section id="some-negatives-of-using-r" class="level3">
+<h3 class="anchored" data-anchor-id="some-negatives-of-using-r">Some negatives of using R</h3>
+<p>Although there are many positives of using R, there are some negatives:</p>
+<ol type="1">
+<li><p>It can have a steep learning curve for those whom do not like statistics or data manipulation, and it does require frequent use to remain familiar with it and to develop advanced skills</p></li>
+<li><p>Error trapping can be confusing and frustrating</p></li>
+<li><p>Rudimentary debugging, although there are some packages available to enhance the process</p></li>
+<li><p>Handles large datasets (100 MB), but can have some trouble with massive datasets (GBs)</p></li>
+<li><p>Some simple tasks can be tricky to do in R</p></li>
+<li><p>There are multiple ways of doing the same thing</p></li>
+</ol>
 </section>
-<section id="running-code" class="level2">
-<h2 class="anchored" data-anchor-id="running-code">Running Code</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
-<p>You can add options to executable code like this</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-</div>
-<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
+<section id="the-challenge-learning-to-program-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="the-challenge-learning-to-program-in-r">The challenge: learning to program in R</h3>
+<p>The big difference between R and many other statistical packages that you might have used is that it is not, and never will be, a menu-driven ‘point and click’ package. R requires you to write your own computer code to tell it exactly what you want to do. This means that there is a learning curve, but these are outweighed by numerous advantages:</p>
+<ol type="1">
+<li><p>To write new programs, you can modify your existing ones or those of others, saving you considerable time</p></li>
+<li><p>You have a record of your statistical analyses and thus can re-run your previous analyses exactly at any time in the future, even if you can’t remember what you did — this is central to reproducible research</p></li>
+<li><p>The recorded code can include the liberal use of internal documentation, which is often overlooked by practising scientists</p></li>
+<li><p>It is more flexible in being able to manipulate data and graphics than menu-driven software</p></li>
+<li><p>You will develop and improve your programming, which is a valuable general skill</p></li>
+<li><p>You will improve your statistical knowledge</p></li>
+<li><p>You can automate large problems</p></li>
+<li><p>You can provide and share code that underpins published analyses; journals are starting to request the code for analyses in papers, to increase transparency and repeatability</p></li>
+<li><p>Integration with tools like git (<em>e.g.</em> GitHub and Bitbucket) enable online collaboration in large statistical research programmes and they allow one to rely on version control systems</p></li>
+<li><p>Programming is simply heaps more fun than point-and-click!</p></li>
+</ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -502,6 +469,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./content.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Content</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

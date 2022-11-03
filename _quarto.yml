@@ -22,9 +22,9 @@ website:
     left:
       - text: "Overview"
         file: index.qmd
-      - text: "Using R"
+      - text: "R+RStudio"
         file: R_RStudio.qmd
-      - text: "Using GitHub"
+      - text: "GitHub"
         file: GitHub.qmd
       - text: "Content"
         file: content.qmd
@@ -37,9 +37,7 @@ website:
       align: left
       contents:
         - file: content.qmd
-        # - href: why_R.qmd
-        # - content.qmd
-        # - why_R.qmd
+        - file: why_R.qmd
         # - href: plots.qmd
         # - href: maps.qmd
         # - href: tidy.qmd

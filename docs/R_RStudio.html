@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>FACE-IT R workshop - Using R with Rstudio</title>
+<title>FACE-IT R workshop - Setting up R and Rstudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,7 +128,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -150,11 +150,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./R_RStudio.html" aria-current="page">
- <span class="menu-text">Using R</span></a>
+ <span class="menu-text">R+RStudio</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./GitHub.html">
- <span class="menu-text">Using GitHub</span></a>
+ <span class="menu-text">GitHub</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./content.html">
@@ -175,37 +175,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Using R with Rstudio</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
-      </button>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content.html" class="sidebar-item-text sidebar-link">Course content</a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link active" data-scroll-target="#quarto">Quarto</a></li>
-  <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code">Running Code</a></li>
+  <li><a href="#installing-r" id="toc-installing-r" class="nav-link active" data-scroll-target="#installing-r">Installing R</a></li>
+  <li><a href="#installing-rstudio" id="toc-installing-rstudio" class="nav-link" data-scroll-target="#installing-rstudio">Installing RStudio</a></li>
+  <li><a href="#setting-up-the-workspace" id="toc-setting-up-the-workspace" class="nav-link" data-scroll-target="#setting-up-the-workspace">Setting up the workspace</a>
+  <ul class="collapse">
+  <li><a href="#general-settings" id="toc-general-settings" class="nav-link" data-scroll-target="#general-settings">General settings</a></li>
+  <li><a href="#customising-appearance" id="toc-customising-appearance" class="nav-link" data-scroll-target="#customising-appearance">Customising appearance</a></li>
+  </ul></li>
+  <li><a href="#configuring-panes" id="toc-configuring-panes" class="nav-link" data-scroll-target="#configuring-panes">Configuring panes</a></li>
+  <li><a href="#the-rproject" id="toc-the-rproject" class="nav-link" data-scroll-target="#the-rproject">The Rproject</a>
+  <ul class="collapse">
+  <li><a href="#installing-packages" id="toc-installing-packages" class="nav-link" data-scroll-target="#installing-packages">Installing packages</a></li>
+  <li><a href="#the-panes-of-rstudio" id="toc-the-panes-of-rstudio" class="nav-link" data-scroll-target="#the-panes-of-rstudio">The panes of RStudio</a>
+  <ul class="collapse">
+  <li><a href="#source-editor" id="toc-source-editor" class="nav-link" data-scroll-target="#source-editor">Source Editor</a></li>
+  <li><a href="#console" id="toc-console" class="nav-link" data-scroll-target="#console">Console</a></li>
+  <li><a href="#environment-and-history-panes" id="toc-environment-and-history-panes" class="nav-link" data-scroll-target="#environment-and-history-panes">Environment and History panes</a></li>
+  <li><a href="#files-plots-packages-help-and-viewer-panes" id="toc-files-plots-packages-help-and-viewer-panes" class="nav-link" data-scroll-target="#files-plots-packages-help-and-viewer-panes">Files, Plots, Packages, Help, and Viewer panes</a></li>
+  </ul></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
+  <li><a href="#style-and-code-conventions" id="toc-style-and-code-conventions" class="nav-link" data-scroll-target="#style-and-code-conventions">Style and code conventions</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -214,7 +214,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Using R with Rstudio</h1>
+<h1 class="title">Setting up R and Rstudio</h1>
 </div>
 
 
@@ -229,28 +229,263 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
+<p>Before we can begin an <strong>R</strong> workshop, we need to make sure everyone has access to a computer with <a href="http://cran.r-project.org">R</a> and <a href="http://www.rstudio.com">RStudio</a> installed. The process for how to do this is detailed below, followed by a brief introduction to these two pieces of software and what the difference is between them.</p>
+<p>NB: If you are not using your own computer please make the instructor aware of this as it is assumed that all participants will be using their personal (or university/institutions given) laptops.</p>
+<section id="installing-r" class="level2">
+<h2 class="anchored" data-anchor-id="installing-r">Installing R</h2>
+<p>Installing R on your machine is a straightforward process. Follow these steps:</p>
+<ol type="1">
+<li><p>Go to the <a href="http://cran.r-project.org">CRAN</a> (Comprehensive R Archive Network) website. If you type ‘r’ into Google it is the first entry</p></li>
+<li><p>Choose to download R for Linux, Mac, or Windows</p></li>
+<li><p>For Windows users selecting ‘base’ will link you to the download file, follow the prompts to install</p></li>
+<li><p>For Mac users, choose the version relevant to your Operating System, follow the prompts after downloading</p></li>
+<li><p>If you are a Linux user, you know what to do!</p></li>
+</ol>
 </section>
-<section id="running-code" class="level2">
-<h2 class="anchored" data-anchor-id="running-code">Running Code</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
+<section id="installing-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="installing-rstudio">Installing RStudio</h2>
+<p>Although R can run in its own console or in a terminal window (Mac and Linux; the Windows command line is a bit limiting), we will use RStudio in this Workshop. RStudio is a free front-end to R for Windows, Mac, or Linux (<em>i.e.</em>, R is working in the background). It makes working with R easier, more organised and productive, especially for new users. There are other front-ends, but RStudio is the most popular. To install:</p>
+<ol type="1">
+<li><p>Go to the <a href="https://posit.co/">posit</a> website</p></li>
+<li><p>Click the ‘Download RStudio’ button in the top right of the page</p></li>
+<li><p>Scroll down to click the ‘Download’ button under RStudio Desktop Free</p></li>
+<li><p>For Windows users click the ‘Download RStudio Desktop for Windows’ button under Step 2 on the page</p></li>
+<li><p>For all other Operating Systems, scroll down further and select the corresponding file</p></li>
+<li><p>After downloading, follow the prompts to install RStudio</p></li>
+</ol>
+</section>
+<section id="setting-up-the-workspace" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up-the-workspace">Setting up the workspace</h2>
+<section id="general-settings" class="level3">
+<h3 class="anchored" data-anchor-id="general-settings">General settings</h3>
+<p>Before we start using RStudio (which is a code editor and environment that runs R) let’s first set it up properly. Find the ‘Tools’ (‘Preferences’) menu item, navigate to ‘Global Options’ (‘Code Editing’). From here we have a very wide range of options for the functionality of RStudio. At the moment we will leave the general settings to their default.</p>
+</section>
+<section id="customising-appearance" class="level3">
+<h3 class="anchored" data-anchor-id="customising-appearance">Customising appearance</h3>
+<p>RStudio is highly customisable. Under the <strong>Appearance</strong> tab under ‘Tools’/‘Global Options’ you can see all of the different themes that come with RStudio. We recommend choosing a theme with a black background (e.g.&nbsp;Chaos) as this will be easier on your eyes and your computer. It is also good to choose a theme with a sufficient amount of contrast between the different colours used to denote different types of objects/values in your code.</p>
+</section>
+</section>
+<section id="configuring-panes" class="level2">
+<h2 class="anchored" data-anchor-id="configuring-panes">Configuring panes</h2>
+<p>You cannot rearrange panes (see below) in RStudio by dragging them, but you can alter their position via the <strong>Pane Layout</strong> tab in the ‘Tools’/‘Global Options’ (‘RStudio’/‘Preferences’ – for Mac). You may arrange the panes as you would prefer however we recommend that during the duration of this workshop you leave them in the default layout.</p>
+</section>
+<section id="the-rproject" class="level1">
+<h1>The Rproject</h1>
+<p>A very nifty way of managing workflow in RStudio is through the built-in functionality of the Rproject. We do not need to install any packages or change any settings to use these. Creating a new project is a very simple task, as well. For this course we will be using the <code>Intro_R_Workshop.Rproj</code> file you downloaded with the course material so that we are all running identical projects. This will prevent a lot of issues by ensuring we are doing things by the same standard. Better yet, an Rproject integrates seamlessly into version control software (e.g.&nbsp;GitHub) and allows for instant world class collaboration on any research project. To initialise the ‘Intro_R_Workshop’ project on your machine please find where you saved <code>Intro_R_Workshop.Rproj</code> file and click on it. We will cover the concepts and benefits of an Rproject more as we move through the course.</p>
+<section id="installing-packages" class="level2">
+<h2 class="anchored" data-anchor-id="installing-packages">Installing packages</h2>
+<p>The most common functions used in R are contained within the <strong><code>base</code></strong> package; this makes R useful ‘out of the box.’ However, there is extensive additional functionality that is being expanded all the time through the use of packages. Packages are simply collections of code called functions that automate complex mathematical or statistical tasks. One of the most useful features of R is that users are continuously developing new packages and making them available for free. You can find a comprehensive list of available packages on the <a href="https://cran.r-project.org/web/packages/">CRAN website</a>. There are currently (<code>2022-11-03</code>) <code>18807</code> packages available for R!</p>
+<p>If the thought of searching for and finding R packages is daunting, a good place to start is the <a href="http://cran.r-project.org/web/views/">R Task View</a> page. This page curates collections of packages for general tasks you might encounter, such as Experimental Design, Meta-Analysis, or Multivariate Analysis. Go and have a look for yourself, you might be surprised to find a good explanation of what you need.</p>
+<p>After clicking ‘Tools’/‘Install Packages’, type in the package name <strong><code>tidyverse</code></strong> in the ‘Packages’ text box (note that it is case sensitive) and select the Install button. The <strong>Console</strong> will run the code needed to install the package, and then provide some commentary on the installation of the package and any of its dependencies (<em>i.e.</em>, other R packages needed to run the required package).</p>
+<p>The installation process makes sure that the functions within the packages contained within the <strong><code>tidyverse</code></strong> are now available on your computer, but to avoid potential conflicts in the names of functions, it will not load these automatically. To make R ‘know’ about these functions in a particular session, you need either to load the package via ticking the checkbox for that package in the <strong>Packages</strong> tab, or execute:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>You can add options to executable code like this</p>
+<p>Since we will develop the habit of doing all of our analyses from R scripts, it is best practice to simply list all of the libraries to be loaded right at the start of your script. Comments may be used to remind your future-self (to quote Hadley Wickham) what those packages are for.</p>
+<blockquote class="blockquote">
+<p><strong>Copying code from RStudio</strong><br>
+Here you saw RStudio execute the R code needed to install (using <code>install.packages()</code>) and load (using <code>library()</code>) the package, so if you want to include these in one of your programs, just copy the text it executes. Note that you need only install the current version of a package once, but it needs to be loaded at the beginning of each R session.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Question</strong> Why is it best practice to include packages you use in your R program explicitly?</p>
+</blockquote>
+</section>
+<section id="the-panes-of-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="the-panes-of-rstudio">The panes of RStudio</h2>
+<p>RStudio has four main panes each in a quadrant of your screen: <strong>Source Editor</strong>, <strong>Console</strong>, <strong>Workspace Browser</strong> (and <strong>History</strong>), and <strong>Plots</strong> (and <strong>Files</strong>, <strong>Packages</strong>, <strong>Help</strong>). These can also be adjusted under the ‘Preferences’ menu. Note that there might be subtle differences between RStudio installations on different operating systems. We will discuss each of the panes in turn.</p>
+<section id="source-editor" class="level3">
+<h3 class="anchored" data-anchor-id="source-editor">Source Editor</h3>
+<p>Generally we will want to write programs longer than a few lines. The <strong>Source Editor</strong> can help you open, edit and execute these programs. Let us open a simple program:</p>
+<ol type="1">
+<li><p>Use Windows Explorer (Finder on Mac) and navigate to the file <code>BONUS/the_new_age.R</code>.</p></li>
+<li><p>Now make RStudio the default application to open <code>.R</code> files (right click on the file Name and set RStudio to open it as the default if it isn’t already)</p></li>
+<li><p>Now double click on the file – this will open it in RStudio in the <strong>Source Editor</strong> in the top left pane.</p></li>
+</ol>
+<p>Note <code>.R</code> files are simply standard text files and can be created in any text editor and saved with a <code>.R</code> (or <code>.r</code>) extension, but the Source editor in RStudio has the advantage of providing syntax highlighting, code completion, and smart indentation. You can see the different colours for numbers and there is also highlighting to help you count brackets (click your cursor next to a bracket and push the right arrow and you will see its partner bracket highlighted). We can execute R code directly from the Source Editor. Try the following (for Windows machines; for Macs replace <strong>Ctrl</strong> with <strong>Cmd</strong>):</p>
+<ul>
+<li>Execute a single line (Run icon or <strong>Ctrl+Enter</strong>). Note that the cursor can be anywhere on the line and one does not need to highlight anything — do this for the code on line 2</li>
+<li>Execute multiple lines (Highlight lines with the cursor, then Run icon or <strong>Ctrl+Enter</strong>) — do this for line 3 to 6</li>
+<li>Execute the whole script (Source icon or <strong>Ctrl+Shift+Enter</strong>)</li>
+</ul>
+<p>Now, try changing the x and/or y axis labels on line 18 and re-run the script.</p>
+<p>Now let us save the program in the <strong>Source Editor</strong> by clicking on the file symbol (note that the file symbol is greyed out when the file has not been changed since it was last saved).</p>
+<p>At this point, it might be worth thinking a bit about what the program is doing. R requires one to think about what you are doing, not simply clicking buttons like in some other software systems which shall remain nameless for now… Scripts execute sequentially from top to bottom. Try and work out what each line of the program is doing and discuss it with your neighbour. Note, if you get stuck, try using R’s help system; accessing the help system is especially easy within RStudio — see if you can figure out how to use that too.</p>
+<blockquote class="blockquote">
+<p><strong>Comments</strong><br>
+The hash (<code>#</code>) tells R not to run any of the text on that line to the right of the symbol. This is the standard way of commenting R code; it is VERY good practice to comment in detail so that you can understand later what you have done.</p>
+</blockquote>
+</section>
+<section id="console" class="level3">
+<h3 class="anchored" data-anchor-id="console">Console</h3>
+<p>This is where you can type code that executes immediately. This is also known as the command line. Throughout the notes, we will represent code for you to execute in R as a different font.</p>
+<blockquote class="blockquote">
+<p><strong>Type it in!</strong> Although it may appear that one could copy code from this PDF into the <strong>Console</strong>, you really shouldn’t. The first reason is that you might unwittingly copy invisible PDF formatting errors into R, which will make the code fail. But more importantly, typing code into the <strong>Console</strong> yourself gives you the practice you need, and allows you to make (and correct) your own errors. This is an invaluable way of learning and taking shortcuts now will only hurt you in the long run.</p>
+</blockquote>
+<p>Entering code in the command line is intuitive and easy. For example, we can use R as a calculator by typing into the Console (and pressing <strong>Enter</strong> after each line):</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span> <span class="sc">*</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
+<pre><code>[1] 18</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">+</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">^</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
 </div>
 </div>
-<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
+<p>Note that spaces are optional around simple calculations.</p>
+<p>We can also use the assignment operator <code>&lt;-</code> to assign any calculation to a variable so we can access it later (the <code>=</code> sign would work, too, but it’s bad practice to use it… and we’ll talk about this as we go):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9</code></pre>
+</div>
+</div>
+<p>To type the assignment operator (<code>&lt;-</code>) push the following two keys together: <strong>alt -</strong>. There are many keyboard shortcuts in R and we will introduce them as we go along.</p>
+<p>Spaces are also optional around assignment operators. It is good practice to use single spaces in your R scripts, and the <strong>alt -</strong> shortcut will do this for you automagically. Spaces are not only there to make the code more readable to the human eye, but also to the machine. Try this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>d<span class="ot">&lt;-</span><span class="dv">2</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>d <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>Note that the first line of code assigns <code>d</code> a value of <code>2</code>, whereas the second statement asks R whether this variable has a value less than 2. When asked, it responds with FALSE. If we hadn’t used spaces, how would R have known what we meant?</p>
+<p>Another important question here is, is R case sensitive? Is <code>A</code> the same as <code>a</code>? Figure out a way to check for yourself.</p>
+<p>We can create a vector in R by using the combine <code>c()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>apples <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.3</span>, <span class="fl">3.8</span>, <span class="fl">4.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A vector is a one-dimensional array (<em>i.e.</em>, a list of numbers), and this is the simplest form of data used in R (you can think of a single value in R as just a very short vector). We’ll talk about more complex (and therefore more powerful) types of data structures as we go along.</p>
+<p>If you want to display the value of apples type:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>apples</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.3 3.8 4.5</code></pre>
+</div>
+</div>
+<p>Finally, there are default functions in R for nearly all basic statistical analyses, including <code>mean()</code> and <code>sd()</code> (standard deviation):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(apples)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.533333</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(apples)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7505553</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Variable names</strong><br>
+It is best not to use <code>c</code> as the name of a value or array. Why? What other words might not be good to use?</p>
+</blockquote>
+<p>Or try this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">sd</span>(apples), <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.75</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Question</strong><br>
+What did we do above? What can you conclude from those functions?</p>
+</blockquote>
+<p>RStudio supports the automatic completion of code using the <strong>Tab</strong> key. For example, type the three letters <code>app</code> and then the <strong>Tab</strong> key. What happens?</p>
+<p>The code completion feature also provides brief inline help for functions whenever possible. For example, type <code>mean()</code> and press the <strong>Tab</strong> key.</p>
+<p>The RStudio <strong>Console</strong> automagically maintains a ‘history’ so that you can retrieve previous commands, a bit like your Internet browser or Google (<em>see the code in: BONUS/mapping_yourself.Rmd</em>). On a blank line in the <strong>Console</strong>, press the up arrow, and see what happens.</p>
+<p>If you wish to review a list of your recent commands and then select a command from this list you can use <strong>Ctrl+Up</strong> to review the list (<strong>Cmd+Up</strong> on the Mac). If you prefer a ‘bird’s eye’ overview of the R command history, you may also use the RStudio History pane (see below).</p>
+<p>The <strong>Console</strong> title bar has a few useful features:</p>
+<ol type="1">
+<li><p>It displays the current R working directory (more on this later)</p></li>
+<li><p>It provides the ability to interrupt R during a long computation (a stop sign will appear whilst code is running)</p></li>
+<li><p>It allows you to minimise and maximise the <strong>Console</strong> in relation to the <strong>Source pane</strong> using the buttons at the top-right or by double-clicking the title bar)</p></li>
+</ol>
+</section>
+<section id="environment-and-history-panes" class="level3">
+<h3 class="anchored" data-anchor-id="environment-and-history-panes">Environment and History panes</h3>
+<p>The <strong>Environment</strong> pane is very useful as it shows you what objects (<em>i.e.</em>, dataframes, arrays, values and functions) you have in your environment (workspace). You can see the values for objects with a single value and for those that are longer R will tell you their class. When you have data in your environment that have two dimensions (rows and columns) you may click on them and they will appear in the <strong>Source Editor</strong> pane like a spreadsheet.</p>
+<p>You can then go back to your program in the <strong>Source Editor</strong> by clicking its tab or closing the tab for the object you opened. Also in the <strong>Environment</strong> is the History tab, where you can see all of the code executed for the session. If you double-click a line or highlight a block of lines and then double-click those, you can send it to the <strong>Console</strong> (<em>i.e.</em>, run them).</p>
+<p>Typing the following into the <strong>Console</strong> will list everything you’ve loaded into the Environment:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "a"        "apples"   "b"        "d"        "pkgs_lst" "url"     </code></pre>
+</div>
+</div>
+<p>What do we have loaded into our environment? Did all of these objects come from one script, or more than one? How can we tell where an object was generated?</p>
+</section>
+<section id="files-plots-packages-help-and-viewer-panes" class="level3">
+<h3 class="anchored" data-anchor-id="files-plots-packages-help-and-viewer-panes">Files, Plots, Packages, Help, and Viewer panes</h3>
+<p>The last pane has a number of different tabs. The Files tab has a navigable file manager, just like the file system on your operating system. The <strong>Plot</strong> tab is where graphics you create will appear. The <strong>Packages</strong> tab shows you the packages that are installed and those that can be installed (more on this just now). The <strong>Help</strong> tab allows you to search the R documentation for help and is where the help appears when you ask for it from the <strong>Console</strong>.</p>
+<p>Methods of getting help from the <strong>Console</strong> include…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>?mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>…or:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We will go into this in more detail in the next session.</p>
+<p>To reproduced Figure @ref(fig:ggplot2-1) in the <strong>Plot</strong> tab, simply copy and paste the following code into the <strong>Console</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> (x <span class="sc">-</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>))</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">shape =</span> <span class="dv">21</span>, <span class="at">col =</span> <span class="st">"salmon"</span>, <span class="at">fill =</span> <span class="st">"white"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="R_RStudio_files/figure-html/ggplot2-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">The same plot as above, but assembled with <strong>ggplot2</strong>.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<p>Below you can find the source code to some books and other links to websites about R. With some of the technical skills you’ll learn in this course you’ll be able to download the source code, compile the book on your own computer and arrive at the fully formatted (typeset) copy of the books that you can purchase for lots of money:</p>
+<ul>
+<li><a href="https://github.com/hadley/ggplot2-book">ggplot2. Elegant Graphics for Data Analysis</a> — the gold-standard in R graphics</li>
+<li><a href="http://r4ds.had.co.nz/workflow-basics.html">R for Data Science</a> — data analysis using tidy principles</li>
+<li><a href="http://rmarkdown.rstudio.com">R Markdown</a> — reproducible reports in R</li>
+<li><a href="https://bookdown.org/yihui/bookdown">bookdown: Authoring Books and Technical Documents with R Markdown</a> — writing books in R</li>
+<li><a href="https://shiny.rstudio.com">Shiny</a> — interactive website driven by R</li>
+</ul>
+</section>
+<section id="style-and-code-conventions" class="level2">
+<h2 class="anchored" data-anchor-id="style-and-code-conventions">Style and code conventions</h2>
+<p>Early on, develop the habit of unambiguous and consistent style and formatting when writing your code, or anything else for that matter. Pay attention to detail and be pedantic. This will benefit your scientific writing in general. Although many R commands rely on precisely formatted statements (code blocks), style can nevertheless to <em>some extent</em> have a personal flavour to it. The key is <em>consistency</em>. In this book we use certain conventions to improve readability. We use a consistent set of conventions to refer to code, and in particular to typed commands and package names.</p>
+<ul>
+<li>Package names are shown in a bold font over a grey box, <em>e.g.</em> <strong><code>tidyr</code></strong>.</li>
+<li>Functions are shown in normal font followed by parentheses and also over a grey box , <em>e.g.</em> <code>plot()</code>, or <code>summary()</code>.</li>
+<li>Other R objects, such as data, function arguments or variable names are again in normal font over a grey box, but without parentheses, <em>e.g.</em> <code>x</code> and <code>apples</code>.</li>
+<li>Sometimes we might directly specify the package that contains the function by using two colons, <em>e.g.</em> <code>dplyr::filter()</code>.</li>
+<li>Commands entered onto the R command line (console) and the output that is returned will be shown in a code block, which is a light grey background with code font. The commands entered start at the beginning of a line and the output it produces is preceded by <code>R&gt;</code>, like so:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">13</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  13.1619587  15.5830309  23.0442888  14.5541435  -1.2511624   8.5472444
+ [7] -14.5035285  -0.3808704  -6.4690712 -20.3784512</code></pre>
+</div>
+</div>
+<p>Consult these resources for more about R code style :</p>
+<ul>
+<li><a href="https://google.github.io/styleguide/Rguide.xml">Google’s R style guide</a></li>
+<li><a href="http://style.tidyverse.org">The tidyverse style guide</a></li>
+<li><a href="http://adv-r.had.co.nz/Style.html">Hadley Wickham’s advanced R style guide</a></li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

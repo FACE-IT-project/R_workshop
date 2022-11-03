@@ -1,10 +1,136 @@
 [
   {
+    "objectID": "content.html",
+    "href": "content.html",
+    "title": "Content",
+    "section": "",
+    "text": "The content for this workshop is organized into five units: Why R?, Plots, Maps, Tidy Data, and a Summary. They may be accessed by the table of contents (TOC) on the left of this page. The slides and tutorials for each unit may be found there.\nDuring the workshop there will be a guest lecture on the creation of policy briefs. This will be followed by a two day hands-on session where attendees will break into small groups to develop a policy brief by sourcing data, cleaning it, analysing it, plotting/mapping it, and writing up a brief based on their findings."
+  },
+  {
+    "objectID": "R_RStudio.html",
+    "href": "R_RStudio.html",
+    "title": "Setting up R and Rstudio",
+    "section": "",
+    "text": "Before we can begin an R workshop, we need to make sure everyone has access to a computer with R and RStudio installed. The process for how to do this is detailed below, followed by a brief introduction to these two pieces of software and what the difference is between them.\nNB: If you are not using your own computer please make the instructor aware of this as it is assumed that all participants will be using their personal (or university/institutions given) laptops."
+  },
+  {
+    "objectID": "R_RStudio.html#installing-r",
+    "href": "R_RStudio.html#installing-r",
+    "title": "Setting up R and Rstudio",
+    "section": "Installing R",
+    "text": "Installing R\nInstalling R on your machine is a straightforward process. Follow these steps:\n\nGo to the CRAN (Comprehensive R Archive Network) website. If you type ‘r’ into Google it is the first entry\nChoose to download R for Linux, Mac, or Windows\nFor Windows users selecting ‘base’ will link you to the download file, follow the prompts to install\nFor Mac users, choose the version relevant to your Operating System, follow the prompts after downloading\nIf you are a Linux user, you know what to do!"
+  },
+  {
+    "objectID": "R_RStudio.html#installing-rstudio",
+    "href": "R_RStudio.html#installing-rstudio",
+    "title": "Setting up R and Rstudio",
+    "section": "Installing RStudio",
+    "text": "Installing RStudio\nAlthough R can run in its own console or in a terminal window (Mac and Linux; the Windows command line is a bit limiting), we will use RStudio in this Workshop. RStudio is a free front-end to R for Windows, Mac, or Linux (i.e., R is working in the background). It makes working with R easier, more organised and productive, especially for new users. There are other front-ends, but RStudio is the most popular. To install:\n\nGo to the posit website\nClick the ‘Download RStudio’ button in the top right of the page\nScroll down to click the ‘Download’ button under RStudio Desktop Free\nFor Windows users click the ‘Download RStudio Desktop for Windows’ button under Step 2 on the page\nFor all other Operating Systems, scroll down further and select the corresponding file\nAfter downloading, follow the prompts to install RStudio"
+  },
+  {
+    "objectID": "R_RStudio.html#setting-up-the-workspace",
+    "href": "R_RStudio.html#setting-up-the-workspace",
+    "title": "Setting up R and Rstudio",
+    "section": "Setting up the workspace",
+    "text": "Setting up the workspace\n\nGeneral settings\nBefore we start using RStudio (which is a code editor and environment that runs R) let’s first set it up properly. Find the ‘Tools’ (‘Preferences’) menu item, navigate to ‘Global Options’ (‘Code Editing’). From here we have a very wide range of options for the functionality of RStudio. At the moment we will leave the general settings to their default.\n\n\nCustomising appearance\nRStudio is highly customisable. Under the Appearance tab under ‘Tools’/‘Global Options’ you can see all of the different themes that come with RStudio. We recommend choosing a theme with a black background (e.g. Chaos) as this will be easier on your eyes and your computer. It is also good to choose a theme with a sufficient amount of contrast between the different colours used to denote different types of objects/values in your code."
+  },
+  {
+    "objectID": "R_RStudio.html#configuring-panes",
+    "href": "R_RStudio.html#configuring-panes",
+    "title": "Setting up R and Rstudio",
+    "section": "Configuring panes",
+    "text": "Configuring panes\nYou cannot rearrange panes (see below) in RStudio by dragging them, but you can alter their position via the Pane Layout tab in the ‘Tools’/‘Global Options’ (‘RStudio’/‘Preferences’ – for Mac). You may arrange the panes as you would prefer however we recommend that during the duration of this workshop you leave them in the default layout."
+  },
+  {
+    "objectID": "R_RStudio.html#installing-packages",
+    "href": "R_RStudio.html#installing-packages",
+    "title": "Setting up R and Rstudio",
+    "section": "Installing packages",
+    "text": "Installing packages\nThe most common functions used in R are contained within the base package; this makes R useful ‘out of the box.’ However, there is extensive additional functionality that is being expanded all the time through the use of packages. Packages are simply collections of code called functions that automate complex mathematical or statistical tasks. One of the most useful features of R is that users are continuously developing new packages and making them available for free. You can find a comprehensive list of available packages on the CRAN website. There are currently (2022-11-03) 18807 packages available for R!\nIf the thought of searching for and finding R packages is daunting, a good place to start is the R Task View page. This page curates collections of packages for general tasks you might encounter, such as Experimental Design, Meta-Analysis, or Multivariate Analysis. Go and have a look for yourself, you might be surprised to find a good explanation of what you need.\nAfter clicking ‘Tools’/‘Install Packages’, type in the package name tidyverse in the ‘Packages’ text box (note that it is case sensitive) and select the Install button. The Console will run the code needed to install the package, and then provide some commentary on the installation of the package and any of its dependencies (i.e., other R packages needed to run the required package).\nThe installation process makes sure that the functions within the packages contained within the tidyverse are now available on your computer, but to avoid potential conflicts in the names of functions, it will not load these automatically. To make R ‘know’ about these functions in a particular session, you need either to load the package via ticking the checkbox for that package in the Packages tab, or execute:\n\nlibrary(tidyverse)\n\nSince we will develop the habit of doing all of our analyses from R scripts, it is best practice to simply list all of the libraries to be loaded right at the start of your script. Comments may be used to remind your future-self (to quote Hadley Wickham) what those packages are for.\n\nCopying code from RStudio\nHere you saw RStudio execute the R code needed to install (using install.packages()) and load (using library()) the package, so if you want to include these in one of your programs, just copy the text it executes. Note that you need only install the current version of a package once, but it needs to be loaded at the beginning of each R session.\n\n\nQuestion Why is it best practice to include packages you use in your R program explicitly?"
+  },
+  {
+    "objectID": "R_RStudio.html#the-panes-of-rstudio",
+    "href": "R_RStudio.html#the-panes-of-rstudio",
+    "title": "Setting up R and Rstudio",
+    "section": "The panes of RStudio",
+    "text": "The panes of RStudio\nRStudio has four main panes each in a quadrant of your screen: Source Editor, Console, Workspace Browser (and History), and Plots (and Files, Packages, Help). These can also be adjusted under the ‘Preferences’ menu. Note that there might be subtle differences between RStudio installations on different operating systems. We will discuss each of the panes in turn.\n\nSource Editor\nGenerally we will want to write programs longer than a few lines. The Source Editor can help you open, edit and execute these programs. Let us open a simple program:\n\nUse Windows Explorer (Finder on Mac) and navigate to the file BONUS/the_new_age.R.\nNow make RStudio the default application to open .R files (right click on the file Name and set RStudio to open it as the default if it isn’t already)\nNow double click on the file – this will open it in RStudio in the Source Editor in the top left pane.\n\nNote .R files are simply standard text files and can be created in any text editor and saved with a .R (or .r) extension, but the Source editor in RStudio has the advantage of providing syntax highlighting, code completion, and smart indentation. You can see the different colours for numbers and there is also highlighting to help you count brackets (click your cursor next to a bracket and push the right arrow and you will see its partner bracket highlighted). We can execute R code directly from the Source Editor. Try the following (for Windows machines; for Macs replace Ctrl with Cmd):\n\nExecute a single line (Run icon or Ctrl+Enter). Note that the cursor can be anywhere on the line and one does not need to highlight anything — do this for the code on line 2\nExecute multiple lines (Highlight lines with the cursor, then Run icon or Ctrl+Enter) — do this for line 3 to 6\nExecute the whole script (Source icon or Ctrl+Shift+Enter)\n\nNow, try changing the x and/or y axis labels on line 18 and re-run the script.\nNow let us save the program in the Source Editor by clicking on the file symbol (note that the file symbol is greyed out when the file has not been changed since it was last saved).\nAt this point, it might be worth thinking a bit about what the program is doing. R requires one to think about what you are doing, not simply clicking buttons like in some other software systems which shall remain nameless for now… Scripts execute sequentially from top to bottom. Try and work out what each line of the program is doing and discuss it with your neighbour. Note, if you get stuck, try using R’s help system; accessing the help system is especially easy within RStudio — see if you can figure out how to use that too.\n\nComments\nThe hash (#) tells R not to run any of the text on that line to the right of the symbol. This is the standard way of commenting R code; it is VERY good practice to comment in detail so that you can understand later what you have done.\n\n\n\nConsole\nThis is where you can type code that executes immediately. This is also known as the command line. Throughout the notes, we will represent code for you to execute in R as a different font.\n\nType it in! Although it may appear that one could copy code from this PDF into the Console, you really shouldn’t. The first reason is that you might unwittingly copy invisible PDF formatting errors into R, which will make the code fail. But more importantly, typing code into the Console yourself gives you the practice you need, and allows you to make (and correct) your own errors. This is an invaluable way of learning and taking shortcuts now will only hurt you in the long run.\n\nEntering code in the command line is intuitive and easy. For example, we can use R as a calculator by typing into the Console (and pressing Enter after each line):\n\n6 * 3\n\n[1] 18\n\n5 + 4\n\n[1] 9\n\n2 ^ 3\n\n[1] 8\n\n\nNote that spaces are optional around simple calculations.\nWe can also use the assignment operator <- to assign any calculation to a variable so we can access it later (the = sign would work, too, but it’s bad practice to use it… and we’ll talk about this as we go):\n\na <- 2\nb <- 7\na + b\n\n[1] 9\n\n\nTo type the assignment operator (<-) push the following two keys together: alt -. There are many keyboard shortcuts in R and we will introduce them as we go along.\nSpaces are also optional around assignment operators. It is good practice to use single spaces in your R scripts, and the alt - shortcut will do this for you automagically. Spaces are not only there to make the code more readable to the human eye, but also to the machine. Try this:\n\nd<-2\nd < -2\n\n[1] FALSE\n\n\nNote that the first line of code assigns d a value of 2, whereas the second statement asks R whether this variable has a value less than 2. When asked, it responds with FALSE. If we hadn’t used spaces, how would R have known what we meant?\nAnother important question here is, is R case sensitive? Is A the same as a? Figure out a way to check for yourself.\nWe can create a vector in R by using the combine c() function:\n\napples <- c(5.3, 3.8, 4.5)\n\nA vector is a one-dimensional array (i.e., a list of numbers), and this is the simplest form of data used in R (you can think of a single value in R as just a very short vector). We’ll talk about more complex (and therefore more powerful) types of data structures as we go along.\nIf you want to display the value of apples type:\n\napples\n\n[1] 5.3 3.8 4.5\n\n\nFinally, there are default functions in R for nearly all basic statistical analyses, including mean() and sd() (standard deviation):\n\nmean(apples)\n\n[1] 4.533333\n\nsd(apples)\n\n[1] 0.7505553\n\n\n\nVariable names\nIt is best not to use c as the name of a value or array. Why? What other words might not be good to use?\n\nOr try this:\n\nround(sd(apples), 2)\n\n[1] 0.75\n\n\n\nQuestion\nWhat did we do above? What can you conclude from those functions?\n\nRStudio supports the automatic completion of code using the Tab key. For example, type the three letters app and then the Tab key. What happens?\nThe code completion feature also provides brief inline help for functions whenever possible. For example, type mean() and press the Tab key.\nThe RStudio Console automagically maintains a ‘history’ so that you can retrieve previous commands, a bit like your Internet browser or Google (see the code in: BONUS/mapping_yourself.Rmd). On a blank line in the Console, press the up arrow, and see what happens.\nIf you wish to review a list of your recent commands and then select a command from this list you can use Ctrl+Up to review the list (Cmd+Up on the Mac). If you prefer a ‘bird’s eye’ overview of the R command history, you may also use the RStudio History pane (see below).\nThe Console title bar has a few useful features:\n\nIt displays the current R working directory (more on this later)\nIt provides the ability to interrupt R during a long computation (a stop sign will appear whilst code is running)\nIt allows you to minimise and maximise the Console in relation to the Source pane using the buttons at the top-right or by double-clicking the title bar)\n\n\n\nEnvironment and History panes\nThe Environment pane is very useful as it shows you what objects (i.e., dataframes, arrays, values and functions) you have in your environment (workspace). You can see the values for objects with a single value and for those that are longer R will tell you their class. When you have data in your environment that have two dimensions (rows and columns) you may click on them and they will appear in the Source Editor pane like a spreadsheet.\nYou can then go back to your program in the Source Editor by clicking its tab or closing the tab for the object you opened. Also in the Environment is the History tab, where you can see all of the code executed for the session. If you double-click a line or highlight a block of lines and then double-click those, you can send it to the Console (i.e., run them).\nTyping the following into the Console will list everything you’ve loaded into the Environment:\n\nls()\n\n[1] \"a\"        \"apples\"   \"b\"        \"d\"        \"pkgs_lst\" \"url\"     \n\n\nWhat do we have loaded into our environment? Did all of these objects come from one script, or more than one? How can we tell where an object was generated?\n\n\nFiles, Plots, Packages, Help, and Viewer panes\nThe last pane has a number of different tabs. The Files tab has a navigable file manager, just like the file system on your operating system. The Plot tab is where graphics you create will appear. The Packages tab shows you the packages that are installed and those that can be installed (more on this just now). The Help tab allows you to search the R documentation for help and is where the help appears when you ask for it from the Console.\nMethods of getting help from the Console include…\n\n?mean\n\n…or:\n\nhelp(mean)\n\nWe will go into this in more detail in the next session.\nTo reproduced Figure @ref(fig:ggplot2-1) in the Plot tab, simply copy and paste the following code into the Console:\n\nlibrary(tidyverse)\nx <- seq(0, 2, by = 0.01)\ny <- 2 * sin(2 * pi * (x - 1/4))\nggplot() +\n  geom_point(aes(x = x, y = y), shape = 21, col = \"salmon\", fill = \"white\")\n\n\n\n\nThe same plot as above, but assembled with ggplot2."
+  },
+  {
+    "objectID": "R_RStudio.html#resources",
+    "href": "R_RStudio.html#resources",
+    "title": "Setting up R and Rstudio",
+    "section": "Resources",
+    "text": "Resources\nBelow you can find the source code to some books and other links to websites about R. With some of the technical skills you’ll learn in this course you’ll be able to download the source code, compile the book on your own computer and arrive at the fully formatted (typeset) copy of the books that you can purchase for lots of money:\n\nggplot2. Elegant Graphics for Data Analysis — the gold-standard in R graphics\nR for Data Science — data analysis using tidy principles\nR Markdown — reproducible reports in R\nbookdown: Authoring Books and Technical Documents with R Markdown — writing books in R\nShiny — interactive website driven by R"
+  },
+  {
+    "objectID": "R_RStudio.html#style-and-code-conventions",
+    "href": "R_RStudio.html#style-and-code-conventions",
+    "title": "Setting up R and Rstudio",
+    "section": "Style and code conventions",
+    "text": "Style and code conventions\nEarly on, develop the habit of unambiguous and consistent style and formatting when writing your code, or anything else for that matter. Pay attention to detail and be pedantic. This will benefit your scientific writing in general. Although many R commands rely on precisely formatted statements (code blocks), style can nevertheless to some extent have a personal flavour to it. The key is consistency. In this book we use certain conventions to improve readability. We use a consistent set of conventions to refer to code, and in particular to typed commands and package names.\n\nPackage names are shown in a bold font over a grey box, e.g. tidyr.\nFunctions are shown in normal font followed by parentheses and also over a grey box , e.g. plot(), or summary().\nOther R objects, such as data, function arguments or variable names are again in normal font over a grey box, but without parentheses, e.g. x and apples.\nSometimes we might directly specify the package that contains the function by using two colons, e.g. dplyr::filter().\nCommands entered onto the R command line (console) and the output that is returned will be shown in a code block, which is a light grey background with code font. The commands entered start at the beginning of a line and the output it produces is preceded by R>, like so:\n\n\nrnorm(n = 10, mean = 0, sd = 13)\n\n [1]  13.1619587  15.5830309  23.0442888  14.5541435  -1.2511624   8.5472444\n [7] -14.5035285  -0.3808704  -6.4690712 -20.3784512\n\n\nConsult these resources for more about R code style :\n\nGoogle’s R style guide\nThe tidyverse style guide\nHadley Wickham’s advanced R style guide"
+  },
+  {
+    "objectID": "GitHub.html",
+    "href": "GitHub.html",
+    "title": "GitHub with RStudio",
+    "section": "",
+    "text": "It may seem like a detour to be setting up a GitHub account on our way to an R workshop, but this online tool is centrally important to the best practices for working in RStudio, as we shall see below. If you already have a GitHub account, wonderful! Much of the following information is probably already known to you. So rather spend this time helping the people next to you through the process. Much of the content in this module is taken from the wonderful online book Happy Git and GitHub for the useR, which provides a much more in-depth view of what Git is and the many ways we can use it. For practical purposes, in this module we are going to focus directly on what we need to know to use GitHub in order to manage our Rprojects.\nAt the outset of this module we must acknowledge that there are many other Git based online (and desktop) resources that one may use in an R/RStudio workflow. We choose to focus on GitHub in this workshop because it is the best integrated, supported, and documented option. Meaning that not only is it the easiest to use ‘out of the box’, if we encounter any issues after this workshop it will be easiest to search for solutions for GitHub. Note however that GitHub is owned by Microsoft, which is why many people have switched over to GitLab. If anyone is interested in the finer points of this discussion, please let the instructor know."
+  },
+  {
+    "objectID": "GitHub.html#create-a-github-account",
+    "href": "GitHub.html#create-a-github-account",
+    "title": "GitHub with RStudio",
+    "section": "Create a GitHub account",
+    "text": "Create a GitHub account\nAs with any online resource in the digital age, we must first setup an account. To do so, go to the GitHub home page, click ‘Sign up’ in the top right, and follow the prompts. You will need an e-mail address to complete this process, but there is otherwise no cost BONUS: if you have an academic e-mail address you should be able to register for an academic account, which provides some of the benefits of a paid account, but for free! If you experience any issues in this process try consulting the GitHub help page."
+  },
+  {
+    "objectID": "GitHub.html#install-git",
+    "href": "GitHub.html#install-git",
+    "title": "GitHub with RStudio",
+    "section": "Install Git",
+    "text": "Install Git\nThe Git software comes standard on MacOS and all Linux distributions. If you have one of these Operating Systems, run the following code in a Bash shell (i.e. Terminal) to check that you have it:\nwhich git\nAnd if you do, check your version:\ngit --version\nClose RStudio before proceeding with the installation of Git for a specific Operating System.\n\nWindows\nThere is a one-stop-shop for all of your Git needs in the form of Git for Windows. Navigate to this page, download the file, and follow the prompts to install. Generally the default options are acceptable, with two important considerations:\n\nFor the ‘Adjusting your PATH environment’ prompt, ensure that you choose ‘Git from the command line and also from 3rd-party software’\nThe ideal location to install Git is C:/Program Files, doing otherwise may cause problems later on\n\nIf you already have Git installed for Windows, run the following line in your Terminal to check that it is up-to-date:\ngit update-git-for-windows\n\n\nMacOS\nOpen a Terminal and run:\nxcode-select --install\n\n\nLinux\nUbuntu or Debian Linux:\nsudo apt-get install git\nFedora or RedHat Linux:\nsudo yum install git\n\n\nSet user info\nWith Git installed, we need to tell it our username and e-mail. This isn’t linked to anything else on our computer, but it will appear during our workflow between RStudio and Github. Primarily this information is useful when we are working on a project with other people so they can see who made what changes when. Preferably one should use the same e-mail account here as that for used for the GitHub account.\nIn a Terminal:\ngit config --global user.name 'Jane Doe'\ngit config --global user.email 'jane@example.com'\ngit config --global --list"
+  },
+  {
+    "objectID": "GitHub.html#test-the-connection",
+    "href": "GitHub.html#test-the-connection",
+    "title": "GitHub with RStudio",
+    "section": "Test the connection",
+    "text": "Test the connection\nNow that we have a GitHub account and we have installed Git on our computer, it’s time to connect them.\n\nCreate a GitHub repo\nGo back to your GitHub account and click the green ‘New’ button."
+  },
+  {
+    "objectID": "GitHub.html#github-and-rstudio",
+    "href": "GitHub.html#github-and-rstudio",
+    "title": "GitHub with RStudio",
+    "section": "GitHub and RStudio",
+    "text": "GitHub and RStudio"
+  },
+  {
+    "objectID": "why_R.html",
+    "href": "why_R.html",
+    "title": "Why R?",
+    "section": "",
+    "text": "As scientists, we are increasingly driven to analyse and manipulate datasets. As these datasets grow in size our analyses are becoming more sophisticated. There are many statistical packages on the market that one can use, but R is becoming the global standard. There are several reasons for this trend:\n\nIt is free, which is nice if you despise commercial software such as Microsoft Office, as we do — in fact, this entire document was written in Rmarkdown and the files supporting this Workshop material can be edited on any computer using a variety of operating systems such as Mac OS X, Linux and Microsoft Windows\nIt is powerful, flexible and robust; it is developed and used by leading academic statisticians\nIt contains advanced statistical routines not yet available in other software\nThe cutting-edge statistical routines open up scientific possibilities in creative new ways\nIt has state-of-the-art graphics\nUsers continually extend the functionality by updating existing packages and adding new ones and make these available for free\nIt does not depend on a pointy-and-clicky interface, such as SPSS, and requires one to write scripts — more on the advantages of scripts later\n\nIt is truly amazing that such a powerful and comprehensive package is freely available and we are indebted to the developers of R for going down this path.\n\n\nAlthough there are many positives of using R, there are some negatives:\n\nIt can have a steep learning curve for those whom do not like statistics or data manipulation, and it does require frequent use to remain familiar with it and to develop advanced skills\nError trapping can be confusing and frustrating\nRudimentary debugging, although there are some packages available to enhance the process\nHandles large datasets (100 MB), but can have some trouble with massive datasets (GBs)\nSome simple tasks can be tricky to do in R\nThere are multiple ways of doing the same thing\n\n\n\n\nThe big difference between R and many other statistical packages that you might have used is that it is not, and never will be, a menu-driven ‘point and click’ package. R requires you to write your own computer code to tell it exactly what you want to do. This means that there is a learning curve, but these are outweighed by numerous advantages:\n\nTo write new programs, you can modify your existing ones or those of others, saving you considerable time\nYou have a record of your statistical analyses and thus can re-run your previous analyses exactly at any time in the future, even if you can’t remember what you did — this is central to reproducible research\nThe recorded code can include the liberal use of internal documentation, which is often overlooked by practising scientists\nIt is more flexible in being able to manipulate data and graphics than menu-driven software\nYou will develop and improve your programming, which is a valuable general skill\nYou will improve your statistical knowledge\nYou can automate large problems\nYou can provide and share code that underpins published analyses; journals are starting to request the code for analyses in papers, to increase transparency and repeatability\nIntegration with tools like git (e.g. GitHub and Bitbucket) enable online collaboration in large statistical research programmes and they allow one to rely on version control systems\nProgramming is simply heaps more fun than point-and-click!"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Welcome",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "This website contains all of the information and the course content for the 2022 FACE-IT School ‘A Roundtrip From Data Handling to Data Presentation’.\nThe source code for this website and all of the course content is available on GitHub.\nThe aim of this five-day introductory workshop is to guide you through the basics of using R via RStudio for analysis of environmental and biological data. It is ideal for people new to R or who have limited experience. This workshop is not comprehensive, but is necessarily selective. We are not hardcore statisticians, but rather ecologists who have an interest in statistics, and use R frequently. Our emphasis is thus on the steps required to analyse and visualise data in R, rather than focusing on the statistical theory.\nThe workshop is laid out so it begins simply and slowly to impart the basics of using R. It then gathers pace, so that by the end we are doing intermediate level analyses. Day 1 is concerned with becoming familiar with getting data into R, doing some simple descriptive statistics, data manipulation and visualisation. Day 2 takes a more in depth look at manipulating and visualising data. Day 3 focuses on creating maps. Day 4 deals with the fundamentals of reproducible research. Day 5 allows one to utilise all of the skills learned throughout the week by creating a final project. The workshop is case-study driven, using data and examples primarily from our background in the marine sciences and real life situations. There is no homework but there are in class assignments.\nDon’t worry if you feel overwhelmed and do not follow everything at any time during the Workshop; that is totally natural with learning a new and powerful program. Remember that you have the notes and material to go through the exercises later at your own pace; we will also be walking the room during sessions and breaks so that we can answer questions one on one. We hope that this Workshop gives you the confidence to start incorporating R into your daily workflow, and if you are already a user, we hope that it will expose you to some new ways of doing things.\nFinally, bear in mind that we are self-taught when it comes to R. Our methods will work, but you will learn as you gain more experience with programming that there are many ways to get the right answer or to accomplish the same task.\nYou will notice that this repository uses GitHub, and you are advised to set up your own repository for R scripts and all your data. We will touch on GitHub and the principles of reproducible research later, and GitHub forms a core ingredient of such a workflow."
+  },
+  {
+    "objectID": "index.html#venue-date-and-time",
+    "href": "index.html#venue-date-and-time",
+    "title": "Welcome",
+    "section": "Venue, date and time",
+    "text": "Venue, date and time\nThis workshop will take place from 18 November – 28 November 2022, 9:00–17:00, at the Wadden Sea Station (AWI) on Sylt, Germany. The 18th and 28th are set aside for travel, with no instruction planned on these dates. Note also that the first Saturday and Sunday are half days, devoted to managing administrative non-coding work (e.g. setting up R, RStudio, and GitHub)."
+  },
+  {
+    "objectID": "index.html#course-outline",
+    "href": "index.html#course-outline",
+    "title": "Welcome",
+    "section": "Course outline",
+    "text": "Course outline\n\nDay 1 – In the Beginning\n\nPresentation: Preliminaries\nExercise: It which shall not be named\n– break –\nDemonstration: The New Age\nInteractive Session: Introduction to R and RStudio\n– lunch –\nInteractive Session: An R workflow\n– break –\nInteractive Session: An R workflow\n– end –\n\n\n\nDay 2 – Show and tell\n\nInteractive Session: The basics of ggplot2\n– break –\nInteractive Session: Faceting figures in ggplot2\n– lunch –\nInteractive Session: Brewing colours in ggplot2\n– break –\nAssignment: DIY figures\n– end –\n\n\n\nDay 3 – Going deeper\n\nInteractive Session: Mapping with ggplot2\n– break –\nInteractive Session: Mapping with style\n– lunch –\nInteractive Session: Mapping with Google\n– break –\nAssignment: DIY maps\n– end –\n\n\n\nDay 4 – The Enlightened Researcher\n\nInteractive Session: Tidy data\n– break –\nInteractive Session: Tidier data\n– lunch –\nInteractive Session: Tidiest data\n– end –\n\n\n\nDay 5 – The world is yours\n\nPresentation: Recap\n– break –\nInteractive Session: Open Floor\n– lunch –\nOptional Session: More Open Floor\n– end –"
   },
   {
     "objectID": "index.html#acknowledements",
@@ -12,54 +138,5 @@
     "title": "Welcome",
     "section": "Acknowledements",
     "text": "Acknowledements\n\n\n\n\n\nThis workshop was developed as a contribution of WP1 to the FACE-IT project. FACE-IT has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement no. 869154."
-  },
-  {
-    "objectID": "R_RStudio.html",
-    "href": "R_RStudio.html",
-    "title": "Using R with Rstudio",
-    "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
-  },
-  {
-    "objectID": "R_RStudio.html#running-code",
-    "href": "R_RStudio.html#running-code",
-    "title": "Using R with Rstudio",
-    "section": "Running Code",
-    "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
-  },
-  {
-    "objectID": "GitHub.html",
-    "href": "GitHub.html",
-    "title": "GitHub with RStudio",
-    "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
-  },
-  {
-    "objectID": "GitHub.html#running-code",
-    "href": "GitHub.html#running-code",
-    "title": "GitHub with RStudio",
-    "section": "Running Code",
-    "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
-  },
-  {
-    "objectID": "content.html",
-    "href": "content.html",
-    "title": "Course content",
-    "section": "",
-    "text": "The course content is organized in five units: Hello world, Exploring data, Data science ethics, Making rigorous conclusions, and Looking further. For each unit numerous slide decks, homework and lab assignments, and application exercises are provided. Also provided are interactive tutorials, exams, and project assignment."
-  },
-  {
-    "objectID": "why_R.html",
-    "href": "why_R.html",
-    "title": "Why R?",
-    "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
-  },
-  {
-    "objectID": "why_R.html#running-code",
-    "href": "why_R.html#running-code",
-    "title": "Why R?",
-    "section": "Running Code",
-    "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
   }
 ]

@@ -128,7 +128,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -150,11 +150,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./R_RStudio.html">
- <span class="menu-text">Using R</span></a>
+ <span class="menu-text">R+RStudio</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./GitHub.html" aria-current="page">
- <span class="menu-text">Using GitHub</span></a>
+ <span class="menu-text">GitHub</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./content.html">
@@ -175,37 +175,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">GitHub with RStudio</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
-      </button>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content.html" class="sidebar-item-text sidebar-link">Course content</a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link active" data-scroll-target="#quarto">Quarto</a></li>
-  <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code">Running Code</a></li>
+  <li><a href="#create-a-github-account" id="toc-create-a-github-account" class="nav-link active" data-scroll-target="#create-a-github-account">Create a GitHub account</a></li>
+  <li><a href="#install-git" id="toc-install-git" class="nav-link" data-scroll-target="#install-git">Install Git</a>
+  <ul class="collapse">
+  <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows">Windows</a></li>
+  <li><a href="#macos" id="toc-macos" class="nav-link" data-scroll-target="#macos">MacOS</a></li>
+  <li><a href="#linux" id="toc-linux" class="nav-link" data-scroll-target="#linux">Linux</a></li>
+  <li><a href="#set-user-info" id="toc-set-user-info" class="nav-link" data-scroll-target="#set-user-info">Set user info</a></li>
+  </ul></li>
+  <li><a href="#test-the-connection" id="toc-test-the-connection" class="nav-link" data-scroll-target="#test-the-connection">Test the connection</a>
+  <ul class="collapse">
+  <li><a href="#create-a-github-repo" id="toc-create-a-github-repo" class="nav-link" data-scroll-target="#create-a-github-repo">Create a GitHub repo</a></li>
+  </ul></li>
+  <li><a href="#github-and-rstudio" id="toc-github-and-rstudio" class="nav-link" data-scroll-target="#github-and-rstudio">GitHub and RStudio</a></li>
   </ul>
 </nav>
     </div>
@@ -214,7 +206,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">GitHub with RStudio</h1>
+<h1 class="title">GitHub with RStudio</h1>
 </div>
 
 
@@ -229,26 +221,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
+<p>It may seem like a detour to be setting up a <a href="https://github.com/">GitHub</a> account on our way to an <strong>R</strong> workshop, but this online tool is centrally important to the best practices for working in RStudio, as we shall see below. If you already have a GitHub account, wonderful! Much of the following information is probably already known to you. So rather spend this time helping the people next to you through the process. Much of the content in this module is taken from the wonderful online book <a href="https://happygitwithr.com/index.html">Happy Git and GitHub for the useR</a>, which provides a much more in-depth view of what Git is and the many ways we can use it. For practical purposes, in this module we are going to focus directly on what we need to know to use GitHub in order to manage our Rprojects.</p>
+<p>At the outset of this module we must acknowledge that there are many other Git based online (and desktop) resources that one may use in an R/RStudio workflow. We choose to focus on GitHub in this workshop because it is the best integrated, supported, and documented option. Meaning that not only is it the easiest to use ‘out of the box’, if we encounter any issues after this workshop it will be easiest to search for solutions for GitHub. Note however that GitHub is owned by Microsoft, which is why many people have switched over to <a href="https://about.gitlab.com/">GitLab</a>. If anyone is interested in the finer points of this discussion, please let the instructor know.</p>
+<section id="create-a-github-account" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-github-account">Create a GitHub account</h2>
+<p>As with any online resource in the digital age, we must first setup an account. To do so, go to the <a href="">GitHub</a> home page, click ‘Sign up’ in the top right, and follow the prompts. You will need an e-mail address to complete this process, but there is otherwise no cost <strong>BONUS:</strong> if you have an academic e-mail address you should be able to register for an academic account, which provides some of the benefits of a paid account, but for free! If you experience any issues in this process try consulting the <a href="https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account">GitHub help page</a>.</p>
 </section>
-<section id="running-code" class="level2">
-<h2 class="anchored" data-anchor-id="running-code">Running Code</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
-<p>You can add options to executable code like this</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-</div>
-<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
+<section id="install-git" class="level2">
+<h2 class="anchored" data-anchor-id="install-git">Install Git</h2>
+<p>The Git software comes standard on MacOS and all Linux distributions. If you have one of these Operating Systems, run the following code in a Bash shell (i.e.&nbsp;Terminal) to check that you have it:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And if you do, check your version:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Close RStudio before proceeding with the installation of Git for a specific Operating System.</p>
+<section id="windows" class="level3">
+<h3 class="anchored" data-anchor-id="windows">Windows</h3>
+<p>There is a one-stop-shop for all of your Git needs in the form of <a href="https://gitforwindows.org/">Git for Windows</a>. Navigate to this page, download the file, and follow the prompts to install. Generally the default options are acceptable, with two important considerations:</p>
+<ol type="1">
+<li><p>For the ‘Adjusting your PATH environment’ prompt, ensure that you choose ‘Git from the command line and also from 3rd-party software’</p></li>
+<li><p>The ideal location to install Git is <code>C:/Program Files</code>, doing otherwise may cause problems later on</p></li>
+</ol>
+<p>If you already have Git installed for Windows, run the following line in your Terminal to check that it is up-to-date:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> update-git-for-windows</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="macos" class="level3">
+<h3 class="anchored" data-anchor-id="macos">MacOS</h3>
+<p>Open a Terminal and run:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">xcode-select</span> <span class="at">--install</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="linux" class="level3">
+<h3 class="anchored" data-anchor-id="linux">Linux</h3>
+<p>Ubuntu or Debian Linux:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Fedora or RedHat Linux:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> yum install git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="set-user-info" class="level3">
+<h3 class="anchored" data-anchor-id="set-user-info">Set user info</h3>
+<p>With Git installed, we need to tell it our username and e-mail. This isn’t linked to anything else on our computer, but it will appear during our workflow between RStudio and Github. Primarily this information is useful when we are working on a project with other people so they can see who made what changes when. Preferably one should use the same e-mail account here as that for used for the GitHub account.</p>
+<p>In a Terminal:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">'Jane Doe'</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">'jane@example.com'</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> <span class="at">--list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="test-the-connection" class="level2">
+<h2 class="anchored" data-anchor-id="test-the-connection">Test the connection</h2>
+<p>Now that we have a GitHub account and we have installed Git on our computer, it’s time to connect them.</p>
+<section id="create-a-github-repo" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-github-repo">Create a GitHub repo</h3>
+<p>Go back to your GitHub account and click the green ‘New’ button.</p>
+</section>
+</section>
+<section id="github-and-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="github-and-rstudio">GitHub and RStudio</h2>
 
 
 </section>

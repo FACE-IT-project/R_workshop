@@ -2,23 +2,62 @@
 title: "Why R?"
 ---
 
-## Quarto
+## Why use R?
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+As scientists, we are increasingly driven to analyse and manipulate datasets. As these datasets grow in size our analyses are becoming more sophisticated. There are many statistical packages on the market that one can use, but R is becoming the global standard. There are several reasons for this trend:
 
-## Running Code
+1.	It is __free__, which is nice if you despise commercial software such as Microsoft Office, as we do --- in fact, this entire document was written in Rmarkdown and the files supporting this Workshop material can be edited on *any* computer using a variety of operating systems such as Mac OS X, Linux and Microsoft Windows
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+2.	It is powerful, flexible and robust; it is developed and used by leading academic statisticians
 
-```{r}
-1 + 1
-```
+3.	It contains advanced statistical routines not yet available in other software
 
-You can add options to executable code like this
+4.  The cutting-edge statistical routines open up scientific possibilities in creative new ways
 
-```{r}
-#| echo: false
-2 * 2
-```
+5.	It has state-of-the-art graphics
 
-The `echo: false` option disables the printing of code (only output is displayed).
+6.	Users continually extend the functionality by updating existing packages and adding new ones and make these available for free
+
+7.  It does not depend on a pointy-and-clicky interface, such as SPSS, and requires one to write scripts --- more on the advantages of scripts later
+
+It is truly amazing that such a powerful and comprehensive package is freely available and we are indebted to the developers of R for going down this path.
+
+### Some negatives of using R
+
+Although there are many positives of using R, there are some negatives:
+
+1.	It can have a steep learning curve for those whom do not like statistics or data manipulation, and it does require frequent use to remain familiar with it and to develop advanced skills
+
+2.	Error trapping can be confusing and frustrating
+
+3.	Rudimentary debugging, although there are some packages available to enhance the process
+
+4.	Handles large datasets (100 MB), but can have some trouble with massive datasets (GBs)
+
+5.	Some simple tasks can be tricky to do in R
+
+6.  There are multiple ways of doing the same thing
+
+### The challenge: learning to program in R
+
+The big difference between R and many other statistical packages that you might have used is that it is not, and never will be, a menu-driven ‘point and click’ package. R requires you to write your own computer code to tell it exactly what you want to do. This means that there is a learning curve, but these are outweighed by numerous advantages:
+
+1.	To write new programs, you can modify your existing ones or those of others, saving you considerable time
+
+2.	You have a record of your statistical analyses and thus can re-run your previous analyses exactly at any time in the future, even if you can't remember what you did --- this is central to reproducible research
+
+3.	The recorded code can include the liberal use of internal documentation, which is often overlooked by practising scientists
+
+4.	It is more flexible in being able to manipulate data and graphics than menu-driven software
+
+5.	You will develop and improve your programming, which is a valuable general skill
+
+6.	You will improve your statistical knowledge
+
+7.	You can automate large problems
+
+8.	You can provide and share code that underpins published analyses; journals are starting to request the code for analyses in papers, to increase transparency and repeatability
+
+9.	Integration with tools like git (*e.g.* GitHub and Bitbucket) enable online collaboration in large statistical research programmes and they allow one to rely on version control systems
+
+10.	Programming is simply heaps more fun than point-and-click!

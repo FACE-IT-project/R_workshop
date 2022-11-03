@@ -1,8 +1,11 @@
 ---
-title: "Course content"
+title: "Content"
 editor: visual
 ---
 
-The course content is organized in five units: Hello world, Exploring data, Data science ethics, Making rigorous conclusions, and Looking further.
-For each unit numerous slide decks, homework and lab assignments, and application exercises are provided.
-Also provided are interactive tutorials, exams, and project assignment.
+The content for this workshop is organized into five units: __Why R?__, __Plots__, __Maps__, __Tidy Data__, and a __Summary__. They may be accessed by the table of contents (TOC) on the left of this page. The slides and tutorials for each unit may be found there.
+
+During the workshop there will be a guest lecture on the creation of policy briefs. This will be followed by a two day hands-on session where attendees will break into small groups to develop a policy brief by sourcing data, cleaning it, analysing it, plotting/mapping it, and writing up a brief based on their findings.
+
+<!-- For each unit numerous slide decks, homework and lab assignments, and application exercises are provided. -->
+<!-- Also provided are interactive tutorials, exams, and project assignment. -->

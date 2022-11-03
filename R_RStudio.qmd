@@ -1,27 +1,57 @@
 ---
-title: "Using R with Rstudio"
+title: "Setting up R and Rstudio"
 sidebar: false
 ---
+
+Before we can begin an **R** workshop, we need to make sure everyone has access to a computer with [R](http://cran.r-project.org) and [RStudio](http://www.rstudio.com) installed. The process for how to do this is detailed below, followed by a brief introduction to these two pieces of software and what the difference is between them.
+
+NB: If you are not using your own computer please make the instructor aware of this as it is assumed that all participants will be using their personal (or university/institutions given) laptops.
+
+## Installing R
+
+Installing R on your machine is a straightforward process. Follow these steps:
+
+1.	Go to the [CRAN](http://cran.r-project.org) (Comprehensive R Archive Network) website. If you type ‘r’ into Google it is the first entry
+
+2.	Choose to download R for Linux, Mac, or Windows
+
+3.	For Windows users selecting 'base' will link you to the download file, follow the prompts to install
+
+4.	For Mac users, choose the version relevant to your Operating System, follow the prompts after downloading
+
+5.	If you are a Linux user, you know what to do!
+
+## Installing RStudio
+
+Although R can run in its own console or in a terminal window (Mac and Linux; the Windows command line is a bit limiting), we will use RStudio in this Workshop. RStudio is a free front-end to R for Windows, Mac, or Linux (*i.e.*, R is working in the background). It makes working with R easier, more organised and productive, especially for new users. There are other front-ends, but RStudio is the most popular. To install:
+
+1.	Go to the [posit](https://posit.co/) website
+
+2.	Click the 'Download RStudio' button in the top right of the page
+
+3.	Scroll down to click the 'Download' button under RStudio Desktop Free
+
+4.  For Windows users click the 'Download RStudio Desktop for Windows' button under Step 2 on the page
+
+5.  For all other Operating Systems, scroll down further and select the corresponding file
+
+6.  After downloading, follow the prompts to install RStudio
 
 ## Setting up the workspace
 
 ### General settings
 
-Before we start using RStudio (which is a code editor and environment that runs R) let's first set it up properly. Find the 'Tools' ('Preferences') menu item, navigate to 'Global Options' ('Code Editing') and select the tick boxes as shown in Figure \@ref(fig:RStudio-prefs).
-
-```{r RStudio-prefs, echo = FALSE, fig.cap = "The RStudio Preferences menu.", out.width = "100%", fig.align = "center"}
-knitr::include_graphics("figures/RStudio_preferences.png")
-```
+Before we start using RStudio (which is a code editor and environment that runs R) let's first set it up properly. Find the 'Tools' ('Preferences') menu item, navigate to 'Global Options' ('Code Editing'). From here we have a very wide range of options for the functionality of RStudio. At the moment we will leave the general settings to their default.
 
 ### Customising appearance
 
 RStudio is highly customisable. Under the **Appearance** tab under 'Tools'/'Global Options' you can see all of the different themes that come with RStudio. We recommend choosing a theme with a black background (e.g. Chaos) as this will be easier on your eyes and your computer. It is also good to choose a theme with a sufficient amount of contrast between the different colours used to denote different types of objects/values in your code. 
 
-### Configuring panes
+## Configuring panes
 
 You cannot rearrange panes (see below) in RStudio by dragging them, but you can alter their position via the **Pane Layout** tab in the 'Tools'/'Global Options' ('RStudio'/'Preferences' – for Mac). You may arrange the panes as you would prefer however we recommend that during the duration of this workshop you leave them in the default layout.
 
-## The Rproject
+# The Rproject
 A very nifty way of managing workflow in RStudio is through the built-in functionality of the Rproject. We do not need to install any packages or change any settings to use these. Creating a new project is a very simple task, as well. For this course we will be using the `Intro_R_Workshop.Rproj` file you downloaded with the course material so that we are all running identical projects. This will prevent a lot of issues by ensuring we are doing things by the same standard. Better yet, an Rproject integrates seamlessly into version control software (e.g. GitHub) and allows for instant world class collaboration on any research project. To initialise the 'Intro_R_Workshop' project on your machine please find where you saved `Intro_R_Workshop.Rproj` file and click on it. We will cover the concepts and benefits of an Rproject more as we move through the course.
 
 ## Installing packages
@@ -214,3 +244,33 @@ y <- 2 * sin(2 * pi * (x - 1/4))
 ggplot() +
   geom_point(aes(x = x, y = y), shape = 21, col = "salmon", fill = "white")
 ```
+
+## Resources
+
+Below you can find the source code to some books and other links to websites about R. With some of the technical skills you'll learn in this course you'll be able to download the source code, compile the book on your own computer and arrive at the fully formatted (typeset) copy of the books that you can purchase for lots of money:
+
+* [ggplot2. Elegant Graphics for Data Analysis](https://github.com/hadley/ggplot2-book) --- the gold-standard in R graphics
+* [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html) --- data analysis using tidy principles
+* [R Markdown](http://rmarkdown.rstudio.com) --- reproducible reports in R
+* [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown) --- writing books in R
+* [Shiny](https://shiny.rstudio.com) --- interactive website driven by R
+
+## Style and code conventions
+
+Early on, develop the habit of unambiguous and consistent style and formatting when writing your code, or anything else for that matter. Pay attention to detail and be pedantic. This will benefit your scientific writing in general. Although many R commands rely on precisely formatted statements (code blocks), style can nevertheless to *some extent* have a personal flavour to it. The key is *consistency*. In this book we use certain conventions to improve readability. We use a consistent set of conventions to refer to code, and in particular to typed commands and package names.
+
+  * Package names are shown in a bold font over a grey box, *e.g.* __`tidyr`__.
+  * Functions are shown in normal font followed by parentheses and also over a grey box , *e.g.* `plot()`, or `summary()`.
+  * Other R objects, such as data, function arguments or variable names are again in normal font over a grey box, but without parentheses, *e.g.* `x` and `apples`.
+  * Sometimes we might directly specify the package that contains the function by using two colons, *e.g.* `dplyr::filter()`.
+  * Commands entered onto the R command line (console) and the output that is returned will be shown in a code block, which is a light grey background with code font. The commands entered start at the beginning of a line and the output it produces is preceded by `R>`, like so:
+
+```{r prelim-1}
+rnorm(n = 10, mean = 0, sd = 13)
+```
+
+Consult these resources for more about R code style :
+
+  * [Google's R style guide](https://google.github.io/styleguide/Rguide.xml)
+  * [The tidyverse style guide](http://style.tidyverse.org)
+  * [Hadley Wickham's advanced R style guide](http://adv-r.had.co.nz/Style.html)
