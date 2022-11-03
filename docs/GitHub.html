@@ -193,11 +193,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#linux" id="toc-linux" class="nav-link" data-scroll-target="#linux">Linux</a></li>
   <li><a href="#set-user-info" id="toc-set-user-info" class="nav-link" data-scroll-target="#set-user-info">Set user info</a></li>
   </ul></li>
-  <li><a href="#test-the-connection" id="toc-test-the-connection" class="nav-link" data-scroll-target="#test-the-connection">Test the connection</a>
+  <li><a href="#ssh-key" id="toc-ssh-key" class="nav-link" data-scroll-target="#ssh-key">SSH key</a>
   <ul class="collapse">
-  <li><a href="#create-a-github-repo" id="toc-create-a-github-repo" class="nav-link" data-scroll-target="#create-a-github-repo">Create a GitHub repo</a></li>
+  <li><a href="#create-a-key" id="toc-create-a-key" class="nav-link" data-scroll-target="#create-a-key">Create a key</a></li>
+  <li><a href="#add-key-to-ssh-agent" id="toc-add-key-to-ssh-agent" class="nav-link" data-scroll-target="#add-key-to-ssh-agent">Add key to ssh-agent</a></li>
+  <li><a href="#windows-1" id="toc-windows-1" class="nav-link" data-scroll-target="#windows-1">Windows</a></li>
+  <li><a href="#linux-1" id="toc-linux-1" class="nav-link" data-scroll-target="#linux-1">Linux</a></li>
   </ul></li>
-  <li><a href="#github-and-rstudio" id="toc-github-and-rstudio" class="nav-link" data-scroll-target="#github-and-rstudio">GitHub and RStudio</a></li>
+  <li><a href="#ssh-to-github" id="toc-ssh-to-github" class="nav-link" data-scroll-target="#ssh-to-github">SSH to GitHub</a></li>
+  <li><a href="#github-and-rstudio" id="toc-github-and-rstudio" class="nav-link" data-scroll-target="#github-and-rstudio">GitHub and RStudio</a>
+  <ul class="collapse">
+  <li><a href="#specific-terms" id="toc-specific-terms" class="nav-link" data-scroll-target="#specific-terms">Specific terms</a></li>
+  <li><a href="#more-options" id="toc-more-options" class="nav-link" data-scroll-target="#more-options">More options</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -221,7 +229,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>It may seem like a detour to be setting up a <a href="https://github.com/">GitHub</a> account on our way to an <strong>R</strong> workshop, but this online tool is centrally important to the best practices for working in RStudio, as we shall see below. If you already have a GitHub account, wonderful! Much of the following information is probably already known to you. So rather spend this time helping the people next to you through the process. Much of the content in this module is taken from the wonderful online book <a href="https://happygitwithr.com/index.html">Happy Git and GitHub for the useR</a>, which provides a much more in-depth view of what Git is and the many ways we can use it. For practical purposes, in this module we are going to focus directly on what we need to know to use GitHub in order to manage our Rprojects.</p>
+<p>It may seem like a detour to be setting up a <a href="https://github.com/">GitHub</a> account on our way to an <strong>R</strong> workshop, but this online tool is centrally important to the best practices for working in RStudio, as we shall see below. If you already have a GitHub account, wonderful! Much of the following information is probably already known to you. So rather spend this time helping the people next to you through the process. Much of the content in this module is taken from the wonderful online book <a href="https://happygitwithr.com/index.html">Happy Git and GitHub for the useR</a>, which provides a much more in-depth view of what Git is, the many ways we can use it, and many tips and tricks for any errors encountered below. For practical purposes, in this module we are going to focus directly on what we need to know to connect RStudio to GitHub in order to manage RStudio Projects.</p>
 <p>At the outset of this module we must acknowledge that there are many other Git based online (and desktop) resources that one may use in an R/RStudio workflow. We choose to focus on GitHub in this workshop because it is the best integrated, supported, and documented option. Meaning that not only is it the easiest to use ‘out of the box’, if we encounter any issues after this workshop it will be easiest to search for solutions for GitHub. Note however that GitHub is owned by Microsoft, which is why many people have switched over to <a href="https://about.gitlab.com/">GitLab</a>. If anyone is interested in the finer points of this discussion, please let the instructor know.</p>
 <section id="create-a-github-account" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-github-account">Create a GitHub account</h2>
@@ -265,18 +273,92 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> <span class="at">--list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-<section id="test-the-connection" class="level2">
-<h2 class="anchored" data-anchor-id="test-the-connection">Test the connection</h2>
-<p>Now that we have a GitHub account and we have installed Git on our computer, it’s time to connect them.</p>
-<section id="create-a-github-repo" class="level3">
-<h3 class="anchored" data-anchor-id="create-a-github-repo">Create a GitHub repo</h3>
-<p>Go back to your GitHub account and click the green ‘New’ button.</p>
+<section id="ssh-key" class="level2">
+<h2 class="anchored" data-anchor-id="ssh-key">SSH key</h2>
+<p>While it is possible to connect RStudio to GitHub using the username and password we created above for GitHub (i.e.&nbsp;HTTPS connection), this quickly becomes tedious because we must provide this info every time we upload something. Rather it is better to spend a few minutes now setting up an SSH key so that we can focus more on our work, and not remembering usernames and passwords. There are best practices on the management of SSH keys (i.e.&nbsp;changing them once a year), but we won’t get into that here.</p>
+<section id="create-a-key" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-key">Create a key</h3>
+<p>Open RStudio and got t: <em>Go to Tools &gt; Global Options…&gt; Git/SVN &gt; Create RSA Key…</em>. Note that if there is a file pathway in the text box above the ‘Create RSA Key…’ button this means you already have an SSH key. If not, click ‘Create’ and RStudio will generate one for you. It will prompt you for a passphrase. This isn’t necessary for now and can be skipped. If you want to create a new SSH key with a passphrase later circle back to this step. Adding a passphrase will require additional steps that are not listed below and can be found <a href="https://happygitwithr.com/ssh-keys.html">here</a>.</p>
 </section>
+<section id="add-key-to-ssh-agent" class="level3">
+<h3 class="anchored" data-anchor-id="add-key-to-ssh-agent">Add key to ssh-agent</h3>
+<section id="macos-1" class="level4">
+<h4 class="anchored" data-anchor-id="macos-1">MacOS</h4>
+<p>Check that ssh-agent is enabled (the <code>pid</code> may vary):</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">~</span> % eval <span class="st">"</span><span class="va">$(</span><span class="fu">ssh-agent</span> <span class="at">-s</span><span class="va">)</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>On MacOS Sierra 10.12.2 and higher create a <code>~/.ssh/config</code> file with this text inside:</p>
+<pre><code>Host *
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/id_ed25519</code></pre>
+</section>
+</section>
+<section id="windows-1" class="level3">
+<h3 class="anchored" data-anchor-id="windows-1">Windows</h3>
+<p>In the Git Bash Shell:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> eval <span class="va">$(</span><span class="fu">ssh-agent</span> <span class="at">-s</span><span class="va">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Add your key (change the name to match whatever you chose above):</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ssh-add ~/.ssh/id_ed25519</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="linux-1" class="level3">
+<h3 class="anchored" data-anchor-id="linux-1">Linux</h3>
+<p>Check that ssh-agent is running:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> eval <span class="st">"</span><span class="va">$(</span><span class="fu">ssh-agent</span> <span class="at">-s</span><span class="va">)</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Add your key (change name as necessary):</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> ~/.ssh/id_ed25519</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="ssh-to-github" class="level2">
+<h2 class="anchored" data-anchor-id="ssh-to-github">SSH to GitHub</h2>
+<p>In RStudio: <em>Tools &gt; Global Options…&gt; Git/SVN.</em>. If your key is connected, there should be a ‘View public key’ option to click on. Do so and accept the offer to copy to clipboard. Or do so manually if not prompted.</p>
+<p>In GitHub: <em>Settings &gt; SSH and GPG keys</em>. Click the green ‘New SSH key’ button in the top right. Paste the SSH key you copied from RStudio in the ‘Key’ box and give it a name that makes sense to you. Finish by clicking ‘Add SSH key’.</p>
 </section>
 <section id="github-and-rstudio" class="level2">
 <h2 class="anchored" data-anchor-id="github-and-rstudio">GitHub and RStudio</h2>
+<p>Now that we have Git sorted on our computers and we have created an SSH key for GitHub we may connect our RStudio Projects to GitHub. To do so we must first create a new repository. On your GitHub account click the green ‘New’ button.</p>
+<p>Start with the following info for testing purposes:</p>
+<ul>
+<li>Repository name: <code>winter_school</code> (or whatever you like)</li>
+<li>Description: Repository for code and notes taken during FACE-IT 2022 winter R workshop</li>
+<li>Public</li>
+<li>Initialize this repository with: (X) Add a README file</li>
+</ul>
+<p>Then click the green <code>Create repository</code> button.</p>
+<p>To connect this repo to our RStudio we must first copy the link. Do so by clicking on the green ‘Code’ button in the top right. Select the ‘SSH’ option and cop the text below. It should look something like: <code>git@github.com:yourusername/winter_school.git</code></p>
+<p>In RStudio: <em>File &gt; New Project &gt; Version Control &gt; Git</em> and paste the link in ‘Repository URL’. Before you click ’ Create Project’ note where RStudio intends to save the files and change this if desired.</p>
+<p>You should now see a window open that shows that RStudio is downloading your files to your computer. Let’s open the README.md file in RStudio, add a bit of text, and save the changes. Now that we have made changes we can upload them back to GitHub. This is done via the <em>Git</em> tab in the <em>Environment</em> pane, which is in the top right by default.</p>
+<section id="specific-terms" class="level3">
+<h3 class="anchored" data-anchor-id="specific-terms">Specific terms</h3>
+<p>The process of uploading the changes to our code to GitHub is not complex, but the technical terms used are very generic and easy to confuse. Therefore we have them set out below in bullet points for ease of reference over the following week of the workshop:</p>
+<ul>
+<li><strong>Commit</strong>: This is the term used to describe the process of saving any changes you have made to your code (and files etc.) locally on your computer
+<ul>
+<li>To access this click the ‘Commit’ button within the <em>Git</em> tab</li>
+<li>This opens a new window showing which files where changed, and which lines were added (green) or deleted (red)</li>
+<li>Click the check box next to each file you want to commit and then write a short message explaining what was done</li>
+<li>Clicking the ‘Commit’ button will save these changes and the attached message locally on your machine via the Git software</li>
+</ul></li>
+<li><strong>Push</strong>: This is the term used to describe the process of uploading data from your local machine to your GitHub account
+<ul>
+<li>Note that you cannot push anything until you have commit it locally</li>
+</ul></li>
+<li><strong>Pull</strong>: This is how we download new code, files, etc. from our GitHub repository to our local machine
+<ul>
+<li>This is generally used when we are collaborating with other people</li>
+<li>If you are only working by yourself, on just one computer, you won’t use this often</li>
+</ul></li>
+</ul>
+<div class="application-exercise">
+<p><strong>Push your repo from RStudio to GitHub</strong></p>
+<p>Using the definitions for the key-terms above successfully upload your changes to Github. Once you think you have succeeded, go to the repo page on your GitHub account and check that the changes have appeared.</p>
+</div>
+</section>
+<section id="more-options" class="level3">
+<h3 class="anchored" data-anchor-id="more-options">More options</h3>
+<p>There are many things that can be done via Git, GitHub, and/or RStudio. We won’t go into all of them here, but we will look at one example. Go to the <a href="https://github.com/FACE-IT-project/R_workshop">repository</a> for this workshop and copy the ‘Code’ link. Start a new RStudio Project following the same steps as above but use the new link.</p>
+<p>After following the prompts it should download all of the source code for this site, and the extra course content, to your local computer. This is just one example of how we can share code and documents with a wide range of collaborators.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

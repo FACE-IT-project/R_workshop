@@ -1,44 +1,61 @@
 ---
 title: "Welcome"
 sidebar: false
+toc-depth: 2
 ---
 
 ![](images/FACE-IT_Logo_900.png){style="float: right;" fig-align="right" width="250"}
 
-This website contains all of the information and the course content for the 2022 FACE-IT School 'A **R**oundtrip From Data Handling to Data Presentation'.
+This website contains all of the information and course content for the 2022 FACE-IT School 'A **R**oundtrip From Data Handling to Data Presentation'. The source code for which is available on [GitHub](https://github.com/FACE-IT-project/R_workshop).
 
-The source code for this website and all of the course content is available on [GitHub](https://github.com/FACE-IT-project/R_workshop).
+The aim of this workshop is to guide one through the use of R via RStudio for the analysis of environmental and biological data, with a focus on the Arctic. This workshop is ideal for eco/biologists new to R or who have limited experience, but should be useful to more advanced useRs as well. This workshop is not comprehensive, but is necessarily selective. It will not go into hardcore statistics, but rather focuses on what will be useful to eco/biologists who have an interest in statistics, and use R frequently. The emphasis is thus on the steps required to analyse and visualise data in R, rather than focusing on the statistical theory.
 
-The aim of this five-day introductory workshop is to guide you through the basics of using R via RStudio for analysis of environmental and biological data. It is ideal for people new to R or who have limited experience. This workshop is not comprehensive, but is necessarily selective. We are not hardcore statisticians, but rather ecologists who have an interest in statistics, and use R frequently. Our emphasis is thus on the steps required to analyse and visualise data in R, rather than focusing on the statistical theory.
+## Overview
 
-The workshop is laid out so it begins simply and slowly to impart the basics of using R. It then gathers pace, so that by the end we are doing intermediate level analyses. Day 1 is concerned with becoming familiar with getting data into R, doing some simple descriptive statistics, data manipulation and visualisation. Day 2 takes a more in depth look at manipulating and visualising data. Day 3 focuses on creating maps. Day 4 deals with the fundamentals of reproducible research. Day 5 allows one to utilise all of the skills learned throughout the week by creating a final project. The workshop is case-study driven, using data and examples primarily from our background in the marine sciences and real life situations. There is no homework but there are in class assignments.
+The core of the teaching content is laid out over a five-day period. This is preceded by two half days to ensure that everyone has R, RStudio, and Github setup correctly on their computers. Everything learned over the five days of instruction is then put to use by a two day group project to create a policy brief based on real-world data. The workshop is laid out so it begins simply and slowly to impart the basics of using R. It then gathers pace, so that by the end we are doing intermediate level analyses and visualisations. Day 1 is concerned with becoming familiar with getting data into R, doing some simple descriptive statistics, data manipulations and visualisation. Day 2 takes a more in depth look at manipulating and visualising data. Day 3 focuses on creating maps. Day 4 deals with the fundamentals of reproducible research. Day 5 ties it all back together, completing the roundtrip. The workshop is case-study driven, using data and examples primarily from a background in the marine sciences and real life situations. There is no homework but there are in class assignments.
 
-Don't worry if you feel overwhelmed and do not follow everything at any time during the Workshop; that is totally natural with learning a new and powerful program. Remember that you have the notes and material to go through the exercises later at your own pace; we will also be walking the room during sessions and breaks so that we can answer questions one on one. We hope that this Workshop gives you the confidence to start incorporating R into your daily workflow, and if you are already a user, we hope that it will expose you to some new ways of doing things.
+Don't worry if you feel overwhelmed and do not follow everything at any time during the Workshop; that is totally natural with learning a new and powerful program. Remember that you have the notes and material to go through the exercises later at your own pace; an instructor will also be walking the room during sessions and breaks so that they can answer questions one on one. It is the hope that this Workshop gives you the confidence to start incorporating R into your daily workflow, and if you are already a useR, it is the hope that it will expose you to some new ways of doing things.
 
-Finally, bear in mind that we are self-taught when it comes to R. Our methods will work, but you will learn as you gain more experience with programming that there are many ways to get the right answer or to accomplish the same task.
+Finally, bear in mind that there are many, many, many ways to accomplish the same task in R. The methods presented in this workshop work, but you will learn as you gain more experience with programming that there are many ways to get the right answer or to accomplish the same task.
 
-You will notice that this repository uses [GitHub](https://github.com), and you are advised to set up your own repository for R scripts and all your data. We will touch on GitHub and the principles of reproducible research later, and GitHub forms a core ingredient of such a workflow.
-
-## Venue, date and time {.unnumbered}
+## Venue, date and time
  
-This workshop will take place from **18 November -- 28 November 2022**, **9:00--17:00**, at the Wadden Sea Station (AWI) on Sylt, Germany. The 18th and 28th are set aside for travel, with no instruction planned on these dates. Note also that the first Saturday and Sunday are half days, devoted to managing administrative non-coding work (e.g. setting up R, RStudio, and GitHub).
+This workshop will take place from **18 November -- 28 November 2022**, **9:00--17:00**, at the Wadden Sea Station (AWI) on Sylt, Germany. Each day will have two 15 minute tea breaks and one hour for lunch. The 18th and 28th are set aside for travel, with no instruction planned on these dates. Note also that the first Saturday and Sunday are half days, devoted to managing administrative non-coding work (e.g. setting up R, RStudio, and GitHub).
 
 ## Course outline
 
-### Day 1 -- In the Beginning {-}
+### Day 0 _2022-11-18_ -- Arrival
+
+* Arrive in Sylt before 16:00 to get checked in at research station
+* Social dinner before start of workshop
+
+### Day 1 _2022-11-19_ -- R + RStudio
 
 *	Presentation: Preliminaries
+* Technical: R and RStudio functioning on all machines
+* -- break --
+* Interactive Session: Introduction to R and RStudio
+* -- end --
+
+### Day 2 _2022-11-20_ -- GitHub + RStudio
+
+* Technical: Git and Github functioning on all machines
+* -- break --
+* Interactive Session: Introduction to R and RStudio
+* -- end --
+
+### Day 3 _2022-11-21_ -- Why R?
+
 * Exercise: It which shall not be named
 * -- break --
 * Demonstration: The New Age
-*	Interactive Session: Introduction to R and RStudio
 *	-- lunch --
 *	Interactive Session: An R workflow
 *	-- break --
 *	Interactive Session: An R workflow
 *	-- end --
   
-### Day 2 -- Show and tell {-}
+### Day 4 _2022-11-22_ -- Plots
 
 * Interactive Session: The basics of **`ggplot2`**
 * -- break --
@@ -49,7 +66,7 @@ This workshop will take place from **18 November -- 28 November 2022**, **9:00--
 * Assignment: DIY figures
 *	-- end --
 
-### Day 3 -- Going deeper {-}
+### Day 5 _2022-11-23_ -- Maps
 
 * Interactive Session: Mapping with **`ggplot2`**
 * -- break --
@@ -60,23 +77,39 @@ This workshop will take place from **18 November -- 28 November 2022**, **9:00--
 * Assignment: DIY maps
 *	-- end --
 
-### Day 4 -- The Enlightened Researcher {-}
+### Day 6 _2022-11-24_ -- Tidy data
 
 * Interactive Session: Tidy data
 * -- break --
 * Interactive Session: Tidier data
 * -- lunch --
+* Presentation: Guest lecture on policy briefs
+* Assignment: Select a policy brief topic
+* -- break --
 * Interactive Session: Tidiest data
 *	-- end --
 
-### Day 5 -- The world is yours {-}
+### Day 7 _2022-11-25_ -- Recap
 
 *	Presentation: Recap
+* Interactive Session: Q & A for policy brief choices
 * -- break --
 * Interactive Session: Open Floor
 * -- lunch --
 * Optional Session: More Open Floor
 *	-- end --
+
+### Day 8 _2022-11-26_ -- Policy brief
+
+* Begin working on policy briefs
+
+### Day 9 _2022-11-27_ -- Policy brief
+
+* Finish policy briefs
+
+### Day 0 _2022-11-28_ -- Departure
+
+* Check out from accommodation by 08:00
 
 ## Acknowledements {.unnumbered}
 
