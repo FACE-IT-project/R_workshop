@@ -28,6 +28,13 @@ Though it may have started as statistical software, R has moved far beyond it's 
 :::
 :::
 
+::: application-exercise
+**To `aes()` or not to `aes()`...**
+
+::: source
+[Source](https://github.com/FACE-IT-project/R_workshop/tree/main/course_material/exercises/plots_1_basics.R)
+:::
+:::
 
 ## Faceting one figure
 

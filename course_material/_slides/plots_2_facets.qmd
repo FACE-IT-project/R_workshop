@@ -1,43 +1,81 @@
 ---
-title: "facets"
-format: revealjs
+# title: Faceting in **`ggplot2`**
+format:
+  revealjs:
+    # logo: ../logo/FACE-IT_Logo_900.png
+    # slide-number: true
+    # show-slide-number: print
+    # preview-links: true
+    theme: FACE-IT.scss
+    self-contained: true
+    transition: slide
 editor: source
 ---
 
+```{r plots-2-opts, echo=FALSE}
+knitr::opts_chunk$set(
+  warning = FALSE, 
+  message = FALSE,
+  echo = TRUE
+)
+```
+
+# Faceting in **`ggplot2`** {background-color="#008980" style="text-align: center"}
+
+*Robert Schlegel*
+
+## Problem
+
+* What if the data have multiple facets?
+* What if dots and lines aren't enough?
+* What if we need to combine plots?
+
+## Solution
+
+* We add facets to plots with just one function
+* By using different `geom_*()` we create different plots
+* **`ggpubr`** helps us to combine many different plots
+
+## Setup
+
+We will need the following three packages for the examples in these slides.
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE}
+# Load tidyverse - contains ggplot2
+library(tidyverse)
+
+# Load ggpubr - helps us to combine figures
+library(ggpubr)
+
+# Load Palmer penguins - contains dataset
+library(palmerpenguins)
+```
+
+## Basic plot
+
+```{r}
+ggplot(data = penguins,
+       aes(x = body_mass_g, y = bill_length_mm, colour = species)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
 
 ## Facet wrap {auto-animate=true}
 
-```{r, echo=TRUE, warning=FALSE, message=FALSE}
+```{r}
 ggplot(data = penguins,
        aes(x = body_mass_g, y = bill_length_mm, colour = species)) +
   geom_point() +
   geom_smooth(method = "lm") +
-  facet_wrap(~species) # Can take one or two columns
+  facet_wrap(~species) # Can take one or two column names
 ```
 
 ## Facet grid {auto-animate=true}
 
-```{r, echo=TRUE, warning=FALSE, message=FALSE}
+```{r}
 ggplot(data = penguins,
        aes(x = body_mass_g, y = bill_length_mm, colour = species)) +
   geom_point() +
   geom_smooth(method = "lm") +
-  facet_grid(island~species) # Takes two or more columns
+  facet_grid(island~species) # Takes two or more column names
 ```
-
-## Change labels {auto-animate=true}
-
-```{r, echo=TRUE, warning=FALSE, message=FALSE}
-ggplot(data = penguins,
-       aes(x = body_mass_g, y = bill_length_mm, colour = species)) +
-  geom_point() +
-  geom_smooth(method = "lm") +
-  facet_grid(island~species) +
-  labs(x = "Body mass (g)", y = "Bill length (mm)", colour = "Species") + # Change labels
-  theme(legend.position = "bottom") # Change legend position
-```
-
-## More than dot plots
-
-* There are many built-in **`ggplot2`** figures
-* There are also many ways to connect them together
