@@ -1,6 +1,7 @@
 project:
   type: website
   output-dir: docs
+  resources: "course-materials/_slides/"
 
 website:
   title: "FACE-IT R workshop"

@@ -297,11 +297,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#diversity" id="toc-diversity" class="nav-link" data-scroll-target="#diversity">Diversity</a></li>
   <li><a href="#anosim" id="toc-anosim" class="nav-link" data-scroll-target="#anosim">ANOSIM</a></li>
   </ul></li>
-  <li><a href="#plotting-stats" id="toc-plotting-stats" class="nav-link" data-scroll-target="#plotting-stats">Plotting stats</a>
-  <ul class="collapse">
-  <li><a href="#new-functions" id="toc-new-functions" class="nav-link" data-scroll-target="#new-functions">New functions</a></li>
-  <li><a href="#further-applications" id="toc-further-applications" class="nav-link" data-scroll-target="#further-applications">Further applications</a></li>
-  </ul></li>
   <li><a href="#r-markdown" id="toc-r-markdown" class="nav-link" data-scroll-target="#r-markdown">R Markdown</a>
   <ul class="collapse">
   <li><a href="#quick-examples" id="toc-quick-examples" class="nav-link" data-scroll-target="#quick-examples">Quick examples</a>
@@ -1119,72 +1114,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section>
 </section>
-<section id="plotting-stats" class="level1">
-<h1>Plotting stats</h1>
-<p>First install the new package <code>ggpubr</code>, which contains the functions we may use to seamless plot output statistics for our figures. We will also load some temperature data to use in our demonstration.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Libraries</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Data</span></span>
-<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>SACTN <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"~/Intro_R_Workshop/data/SACTN_data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="new-functions" class="level2">
-<h2 class="anchored" data-anchor-id="new-functions">New functions</h2>
-<p>We will be learning to use two new functions today. The first will be <code>compare_means()</code>, which is a function that compares means of two (t-test) or more (ANOVA) groups of values all in one convenient place. The second function is <code>stat_compare_means()</code>, which does much the same thing but is designed to be integrated directly into <code>ggplot2</code> code.</p>
-<p>First we will look at the use of <code>compare_means()</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare_means</span>(temp<span class="sc">~</span>site, <span class="at">data =</span> SACTN, <span class="at">method =</span> <span class="st">"anova"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>How snazy is that?! And this works just as well for two mean (t-test) comparisons. It also has built into it the necessary tests for non-parametric comparisons as well as paired tests but we won’t show that explicitrly here.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare_means</span>(temp<span class="sc">~</span>site, <span class="at">data =</span> <span class="fu">filter</span>(SACTN, site <span class="sc">!=</span> <span class="st">"Port Nolloth"</span>), <span class="at">method =</span> <span class="st">"t.test"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>This is great, but it is not new functionality, just drasticaly improved functionality. The second function introduced in this package is what is really going to make our lives easier. Here’s why:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> SACTN, <span class="fu">aes</span>(<span class="at">x =</span> site, <span class="at">y =</span> temp)) <span class="sc">+</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">colour =</span> site), <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_compare_means</span>(<span class="at">method =</span> <span class="st">"anova"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>I find this to be a very impressive bit of code. The author of this function has devised a way to convince the rather unique <code>ggplot2</code> backend to do our dirty work for us and is able to use the x and y axes to calculate statistical analyses. And if that isn’t enough, it then goes and puts it on our figure for us! The future is now. Because this is all still happening within the confines of <code>ggplot2</code> code, everything can be changed as we desire. The following is just an example, not necessarily the best way to visualise this information.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> SACTN, <span class="fu">aes</span>(<span class="at">x =</span> site, <span class="at">y =</span> temp)) <span class="sc">+</span></span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">fill  =</span> site), <span class="at">colour =</span> <span class="st">"grey40"</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_compare_means</span>(<span class="at">method =</span> <span class="st">"anova"</span>, <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste0</span>(<span class="st">"p "</span>, ..p.format..)), <span class="at">label.x =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="further-applications" class="level2">
-<h2 class="anchored" data-anchor-id="further-applications">Further applications</h2>
-<p>As mentioned above, these functions may be used with paired tests, non-parametric tests, and multiple mean tests. These outputs have mates in the <code>ggplot2</code> sphere and so may be visualised with relative ease. Below we see an example of how to do this with a multiple mean (ANOVA) test.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First create a list of comparisons to feed into our figure</span></span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>SACTN_levels <span class="ot">&lt;-</span> <span class="fu">levels</span>(SACTN<span class="sc">$</span>site)</span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>my_comparisons <span class="ot">&lt;-</span> <span class="fu">list</span>( <span class="fu">c</span>(SACTN_levels[<span class="dv">1</span>], SACTN_levels[<span class="dv">2</span>]), </span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">c</span>(SACTN_levels[<span class="dv">2</span>], SACTN_levels[<span class="dv">3</span>]),</span>
-<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">c</span>(SACTN_levels[<span class="dv">1</span>], SACTN_levels[<span class="dv">3</span>]))</span>
-<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a><span class="co"># And then we wack it all together</span></span>
-<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> SACTN, <span class="fu">aes</span>(<span class="at">x =</span> site, <span class="at">y =</span> temp)) <span class="sc">+</span></span>
-<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">fill  =</span> site), <span class="at">colour =</span> <span class="st">"grey40"</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb62-10"><a href="#cb62-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_compare_means</span>(<span class="at">method =</span> <span class="st">"anova"</span>, </span>
-<span id="cb62-11"><a href="#cb62-11" aria-hidden="true" tabindex="-1"></a>                     <span class="at">label.x =</span> <span class="fl">1.9</span>, <span class="at">label.y =</span> <span class="dv">33</span>) <span class="sc">+</span></span>
-<span id="cb62-12"><a href="#cb62-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add pairwise comparisons p-value</span></span>
-<span id="cb62-13"><a href="#cb62-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_compare_means</span>(<span class="at">comparisons =</span> my_comparisons,</span>
-<span id="cb62-14"><a href="#cb62-14" aria-hidden="true" tabindex="-1"></a>                     <span class="at">label.y =</span> <span class="fu">c</span>(<span class="dv">26</span>, <span class="dv">28</span>, <span class="dv">30</span>)) <span class="sc">+</span></span>
-<span id="cb62-15"><a href="#cb62-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Perform t-tests between each group and the overall mean</span></span>
-<span id="cb62-16"><a href="#cb62-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_compare_means</span>(<span class="at">label =</span> <span class="st">"p.signif"</span>, <span class="at">method =</span> <span class="st">"t.test"</span>,</span>
-<span id="cb62-17"><a href="#cb62-17" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ref.group =</span> <span class="st">".all."</span>) <span class="sc">+</span> </span>
-<span id="cb62-18"><a href="#cb62-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add horizontal line at base mean</span></span>
-<span id="cb62-19"><a href="#cb62-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">mean</span>(SACTN<span class="sc">$</span>temp, <span class="at">na.rm =</span> T), <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb62-20"><a href="#cb62-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Temp. (°C)"</span>, <span class="at">x =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb62-21"><a href="#cb62-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The above figure shows a boxplot for the distribution of temperatures for each site. The horizontal dashed line shows what the overall mean for all temperatures is. The little asterisks above each box show the siginificance value of the difference of this group (site) from the mean temperature (dashed line). Four asterisks means <em>p</em>&lt;0.001. The pairwise comparisons of each site are shown with black brackets, the text on top of which show the <em>p</em>-values of those comparisons. The text at the very top of the figure shows the overall <em>p</em>-value for the ANOVA that compared all means against one another. Generally though one would not want to show all of this information in one figure. THis just serves as an example of how straightforward it is to do so.</p>
-<p>For a more detailed explanation for how to perform more advanced comaprisons of multiple groups (especially paired comparisons), and how to plot all of those results in a very cunning way, one may follow this link: <a href="https://www.r-bloggers.com/add-p-values-and-significance-levels-to-ggplots/" class="uri">https://www.r-bloggers.com/add-p-values-and-significance-levels-to-ggplots/</a>.</p>
-</section>
-</section>
 <section id="r-markdown" class="level1">
 <h1>R Markdown</h1>
 <p>The workshop pdf we have been using for the last three days is actually produced from R Markdown and you may view the R Markdown document (the .Rmd file) to see all of the code that created this pdf in its native state. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. R Markdown is based on the language Markdown, which is another computer language, somewhere in between &nbsp;and Microsoft Word. R Markdown differs from Markdown in that it is also able to understand the R code we give it. Furthermore, RStudio has built into it the capabilities necessary to use R Markdown ‘out of the box’. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>. In order to use this tutorial effectively, please examine the R Markdown file (‘Intro_R_2017.Rmd’) in conjunction with the output document (‘Intro_R_2017.pdf’). If you double click on the ‘Intro_R_2017.Rmd’ file it will open in the RStudio editor.</p>
@@ -1198,16 +1127,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This text is in <code>code font</code>.</p>
 <p>You can embed an R code chunk like this and show it and the data it produces:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggmap)</span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="co"># load("../data/cape_point_sites.Rdata")</span></span>
-<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co"># cape_point &lt;- get_map(location = c(lon = 18.36519, lat = -34.2352581),</span></span>
-<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="co">#                         zoom = 11, maptype = 'roadmap')</span></span>
-<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="co"># load("../data/cape_point.Rdata")</span></span>
-<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="co"># str(cape_point)</span></span>
-<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># *   site name --- `r cape_point_sites[1,1]`</span></span>
-<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># *   longitude --- `r cape_point_sites[1,2]`</span></span>
-<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># *   latitude --- `r cape_point_sites[1,3]`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggmap)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co"># load("../data/cape_point_sites.Rdata")</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co"># cape_point &lt;- get_map(location = c(lon = 18.36519, lat = -34.2352581),</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="co">#                         zoom = 11, maptype = 'roadmap')</span></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="co"># load("../data/cape_point.Rdata")</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="co"># str(cape_point)</span></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># *   site name --- `r cape_point_sites[1,1]`</span></span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># *   longitude --- `r cape_point_sites[1,2]`</span></span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># *   latitude --- `r cape_point_sites[1,3]`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You can also embed R output directly into sentences as in this example:</p>
 <p>Some site details are in this list:</p>
@@ -1215,10 +1144,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="tables" class="level3">
 <h3 class="anchored" data-anchor-id="tables">Tables</h3>
 <p>There are many ways to produce tables in R Markdown. A short search will provide many alternatives. The <strong><code>xtable</code></strong> package is another excellent choice as this provides even more options for how your table output will appear. Here we provide one example:</p>
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(mtcars[, <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>], <span class="dv">10</span>), <span class="at">booktabs =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">'A table of the first 10 rows of the mtcars data.'</span></span>
-<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(mtcars[, <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>], <span class="dv">10</span>), <span class="at">booktabs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">'A table of the first 10 rows of the mtcars data.'</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Try looking up the help file for <code>?kable()</code> to learn more about what may be done with this function.</p>
 </section>
 <section id="images" class="level3">
