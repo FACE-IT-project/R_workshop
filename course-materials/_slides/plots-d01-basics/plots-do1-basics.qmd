@@ -1,0 +1,72 @@
+---
+# title: Basics of **`ggplot2`**
+format:
+  revealjs:
+    # logo: ../logo/FACE-IT_Logo_900.png
+    # slide-number: true
+    # show-slide-number: print
+    # preview-links: true
+    theme: ../FACE-IT.scss
+    self-contained: true
+    transition: slide
+editor: visual
+---
+
+# Basics of **`ggplot2`** {background-color="#008980" style="text-align: center"}
+
+<!-- *Robert Schlegel* -->
+
+## Problem
+
+* Default R plotting (_Base R_) hasn't advanced much since the 90s
+* Non-intuitive syntax, functions, and arguments
+* Not enough control over final plot
+* Published figures do not look very professional
+
+## Solution
+
+* The **`ggplot2`** package uses the [grammar of graphics](https://link.springer.com/book/10.1007/0-387-28695-0)
+* Is integrated into the **`tidyverse`**
+* Easier syntax with intuitive functions and arguments
+* Massive range of well developed support and extensions
+
+## Setup
+
+We will need the following two packages for the examples in these slides
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE}
+# Load tidyverse - contains ggplot2
+library(tidyverse)
+
+# Load Palmer penguins - contains dataset
+library(palmerpenguins)
+```
+
+## Basics
+
+* One figure is given as a chunk of code
+* Starts with `ggplot()`
+* Each line is connected with a `+`
+* Shapes (geoms) are added to the plot with functions
+* e.g. add points with `geom_point()`
+
+## Basic plot
+
+::: columns
+::: {.column style="text-align: center"}
+```{r, echo=TRUE, eval=FALSE}
+ggplot(data = penguins, 
+       aes(x = body_mass_g, y = bill_length_mm)) +
+  geom_point()
+```
+
+:::
+
+::: {.column style="text-align: center"}
+```{r}
+ggplot(data = penguins, 
+       aes(x = body_mass_g, y = bill_length_mm)) +
+  geom_point()
+```
+:::
+:::
