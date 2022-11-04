@@ -3,7 +3,6 @@ title: "Plotting in R"
 editor: visual
 ---
 
-
 ```{r graphics-opts, echo=FALSE}
 knitr::opts_chunk$set(
   comment = "R>", 
@@ -21,11 +20,11 @@ Though it may have started as statistical software, R has moved far beyond it's 
 **Plotting 1: Basics**
 
 ::: slides
-[Slides](https://github.com/FACE-IT-project/R_workshop/course-materials/_slides/plots-d01-basics/plots-d01-basics.html#1)
+[Slides](https://face-it-project.github.io/R_workshop/course-materials/_slides/plots-d01-basics/plots-do1-basics.html)
 :::
 
 ::: source
-[Source](https://github.com/FACE-IT-project/R_workshop/course-materials/_slides/plots-d01-basics/)
+[Source](https://github.com/FACE-IT-project/R_workshop/tree/main/course-materials/_slides/plots-d01-basics/)
 :::
 :::
 
