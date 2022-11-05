@@ -12,9 +12,17 @@ format:
 editor: source
 ---
 
+```{r plots-1-opts, echo=FALSE}
+knitr::opts_chunk$set(
+  warning = FALSE, 
+  message = FALSE,
+  echo = TRUE
+)
+```
+
 # Basics of **`ggplot2`** {background-color="#008980" style="text-align: center"}
 
-<!-- *Robert Schlegel* -->
+*Robert Schlegel*
 
 ## Problem
 
@@ -34,7 +42,7 @@ editor: source
 
 We will need the following two packages for the examples in these slides.
 
-```{r, message=FALSE, warning=FALSE, echo=TRUE}
+```{r}
 # Load tidyverse - contains ggplot2
 library(tidyverse)
 
@@ -54,7 +62,7 @@ library(palmerpenguins)
 
 ## Basic plot
 
-```{r, echo=TRUE}
+```{r}
 ggplot(data = penguins,
        aes(x = body_mass_g, y = bill_length_mm)) +
   geom_point(aes(colour = species))
@@ -71,7 +79,7 @@ ggplot(data = penguins,
 
 ## Inside `aes()` {auto-animate=true}
 
-```{r, echo=TRUE, warning=FALSE, message=FALSE}
+```{r}
 ggplot(data = penguins,
        aes(x = body_mass_g, y = bill_length_mm)) +
   geom_point(aes(colour = island)) # 'island' is a column from 'penguins'
@@ -79,15 +87,15 @@ ggplot(data = penguins,
 
 ## Outside `aes()` {auto-animate=true}
 
-```{r, echo=TRUE, warning=FALSE, message=FALSE}
+```{r}
 ggplot(data = penguins,
        aes(x = body_mass_g, y = bill_length_mm)) +
   geom_point(colour = "red") # Make all points red
 ```
 
-## Inside outside? {auto-animate=true}
+## Outside inside? {auto-animate=true}
 
-```{r, echo=TRUE, warning=FALSE, message=FALSE}
+```{r}
 ggplot(data = penguins,
        aes(x = body_mass_g, y = bill_length_mm)) +
   geom_point(aes(colour = "red")) # What is happening here
@@ -95,7 +103,7 @@ ggplot(data = penguins,
 
 ## Inside outside? {auto-animate=true}
 
-```{r, echo=TRUE, error=TRUE}
+```{r, error=TRUE}
 ggplot(data = penguins,
        aes(x = body_mass_g, y = bill_length_mm)) +
   geom_point(colour = species) # Why does this cause an error?
@@ -103,7 +111,7 @@ ggplot(data = penguins,
 
 ## More than just colour {auto-animate=true}
 
-```{r, echo=TRUE, warning=FALSE, message=FALSE}
+```{r}
 ggplot(data = penguins,
        aes(x = body_mass_g, y = bill_length_mm)) +
   geom_point(aes(size = flipper_length_mm, shape = island)) # What else can we add?
@@ -111,10 +119,22 @@ ggplot(data = penguins,
 
 ## Add a geom {auto-animate=true}
 
-```{r, echo=TRUE, warning=FALSE, message=FALSE}
+```{r}
 ggplot(data = penguins,
        # NB: Arguments passed to first aes() apply to all geoms
        aes(x = body_mass_g, y = bill_length_mm, colour = species)) +
   geom_point() +
   geom_smooth(method = "lm")
 ```
+
+## Change labels {auto-animate=true}
+
+```{r, echo=TRUE, warning=FALSE, message=FALSE}
+ggplot(data = penguins,
+       aes(x = body_mass_g, y = bill_length_mm, colour = species)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(x = "Body mass (g)", y = "Bill length (mm)", colour = "Species") + # Change labels
+  theme(legend.position = "bottom") # Change legend position
+```
+
