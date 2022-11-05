@@ -38,7 +38,6 @@ website:
       align: left
       contents:
         - file: content.qmd
-        - file: why_R.qmd
         - file: plots.qmd
         - file: maps.qmd
         - file: tidy.qmd

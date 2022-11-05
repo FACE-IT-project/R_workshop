@@ -1,5 +1,6 @@
 ---
 title: "GitHub with RStudio"
+editor: source
 sidebar: false
 ---
 
@@ -81,7 +82,7 @@ While it is possible to connect RStudio to GitHub using the username and passwor
 
 ### Create a key
 
-Open RStudio and got t: *Go to Tools > Global Options…> Git/SVN > Create RSA Key…*. Note that if there is a file pathway in the text box above the 'Create RSA Key…' button this means you already have an SSH key. If not, click 'Create' and RStudio will generate one for you. It will prompt you for a passphrase. This isn't necessary for now and can be skipped. If you want to create a new SSH key with a passphrase later circle back to this step. Adding a passphrase will require additional steps that are not listed below and can be found [here](https://happygitwithr.com/ssh-keys.html).
+Open RStudio and got t: *Go to Tools \> Global Options...\> Git/SVN \> Create RSA Key...*. Note that if there is a file pathway in the text box above the 'Create RSA Key...' button this means you already have an SSH key. If not, click 'Create' and RStudio will generate one for you. It will prompt you for a passphrase. This isn't necessary for now and can be skipped. If you want to create a new SSH key with a passphrase later circle back to this step. Adding a passphrase will require additional steps that are not listed below and can be found [here](https://happygitwithr.com/ssh-keys.html).
 
 ### Add key to ssh-agent
 
@@ -95,11 +96,9 @@ Check that ssh-agent is enabled (the `pid` may vary):
 
 On MacOS Sierra 10.12.2 and higher create a `~/.ssh/config` file with this text inside:
 
-```
-Host *
-  AddKeysToAgent yes
-  IdentityFile ~/.ssh/id_ed25519
-```
+    Host *
+      AddKeysToAgent yes
+      IdentityFile ~/.ssh/id_ed25519
 
 ### Windows
 
@@ -131,9 +130,9 @@ ssh-add ~/.ssh/id_ed25519
 
 ## SSH to GitHub
 
-In RStudio: _Tools > Global Options…> Git/SVN._. If your key is connected, there should be a 'View public key' option to click on. Do so and accept the offer to copy to clipboard. Or do so manually if not prompted.
+In RStudio: *Tools \> Global Options...\> Git/SVN.*. If your key is connected, there should be a 'View public key' option to click on. Do so and accept the offer to copy to clipboard. Or do so manually if not prompted.
 
-In GitHub: _Settings > SSH and GPG keys_. Click the green 'New SSH key' button in the top right. Paste the SSH key you copied from RStudio in the 'Key' box and give it a name that makes sense to you. Finish by clicking 'Add SSH key'.
+In GitHub: *Settings \> SSH and GPG keys*. Click the green 'New SSH key' button in the top right. Paste the SSH key you copied from RStudio in the 'Key' box and give it a name that makes sense to you. Finish by clicking 'Add SSH key'.
 
 ## GitHub and RStudio
 
@@ -141,16 +140,16 @@ Now that we have Git sorted on our computers and we have created an SSH key for 
 
 Start with the following info for testing purposes:
 
-*  Repository name: `winter_school` (or whatever you like)
-*  Description: Repository for code and notes taken during FACE-IT 2022 winter R workshop
-*  Public
-*  Initialize this repository with: (X) Add a README file
+-   Repository name: `winter_school` (or whatever you like)
+-   Description: Repository for code and notes taken during FACE-IT 2022 winter R workshop
+-   Public
+-   Initialize this repository with: (X) Add a README file
 
 Then click the green `Create repository` button.
 
 To connect this repo to our RStudio we must first copy the link. Do so by clicking on the green 'Code' button in the top right. Select the 'SSH' option and cop the text below. It should look something like: `git@github.com:yourusername/winter_school.git`
 
-In RStudio: _File > New Project > Version Control > Git_ and paste the link in 'Repository URL'. Before you click ' Create Project' note where RStudio intends to save the files and change this if desired.
+In RStudio: *File \> New Project \> Version Control \> Git* and paste the link in 'Repository URL'. Before you click ' Create Project' note where RStudio intends to save the files and change this if desired.
 
 You should now see a window open that shows that RStudio is downloading your files to your computer. Let's open the README.md file in RStudio, add a bit of text, and save the changes. Now that we have made changes we can upload them back to GitHub. This is done via the *Git* tab in the *Environment* pane, which is in the top right by default.
 
@@ -158,23 +157,21 @@ You should now see a window open that shows that RStudio is downloading your fil
 
 The process of uploading the changes to our code to GitHub is not complex, but the technical terms used are very generic and easy to confuse. Therefore we have them set out below in bullet points for ease of reference over the following week of the workshop:
 
-*  **Commit**: This is the term used to describe the process of saving any changes you have made to your code (and files etc.) locally on your computer
-    *  To access this click the 'Commit' button within the *Git* tab
-    *  This opens a new window showing which files where changed, and which lines were added (green) or deleted (red)
-    *  Click the check box next to each file you want to commit and then write a short message explaining what was done
-    *  Clicking the 'Commit' button will save these changes and the attached message locally on your machine via the Git software
-*  **Push**: This is the term used to describe the process of uploading data from your local machine to your GitHub account
-    * Note that you cannot push anything until you have commit it locally
-*  **Pull**: This is how we download new code, files, etc. from our GitHub repository to our local machine
-    * This is generally used when we are collaborating with other people
-    * If you are only working by yourself, on just one computer, you won't use this often
+-   **Commit**: This is the term used to describe the process of saving any changes you have made to your code (and files etc.) locally on your computer
+    -   To access this click the 'Commit' button within the *Git* tab
+    -   This opens a new window showing which files where changed, and which lines were added (green) or deleted (red)
+    -   Click the check box next to each file you want to commit and then write a short message explaining what was done
+    -   Clicking the 'Commit' button will save these changes and the attached message locally on your machine via the Git software
+-   **Push**: This is the term used to describe the process of uploading data from your local machine to your GitHub account
+    -   Note that you cannot push anything until you have commit it locally
+-   **Pull**: This is how we download new code, files, etc. from our GitHub repository to our local machine
+    -   This is generally used when we are collaborating with other people
+    -   If you are only working by yourself, on just one computer, you won't use this often
 
 ::: application-exercise
-
 **Push your repo from RStudio to GitHub**
 
 Using the definitions for the key-terms above successfully upload your changes to Github. Once you think you have succeeded, go to the repo page on your GitHub account and check that the changes have appeared.
-
 :::
 
 ### More options
@@ -182,3 +179,10 @@ Using the definitions for the key-terms above successfully upload your changes t
 There are many things that can be done via Git, GitHub, and/or RStudio. We won't go into all of them here, but we will look at one example. Go to the [repository](https://github.com/FACE-IT-project/R_workshop) for this workshop and copy the 'Code' link. Start a new RStudio Project following the same steps as above but use the new link.
 
 After following the prompts it should download all of the source code for this site, and the extra course content, to your local computer. This is just one example of how we can share code and documents with a wide range of collaborators.
+
+::: application-exercise
+**Collaboration via GitHub**
+
+Pair up with a buddy and practice pulling each others repositories, making changes, and pushing them back.
+Once you are comfortable with this, find a new buddy and repeat the process.
+:::

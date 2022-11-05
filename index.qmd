@@ -1,5 +1,6 @@
 ---
 title: "Welcome"
+editor: source
 sidebar: false
 toc-depth: 2
 ---
@@ -19,97 +20,109 @@ Don't worry if you feel overwhelmed and do not follow everything at any time dur
 Finally, bear in mind that there are many, many, many ways to accomplish the same task in R. The methods presented in this workshop work, but you will learn as you gain more experience with programming that there are many ways to get the right answer or to accomplish the same task.
 
 ## Venue, date and time
- 
+
 This workshop will take place from **18 November -- 28 November 2022**, **9:00--17:00**, at the Wadden Sea Station (AWI) on Sylt, Germany. Each day will have two 15 minute tea breaks and one hour for lunch. The 18th and 28th are set aside for travel, with no instruction planned on these dates. Note also that the first Saturday and Sunday are half days, devoted to managing administrative non-coding work (e.g. setting up R, RStudio, and GitHub).
 
 ## Course outline
 
-### Day 0 _2022-11-18_ -- Arrival
+### Day 0 *2022-11-18* -- Arrival
 
-* Arrive in Sylt before 16:00 to get checked in at research station
-* Social dinner before start of workshop
+-   Arrive in Sylt before 16:00 to get checked in at research station
+-   Social dinner before start of workshop
 
-### Day 1 _2022-11-19_ -- R + RStudio
+### Day 1 *2022-11-19* -- R + RStudio
 
-*	Presentation: Preliminaries
-* Technical: R and RStudio functioning on all machines
-* -- break --
-* Interactive Session: Introduction to R and RStudio
-* -- end --
+-   Presentation: Preliminaries
+-   Interactive Session: R and RStudio functioning on all machines
+-   -- break --
+-   Interactive Session: Introduction to R and RStudio
+-   Exercise: It which shall not be named
+-   -- lunch/end --
 
-### Day 2 _2022-11-20_ -- GitHub + RStudio
+### Day 2 *2022-11-20* -- Git + GitHub
 
-* Technical: Git and Github functioning on all machines
-* -- break --
-* Interactive Session: Introduction to R and RStudio
-* -- end --
+-   Interactive Session: Git and Github functioning on all machines
+-   -- break --
+-   Exercise: Collaboration via GitHub 
+-   -- lunch/end --
 
-### Day 3 _2022-11-21_ -- Why R?
+### Day 3 *2022-11-21* -- Plots
 
-* Exercise: It which shall not be named
-* -- break --
-* Demonstration: The New Age
-*	-- lunch --
-*	Interactive Session: An R workflow
-*	-- break --
-*	Interactive Session: An R workflow
-*	-- end --
-  
-### Day 4 _2022-11-22_ -- Plots
+-   Presentation: The basics of **`ggplot2`**
+-   Exercise: Basics
+-   -- break --
+-   Presentation: Faceting figures in **`ggplot2`**
+-   Exercise: Faceting
+-   -- lunch --
+-   Presentation: Brewing colours in **`ggplot2`**
+-   Exercise: Colouring
+-   -- break --
+-   Interactive Session: An R workflow - I
+-   Assignment: DIY figures
+-   -- end --
 
-* Interactive Session: The basics of **`ggplot2`**
-* -- break --
-* Interactive Session: Faceting figures in **`ggplot2`**
-* -- lunch --
-* Interactive Session: Brewing colours in **`ggplot2`**
-* -- break --
-* Assignment: DIY figures
-*	-- end --
+### Day 4 *2022-11-22* -- Maps
 
-### Day 5 _2022-11-23_ -- Maps
+-   Presentation: Mapping with **`ggplot2`**
+-   Exercise: Basic maps
+-   -- break --
+-   Presentation: Mapping with style
+-   Exercise: Fancy maps
+-   -- lunch --
+-   Presentation: Mapping the Arctic
+-   Exercise: Polar projections
+-   -- break --
+-   Interactive Session: An R workflow - II
+-   Assignment: DIY maps
+-   -- end --
 
-* Interactive Session: Mapping with **`ggplot2`**
-* -- break --
-* Interactive Session: Mapping with style
-* -- lunch --
-* Interactive Session: Mapping with Google
-* -- break --
-* Assignment: DIY maps
-*	-- end --
+### Day 5 *2022-11-23* -- Data
 
-### Day 6 _2022-11-24_ -- Tidy data
+-   Interactive Session: Tidy data
+-   Exercise: Tidy
+-   -- break --
+-   Interactive Session: Tidier data
+-   Exercise: Tidier
+-   -- lunch --
+-   Interactive Session: Tidiest data
+-   Exercise: Tidiest
+-   -- break --
+-   Interactive Session: An R workflow - III
+-   Assignment: DIY data
+-   -- end --
 
-* Interactive Session: Tidy data
-* -- break --
-* Interactive Session: Tidier data
-* -- lunch --
-* Presentation: Guest lecture on policy briefs
-* Assignment: Select a policy brief topic
-* -- break --
-* Interactive Session: Tidiest data
-*	-- end --
+### Day 6 *2022-11-24* -- 
 
-### Day 7 _2022-11-25_ -- Recap
+-   
+-   -- break --
+-   
+-   -- lunch --
+-   Presentation: Guest lecture on policy briefs
+-   -- break --
+-   Assignment: Select a policy brief topic
+-   -- end --
 
-*	Presentation: Recap
-* Interactive Session: Q & A for policy brief choices
-* -- break --
-* Interactive Session: Open Floor
-* -- lunch --
-* Optional Session: More Open Floor
-*	-- end --
+### Day 7 *2022-11-25* -- Recap
 
-### Day 8 _2022-11-26_ -- Policy brief
+-   Presentation: Recap
+-   Interactive Session: Q & A for policy brief choices
+-   -- break --
+-   Interactive Session: Open Floor
+-   -- lunch --
+-   Interactive Session: More Open Floor
+-   -- end --
 
-* Begin working on policy briefs
+### Day 8 *2022-11-26* -- Policy brief
 
-### Day 9 _2022-11-27_ -- Policy brief
+-   Begin working on policy briefs
 
-* Finish policy briefs
+### Day 9 *2022-11-27* -- Policy brief
 
-### Day 0 _2022-11-28_ -- Departure
+-   Finish policy briefs
 
-* Check out from accommodation by 08:00
+### Day 0 *2022-11-28* -- Departure
+
+-   Check out from accommodation by 08:00
 
 ## Acknowledements {.unnumbered}
 
