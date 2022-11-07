@@ -4,9 +4,9 @@ editor: source
 sidebar: false
 ---
 
-Before we can begin an **R** workshop, we need to make sure everyone has access to a computer with [R](http://cran.r-project.org) and [RStudio](http://www.rstudio.com) installed. The process for how to do this is detailed below, followed by a brief introduction to these two pieces of software and what the difference is between them.
+Before we can begin an **R** workshop, we need to make sure everyone has access to a computer with [R](http://cran.r-project.org) and [RStudio](http://www.rstudio.com) installed. The process for how to do this is detailed below, followed by a brief introduction to why we use these two pieces of software and what the difference is between them.
 
-NB: If you are not using your own computer please make the instructor aware of this as it is assumed that all participants will be using their personal (or university/institutions given) laptops.
+NB: If you are not using your own computer please make the instructor aware of this as it is assumed that all participants will be using their personal laptops (or university/institution etc.).
 
 ## Installing R
 
@@ -100,7 +100,7 @@ The big difference between R and many other statistical packages that you might 
 
 10. Programming is simply heaps more fun than point-and-click!
 
-## The RStudio workspace
+## Why RStudio?
 
 ### General settings
 
@@ -110,11 +110,11 @@ Before we start using RStudio (which is a code editor and environment that runs 
 
 RStudio is highly customisable. Under the **Appearance** tab under 'Tools'/'Global Options' you can see all of the different themes that come with RStudio. We recommend choosing a theme with a black background (e.g. Chaos) as this will be easier on your eyes and your computer. It is also good to choose a theme with a sufficient amount of contrast between the different colours used to denote different types of objects/values in your code.
 
-## The RStudio Project
+### The RStudio Project
 
 A very nifty way of managing workflow in RStudio is through the built-in functionality of the Rproject. We do not need to install any packages or change any settings to use these. Creating a new project is a very simple task, as well. For this course we will be using the `Intro_R_Workshop.Rproj` file you downloaded with the course material so that we are all running identical projects. This will prevent a lot of issues by ensuring we are doing things by the same standard. Better yet, an Rproject integrates seamlessly into version control software (e.g. GitHub) and allows for instant world class collaboration on any research project. To initialise the 'Intro_R\_Workshop' project on your machine please find where you saved `Intro_R_Workshop.Rproj` file and click on it. We will cover the concepts and benefits of an Rproject more as we move through the course.
 
-## Installing packages
+### Installing packages
 
 ```{r, include=FALSE, echo=FALSE}
 library(rvest)
@@ -146,15 +146,15 @@ Since we will develop the habit of doing all of our analyses from R scripts, it 
 
 > **Question** Why is it best practice to include packages you use in your R program explicitly?
 
-## The panes of RStudio
+### The panes of RStudio
 
 RStudio has four main panes each in a quadrant of your screen: **Source Editor**, **Console**, **Workspace Browser** (and **History**), and **Plots** (and **Files**, **Packages**, **Help**). These can also be adjusted under the 'Preferences' menu. Note that there might be subtle differences between RStudio installations on different operating systems. We will discuss each of the panes in turn.
 
-### Configuring panes
+#### Configuring panes
 
 You cannot rearrange panes in RStudio by dragging them, but you can alter their position via the **Pane Layout** tab in the 'Tools'/'Global Options' ('RStudio'/'Preferences' -- for Mac). You may arrange the panes as you would prefer however we recommend that during the duration of this workshop you leave them in the default layout.
 
-### Source Editor
+#### Source Editor
 
 Generally we will want to write programs longer than a few lines. The **Source Editor** can help you open, edit and execute these programs. Let us open a simple program:
 
@@ -179,7 +179,7 @@ At this point, it might be worth thinking a bit about what the program is doing.
 > **Comments**\
 > The hash (`#`) tells R not to run any of the text on that line to the right of the symbol. This is the standard way of commenting R code; it is VERY good practice to comment in detail so that you can understand later what you have done.
 
-### Console
+#### Console
 
 This is where you can type code that executes immediately. This is also known as the command line. Throughout the notes, we will represent code for you to execute in R as a different font.
 
@@ -265,7 +265,7 @@ The **Console** title bar has a few useful features:
 
 3.  It allows you to minimise and maximise the **Console** in relation to the **Source pane** using the buttons at the top-right or by double-clicking the title bar)
 
-### Environment and History panes
+#### Environment and History panes
 
 The **Environment** pane is very useful as it shows you what objects (*i.e.*, dataframes, arrays, values and functions) you have in your environment (workspace). You can see the values for objects with a single value and for those that are longer R will tell you their class. When you have data in your environment that have two dimensions (rows and columns) you may click on them and they will appear in the **Source Editor** pane like a spreadsheet.
 
@@ -279,7 +279,7 @@ ls()
 
 What do we have loaded into our environment? Did all of these objects come from one script, or more than one? How can we tell where an object was generated?
 
-### Files, Plots, Packages, Help, and Viewer panes
+#### Files, Plots, Packages, Help, and Viewer panes
 
 The last pane has a number of different tabs. The Files tab has a navigable file manager, just like the file system on your operating system. The **Plot** tab is where graphics you create will appear. The **Packages** tab shows you the packages that are installed and those that can be installed (more on this just now). The **Help** tab allows you to search the R documentation for help and is where the help appears when you ask for it from the **Console**.
 
@@ -324,6 +324,6 @@ Below you can find the source code to some books and other links to websites abo
 <!-- Slides -->
 <!-- Add timer to last slide -->
 
-Now that you have heard (and perhaps read) our argument about the merits of using R, let's double down and spend the next hour seeing first-hand why we think this. Please open the file 'data/SACTN_data.csv' in MS Excel. Gasp! Yes I know. After all of that and now we are using MS Excel? But trust us, there is method to this madness. Your mission, should you choose to accept it, is to spend the next 30 minutes creating monthly climatologies and plotting them as a line graph. The South African Coastal Temperature Network (SACTN, which will be used several times during this workshop) data are three monthly temperature time series, each about 30 years long. To complete this objective you will need to first split up the three different time series, and then figure out how to create a monthly climatology for each. A monthly climatology is the average temperature for a given month at a given place. So in this instance, because we have three time series, we will want 36 total values comprised of January - December monthly means for each site (if a time series is 30 years long, then a climatological December will be the mean temperature of all of the data within the 30 Decembers for which data are available). Once those values have been calculated, it should be a relatively easy task to plot them as a dot and line graph. Please keep an eye on the time, if you are not done within 30 minutes please stop anyway.
+Now that we have covered the arguments about the merits of using R, let's double down and spend the next half-hour seeing first-hand why we think this. Please open the file 'course_material_data/sst_NOAA.csv' in MS Excel. Gasp! Yes I know. After all of that and now we are using MS Excel? But trust us, there is method to this madness. Your mission, should you choose to accept it, is to spend the next 30 minutes creating monthly climatologies and plotting them as a dot/line graph. The data we are using come from the NOAA OISST remotely sensed seawater temperature product. It contains data for three different regions, each about 38 years long. To complete this objective you will need to first split up the three different time series, and then figure out how to create a monthly climatology for each. A monthly climatology is the average temperature for a given month at a given place. So in this instance, because we have three time series, we will want 36 total values comprised of January - December monthly means for each site (if a time series is 30 years long, then a climatological December will be the mean temperature of all of the data within the 30 Decembers for which data are available). Once those values have been calculated, it should be a relatively easy task to plot them as a dot and line graph. Please keep an eye on the time, if you are not done within 30 minutes please stop anyway.
 :::
 

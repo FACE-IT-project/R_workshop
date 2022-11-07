@@ -52,12 +52,12 @@ This workshop will take place from **18 November -- 28 November 2022**, **9:00--
 -   Exercise: Basics
 -   -- break --
 -   Presentation: Faceting figures in **`ggplot2`**
--   Exercise: Faceting
+-   Exercise: Facets
 -   -- lunch --
 -   Presentation: Brewing colours in **`ggplot2`**
--   Exercise: Colouring
+-   Exercise: Colours
 -   -- break --
--   Interactive Session: An R workflow - I
+-   Interactive Session: R workflow - I
 -   Assignment: DIY figures
 -   -- end --
 
@@ -72,7 +72,7 @@ This workshop will take place from **18 November -- 28 November 2022**, **9:00--
 -   Presentation: Mapping the Arctic
 -   Exercise: Polar projections
 -   -- break --
--   Interactive Session: An R workflow - II
+-   Interactive Session: R workflow - II
 -   Assignment: DIY maps
 -   -- end --
 
@@ -87,7 +87,7 @@ This workshop will take place from **18 November -- 28 November 2022**, **9:00--
 -   Interactive Session: Tidiest data
 -   Exercise: Tidiest
 -   -- break --
--   Interactive Session: An R workflow - III
+-   Interactive Session: R workflow - III
 -   Assignment: DIY data
 -   -- end --
 

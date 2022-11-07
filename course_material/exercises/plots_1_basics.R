@@ -15,16 +15,30 @@ library(palmerpenguins)
 penguins <- penguins
 
 
-# Analyses ----------------------------------------------------------------
+# Example -----------------------------------------------------------------
 
-# Nothing for now
+# The basic plot
+ggplot(data = penguins,
+       aes(x = body_mass_g, y = bill_length_mm)) +
+  geom_point(aes(colour = species))
 
 
-# Plots -------------------------------------------------------------------
+# Exercise 1 --------------------------------------------------------------
 
-# 1: Create a basic plot with different x and y axes
+# Create a basic plot with different x and y axes
 
-# 2: Change the aes() arguments
 
-# 3: Change the labels
+# Exercise 2 --------------------------------------------------------------
+
+# Change the aes() arguments
+
+
+# Exercise 3 --------------------------------------------------------------
+
+# Change the labels
+
+
+# BONUS -------------------------------------------------------------------
+
+# Create a ridgeplot
 

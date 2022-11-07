@@ -1,0 +1,137 @@
+---
+# title: Brewing colours in **`ggplot2`**
+format:
+  revealjs:
+    # logo: ../logo/FACE-IT_Logo_900.png
+    # slide-number: true
+    # show-slide-number: print
+    # preview-links: true
+    theme: FACE-IT.scss
+    self-contained: true
+    transition: slide
+editor: source
+---
+
+# Brewing colours in **`ggplot2`** {background-color="#008980" style="text-align: center"}
+
+*Robert Schlegel*
+
+```{r plots-3-opts, echo=FALSE}
+knitr::opts_chunk$set(
+  warning = FALSE, 
+  message = FALSE,
+  echo = TRUE
+)
+```
+
+## Overview
+
+Now that we have seen the basics of **`ggplot2`**, let's take a moment to delve further into the beauty of our figures. It may sound vain at first, but the colour palette of a figure is actually very important. This is for two main reasons. The first being that a consistent colour palette looks more professional. But most importantly it is necessary to have a good colour palette because it makes the information in our figures easier to understand. The communication of information to others is central to good science.
+
+
+## Problem
+
+* 
+
+## Solution
+
+* 
+
+## Setup
+
+We will need the following three packages for the examples in these slides.
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE}
+# Load tidyverse - contains ggplot2
+library(tidyverse)
+
+# Load RColorBrewer - provides more colouring options
+library(RColorBrewer)
+
+# Load Palmer penguins - contains dataset
+library(palmerpenguins)
+```
+
+## **`RColorBrewer`**
+
+Central to the purpose of **`ggplot2`** is the creation of beautiful figures. For this reason there are many built in functions that we may use in order to have precise control over the colours we use, as well as additional packages that extend our options even further. The **`RColorBrewer`** package should have been installed on your computer and activated automatically when we installed and activated the **`tidyverse`**. We will use this package for its lovely colour palettes. Let's spruce up the previous continuous colour scale figure now.
+
+```{r}
+# The continuous colour scale figure
+ggplot(data = penguins,
+       aes(x = body_mass_g, y = bill_length_mm)) +
+  geom_point(aes(colour = bill_depth_mm))
+```
+
+```{r}
+# The continuous colour scale figure
+ggplot(data = penguins,
+       aes(x = body_mass_g, y = bill_length_mm)) +
+  geom_point(aes(colour = bill_depth_mm)) +
+  scale_colour_distiller() # Change the continuous variable colour palette
+```
+
+Does this look different? If so, how? The second page of the colour cheat sheet we included in the course material shows some different colour brewer palettes. Let's look at how to use those here.
+
+```{r}
+ggplot(data = penguins,
+       aes(x = body_mass_g, y = bill_length_mm)) +
+  geom_point(aes(colour = bill_depth_mm)) +
+  scale_colour_distiller(palette = "Spectral")
+```
+
+Does that help us to see a pattern in the data? What do we see? Does it look like there are any significant relationships here? How would we test that?
+
+If we want to use colour brewer with a discrete variable we use a slightly different function.
+
+```{r}
+ggplot(data = penguins,
+       aes(x = body_mass_g, y = bill_length_mm)) +
+  geom_point(aes(colour = as.factor(year))) +
+  scale_colour_brewer() # This is the different function
+```
+
+The default colour scale here is not helpful at all. So let's pick a better one. If we look at our cheat sheet we will see a list of different continuous and discrete colour scales. All we need to do is copy and paste one of these names into our colour brewer function with inverted commas.
+
+```{r}
+ggplot(data = penguins,
+       aes(x = body_mass_g, y = bill_length_mm)) +
+  geom_point(aes(colour = as.factor(year))) +
+  scale_colour_brewer(palette = "Set1") # Here I used "Set1", but use what you like
+```
+
+## Make your own palettes
+
+This is all well and good. But didn't we claim that this should give us complete control over our colours? So far it looks like it has just given us a few more palettes to use. And that's nice, but it's not 'infinite choices'. That is where the Internet comes to our rescue. There are many places we may go to for support in this regard. The following links, in descending order, are very useful. And fun!
+
+-   <http://tristen.ca/hcl-picker/#/hlc/6/0.95/48B4B6/345363>
+-   <http://tools.medialab.sciences-po.fr/iwanthue/index.php>
+-   <http://jsfiddle.net/d6wXV/6/embedded/result/>
+
+I find the first link the easiest to use. But the second and third links are better at generating discrete colour palettes. Take several minutes playing with the different websites and decide for yourself which one(s) you like.
+
+## Use your own palettes
+
+Now that we've had some time to play around with the colour generators let's look at how to use them with our figures. I've used the first web link to create a list of five colours. I then copy and pasted them into the code below, separating them with commas and placing them inside of `c()` and inverted commas. Be certain that you insert commas and inverted commas as necessary or you will get errors. Note also that we are using a new function to use our custom palette.
+
+```{r brew-7, warning=FALSE}
+ggplot(data = penguins,
+       aes(x = body_mass_g, y = bill_length_mm)) +
+  geom_point(aes(colour = bill_depth_mm)) +
+  scale_colour_gradientn(colours = c("#A5A94D", "#6FB16F", "#45B19B",
+                                    "#59A9BE", "#9699C4", "#CA86AD"))
+```
+
+If we want to use our custom colour palettes with a discrete colour scale we use a different function as seen in the code below. While we are at it, let's also see how to correct the title of the legend and its text labels. Sometimes the default output is not what we want for our final figure. Especially if we are going to be publishing it. Also note in the following code chunk that rather than using hexadecimal character strings to represent colours in our custom palette, we are simply writing in the human name for the colours we want. This will work for the continuous colour palettes above, too.
+
+```{r brew-8, warning=FALSE}
+ggplot(data = penguins,
+       aes(x = body_mass_g, y = bill_length_mm)) +
+  geom_point(aes(colour = as.factor(sex))) +
+  scale_colour_manual(values = c("green", "red"), # How to use custom palette
+                     labels = c("female", "male", "other")) + # How to change the legend text
+  labs(colour = "Sex") # How to change the legend title
+```
+
+So now we have seen how to control the colours palettes in our figures. I know it is a bit much. Four new functions just to change some colours! That's a bummer. Don't forget that one of the main benefits of R is that all of your code is written down, annotated and saved. You don't need to remember which button to click to change the colours, you just need to remember where you saved the code that you will need. And that's pretty great in my opinion.
+
