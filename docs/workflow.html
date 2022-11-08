@@ -264,8 +264,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#working-directories" id="toc-working-directories" class="nav-link" data-scroll-target="#working-directories">Working directories</a></li>
   <li><a href="#data-in-r" id="toc-data-in-r" class="nav-link" data-scroll-target="#data-in-r">Data in R</a></li>
-  <li><a href="#plotting-stats" id="toc-plotting-stats" class="nav-link" data-scroll-target="#plotting-stats">Plotting stats</a></li>
-  <li><a href="#further-applications" id="toc-further-applications" class="nav-link" data-scroll-target="#further-applications">Further applications</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -716,69 +714,6 @@ For every R project, set up a separate directory that includes the scripts, data
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> <span class="fu">as.factor</span>(r)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>What is the first thing you notice about the difference in the colours? Why did we use <code>as.factor()</code> for the colour aesthetic for our points? What happens if we don’t use this? Try it now.</p>
-</section>
-<section id="plotting-stats" class="level3">
-<h3 class="anchored" data-anchor-id="plotting-stats">Plotting stats</h3>
-<p>The package <code>ggpubr</code> contains the functions we may use to seamless plot output statistics for our figures. We will also load some temperature data to use in our demonstration.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Libraries</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Data</span></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>SACTN <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"~/Intro_R_Workshop/data/SACTN_data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><code>compare_means()</code>, which is a function that compares means of two (t-test) or more (ANOVA) groups of values all in one convenient place. The second function is <code>stat_compare_means()</code>, which does much the same thing but is designed to be integrated directly into <code>ggplot2</code> code.</p>
-<p>First we will look at the use of <code>compare_means()</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare_means</span>(temp<span class="sc">~</span>site, <span class="at">data =</span> SACTN, <span class="at">method =</span> <span class="st">"anova"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>How snazy is that?! And this works just as well for two mean (t-test) comparisons. It also has built into it the necessary tests for non-parametric comparisons as well as paired tests but we won’t show that explicitrly here.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare_means</span>(temp<span class="sc">~</span>site, <span class="at">data =</span> <span class="fu">filter</span>(SACTN, site <span class="sc">!=</span> <span class="st">"Port Nolloth"</span>), <span class="at">method =</span> <span class="st">"t.test"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>This is great, but it is not new functionality, just drasticaly improved functionality. The second function introduced in this package is what is really going to make our lives easier. Here’s why:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> SACTN, <span class="fu">aes</span>(<span class="at">x =</span> site, <span class="at">y =</span> temp)) <span class="sc">+</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">colour =</span> site), <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_compare_means</span>(<span class="at">method =</span> <span class="st">"anova"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>I find this to be a very impressive bit of code. The author of this function has devised a way to convince the rather unique <code>ggplot2</code> backend to do our dirty work for us and is able to use the x and y axes to calculate statistical analyses. And if that isn’t enough, it then goes and puts it on our figure for us! The future is now. Because this is all still happening within the confines of <code>ggplot2</code> code, everything can be changed as we desire. The following is just an example, not necessarily the best way to visualise this information.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> SACTN, <span class="fu">aes</span>(<span class="at">x =</span> site, <span class="at">y =</span> temp)) <span class="sc">+</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">fill  =</span> site), <span class="at">colour =</span> <span class="st">"grey40"</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_compare_means</span>(<span class="at">method =</span> <span class="st">"anova"</span>, <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste0</span>(<span class="st">"p "</span>, ..p.format..)), <span class="at">label.x =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="further-applications" class="level3">
-<h3 class="anchored" data-anchor-id="further-applications">Further applications</h3>
-<p>As mentioned above, these functions may be used with paired tests, non-parametric tests, and multiple mean tests. These outputs have mates in the <code>ggplot2</code> sphere and so may be visualised with relative ease. Below we see an example of how to do this with a multiple mean (ANOVA) test.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First create a list of comparisons to feed into our figure</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>SACTN_levels <span class="ot">&lt;-</span> <span class="fu">levels</span>(SACTN<span class="sc">$</span>site)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>my_comparisons <span class="ot">&lt;-</span> <span class="fu">list</span>( <span class="fu">c</span>(SACTN_levels[<span class="dv">1</span>], SACTN_levels[<span class="dv">2</span>]), </span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">c</span>(SACTN_levels[<span class="dv">2</span>], SACTN_levels[<span class="dv">3</span>]),</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">c</span>(SACTN_levels[<span class="dv">1</span>], SACTN_levels[<span class="dv">3</span>]))</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co"># And then we wack it all together</span></span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> SACTN, <span class="fu">aes</span>(<span class="at">x =</span> site, <span class="at">y =</span> temp)) <span class="sc">+</span></span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">fill  =</span> site), <span class="at">colour =</span> <span class="st">"grey40"</span>, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_compare_means</span>(<span class="at">method =</span> <span class="st">"anova"</span>, </span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>                     <span class="at">label.x =</span> <span class="fl">1.9</span>, <span class="at">label.y =</span> <span class="dv">33</span>) <span class="sc">+</span></span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add pairwise comparisons p-value</span></span>
-<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_compare_means</span>(<span class="at">comparisons =</span> my_comparisons,</span>
-<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>                     <span class="at">label.y =</span> <span class="fu">c</span>(<span class="dv">26</span>, <span class="dv">28</span>, <span class="dv">30</span>)) <span class="sc">+</span></span>
-<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Perform t-tests between each group and the overall mean</span></span>
-<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_compare_means</span>(<span class="at">label =</span> <span class="st">"p.signif"</span>, <span class="at">method =</span> <span class="st">"t.test"</span>,</span>
-<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ref.group =</span> <span class="st">".all."</span>) <span class="sc">+</span> </span>
-<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add horizontal line at base mean</span></span>
-<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">mean</span>(SACTN<span class="sc">$</span>temp, <span class="at">na.rm =</span> T), <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Temp. (°C)"</span>, <span class="at">x =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The above figure shows a boxplot for the distribution of temperatures for each site. The horizontal dashed line shows what the overall mean for all temperatures is. The little asterisks above each box show the siginificance value of the difference of this group (site) from the mean temperature (dashed line). Four asterisks means <em>p</em>&lt;0.001. The pairwise comparisons of each site are shown with black brackets, the text on top of which show the <em>p</em>-values of those comparisons. The text at the very top of the figure shows the overall <em>p</em>-value for the ANOVA that compared all means against one another. Generally though one would not want to show all of this information in one figure. THis just serves as an example of how straightforward it is to do so.</p>
-<p>For a more detailed explanation for how to perform more advanced comaprisons of multiple groups (especially paired comparisons), and how to plot all of those results in a very cunning way, one may follow this link: <a href="https://www.r-bloggers.com/add-p-values-and-significance-levels-to-ggplots/" class="uri">https://www.r-bloggers.com/add-p-values-and-significance-levels-to-ggplots/</a>.</p>
 
 
 </section>

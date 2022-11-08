@@ -42,7 +42,8 @@ ggarrange(lm_1, lm_1)
 
 # Exercise 3 --------------------------------------------------------------
 
-# Combine all of the plots you've created so far and save
+# Combine all of the plots you've created so far
+# Save them as a high-res file larger than 2 MB
 
 
 # BONUS -------------------------------------------------------------------

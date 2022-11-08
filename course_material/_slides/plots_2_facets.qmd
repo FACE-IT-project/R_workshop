@@ -88,18 +88,17 @@ lm_1 # Visualise the plot by calling the object
 ## Non-linear model
 
 ```{r}
-# Assign the ggplot2 code to an object name
 nlm_1 <- ggplot(data = penguins,
        aes(x = body_mass_g, y = bill_length_mm, colour = species)) +
   geom_point() +
   geom_smooth() +
   labs(x = "Body mass (g)", y = "Bill length (mm)", colour = "Species")
-nlm_1 # Visualise the plot by calling the object
+nlm_1
 ```
 
 ## Histogram
 
-```{r facet-hist, message=FALSE, fig.cap="Histogram showing final chicken weights (g) by diet."}
+```{r}
 histogram_1 <- ggplot(data = penguins, 
                       aes(x = body_mass_g)) + #NB: There is no y-axis value
   geom_histogram(aes(fill = species), position = "stack", binwidth = 250) +
@@ -110,9 +109,9 @@ histogram_1
 ## Boxplot
 
 ```{r}
-# Note that we are using 'ChickLast', not 'ChickWeight'
 box_1 <- ggplot(data = penguins, 
-                aes(x = as.factor(year), y = body_mass_g)) + # Why 'as.factor()'?
+                aes(x = as.factor(year), # Why 'as.factor()'?
+                    y = body_mass_g)) + 
   geom_boxplot(aes(fill = species)) +
   labs(x = "Year", y = "Body mass (g)", fill = "Species") 
 box_1
