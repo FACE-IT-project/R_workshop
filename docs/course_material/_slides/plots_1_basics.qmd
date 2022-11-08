@@ -39,11 +39,9 @@ knitr::opts_chunk$set(
 We will need the following two packages for the examples in these slides.
 
 ```{r}
-# Load tidyverse - contains ggplot2
-library(tidyverse)
+library(tidyverse) # Contains ggplot2
 
-# Load Palmer penguins - contains dataset
-library(palmerpenguins)
+library(palmerpenguins) # Contains the dataset
 ```
 
 ## Basics
