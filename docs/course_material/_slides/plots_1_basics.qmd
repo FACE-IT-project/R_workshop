@@ -2,10 +2,6 @@
 # title: Basics of **`ggplot2`**
 format:
   revealjs:
-    # logo: ../logo/FACE-IT_Logo_900.png
-    # slide-number: true
-    # show-slide-number: print
-    # preview-links: true
     theme: FACE-IT_pres.scss
     self-contained: true
     transition: slide

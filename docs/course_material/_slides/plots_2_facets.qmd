@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 
 ## Problem
 
-* What if the data have multiple facets?
+* What if the data have multiple categories?
 * What if dots and lines aren't enough?
 * What if we need to combine plots?
 
@@ -37,14 +37,11 @@ knitr::opts_chunk$set(
 We will need the following three packages for the examples in these slides.
 
 ```{r, message=FALSE, warning=FALSE, echo=TRUE}
-# Load tidyverse - contains ggplot2
-library(tidyverse)
+library(tidyverse) # Contains ggplot2
 
-# Load ggpubr - helps us to combine figures
-library(ggpubr)
+library(ggpubr) # Helps us to combine figures
 
-# Load Palmer penguins - contains dataset
-library(palmerpenguins)
+library(palmerpenguins) # Contains the dataset
 ```
 
 ## Basic plot {auto-animate=true}

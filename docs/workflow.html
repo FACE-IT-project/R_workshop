@@ -94,7 +94,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./summary.html" rel="next">
-<link href="./tidy.html" rel="prev">
+<link href="./wild.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -210,7 +210,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tidy.html" class="sidebar-item-text sidebar-link">Tidy data in R</a>
+  <a href="./tidy.html" class="sidebar-item-text sidebar-link">Domestic Data</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./wild.html" class="sidebar-item-text sidebar-link">Wild Data</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -327,6 +332,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Remember that anything appearing after the <code>#</code> is not executed by R as script and is a comment.</p>
 <p>It is recommend that for each workshop session you start a new script (in the <strong>Source Editor</strong>), type in the code as we go along, and only execute the required lines. That way you will have a record of what you have done.</p>
 <p>Below we will learn how to import the file <code>laminaria.csv</code> into R, assign it to a dataframe named <code>laminaria</code>, and spend a while looking it over. These data reflect results of a sampling campaign on one of the species of kelps (<em>Laminaria pallida</em>) in the Western Cape designed to find the morphometric properties of populations at different sites. We visited 13 different locations along the Cape Peninsula (<code>site</code>), and at each site, collected <em>ca.</em> 13 specimens of the largest kelps we could find. We then brought the kelps back to the shore and measured/calculated nine morphometric properties of the plants (<em>e.g.</em> the mass of the fronds (<code>blade_weight</code>), the frond length (<code>blade_length</code>), <em>etc.</em>).</p>
+<p>(click your cursor next to a bracket and push the right arrow and you will see its partner bracket highlighted). We can execute R code directly from the Source Editor. Try the following (for Windows machines; for Macs replace <strong>Ctrl</strong> with <strong>Cmd</strong>):</p>
+<ul>
+<li>Execute a single line (Run icon or <strong>Ctrl+Enter</strong>). Note that the cursor can be anywhere on the line and one does not need to highlight anything — do this for the code on line 2</li>
+<li>Execute multiple lines (Highlight lines with the cursor, then Run icon or <strong>Ctrl+Enter</strong>) — do this for line 3 to 6</li>
+<li>Execute the whole script (Source icon or <strong>Ctrl+Shift+Enter</strong>)</li>
+</ul>
+<p>Now, try changing the x and/or y axis labels on line 18 and re-run the script.</p>
+<p>Now let us save the program in the <strong>Source Editor</strong> by clicking on the file symbol (note that the file symbol is greyed out when the file has not been changed since it was last saved).</p>
+<p>At this point, it might be worth thinking a bit about what the program is doing. R requires one to think about what you are doing, not simply clicking buttons like in some other software systems which shall remain nameless for now… Scripts execute sequentially from top to bottom. Try and work out what each line of the program is doing and discuss it with your neighbour. Note, if you get stuck, try using R’s help system; accessing the help system is especially easy within RStudio — see if you can figure out how to use that too.</p>
+<blockquote class="blockquote">
+<p><strong>Comments</strong><br>
+The hash (<code>#</code>) tells R not to run any of the text on that line to the right of the symbol. This is the standard way of commenting R code; it is VERY good practice to comment in detail so that you can understand later what you have done.</p>
+</blockquote>
 </section>
 <section id="reading-data-into-r" class="level3">
 <h3 class="anchored" data-anchor-id="reading-data-into-r">Reading data into R</h3>
@@ -400,6 +418,7 @@ R has pedantic requirements for naming variables. It is safest to not use spaces
 <p><strong>Managing variables</strong><br>
 It is good practice to remove variables from memory that you are not using, especially if they are large.</p>
 </blockquote>
+<p>At this point, it might be worth thinking a bit about what the program is doing. R requires one to think about what you are doing, not simply clicking buttons like in some other software systems which shall remain nameless for now… Scripts execute sequentially from top to bottom. Try and work out what each line of the program is doing and discuss it with your neighbour. Note, if you get stuck, try using R’s help system; accessing the help system is especially easy within RStudio — see if you can figure out how to use that too.</p>
 </section>
 </section>
 </section>
@@ -1012,12 +1031,26 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+      }
+    }
 });
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./tidy.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Tidy data in R</span>
+      <a href="./wild.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Wild Data</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
