@@ -82,7 +82,7 @@ While it is possible to connect RStudio to GitHub using the username and passwor
 
 ### Create a key
 
-Open RStudio and got t: *Go to Tools \> Global Options...\> Git/SVN \> Create RSA Key...*. Note that if there is a file pathway in the text box above the 'Create RSA Key...' button this means you already have an SSH key. If not, click 'Create' and RStudio will generate one for you. It will prompt you for a passphrase. This isn't necessary for now and can be skipped. If you want to create a new SSH key with a passphrase later circle back to this step. Adding a passphrase will require additional steps that are not listed below and can be found [here](https://happygitwithr.com/ssh-keys.html).
+Open RStudio and go to: *Tools \> Global Options...\> Git/SVN \> Create RSA Key...*. Note that if there is a file pathway in the text box above the 'Create RSA Key...' button this means you already have an SSH key. If not, click 'Create' and RStudio will generate one for you. It will prompt you for a passphrase. This isn't necessary for now and can be skipped. If you want to create a new SSH key with a passphrase later circle back to this step. Adding a passphrase will require additional steps that are not listed below and can be found [here](https://happygitwithr.com/ssh-keys.html).
 
 ### Add key to ssh-agent
 

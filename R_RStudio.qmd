@@ -2,11 +2,12 @@
 title: "Setting up R and Rstudio"
 editor: source
 sidebar: false
+link-external-newwindow: true
 ---
 
-Before we can begin an **R** workshop, we need to make sure everyone has access to a computer with [R](http://cran.r-project.org) and [RStudio](http://www.rstudio.com) installed. The process for how to do this is detailed below, followed by a brief introduction to why we use these two pieces of software and what the difference is between them.
+Before we can begin an **R** workshop, we need to make sure everyone has access to a computer with [R](http://cran.r-project.org) and [RStudio](https://posit.co/) installed. The process for how to do this is detailed below, followed by a brief introduction to why we use these two pieces of software and what the difference is between them.
 
-NB: If you are not using your own computer please make the instructor aware of this as it is assumed that all participants will be using their personal laptops (or university/institution etc.).
+NB: If you are not using your own computer please make the instructor aware of this as it is assumed that all participants will be using their personal (or university/institution etc.) laptops.
 
 ## Installing R
 
@@ -14,7 +15,7 @@ Installing R on your machine is a straightforward process. Follow these steps:
 
 1.  Go to the [CRAN](http://cran.r-project.org) (Comprehensive R Archive Network) website. If you type 'r' into Google it is the first entry
 
-2.  Choose to download R for Linux, Mac, or Windows
+2.  Choose to download R for Windows, Mac, or Linux
 
 3.  For Windows users selecting 'base' will link you to the download file, follow the prompts to install
 
@@ -24,7 +25,7 @@ Installing R on your machine is a straightforward process. Follow these steps:
 
 ## Installing RStudio
 
-Although R can run in its own console or in a terminal window (Mac and Linux; the Windows command line is a bit limiting), we will use RStudio in this Workshop. RStudio is a free front-end to R for Windows, Mac, or Linux (*i.e.*, R is working in the background). It makes working with R easier, more organised and productive, especially for new users. There are other front-ends, but RStudio is the most popular. To install:
+Although R can run in its own console or in a Terminal (Mac and Linux; the Windows command line is a bit limiting), we will use RStudio in this Workshop. RStudio is a free front-end to R for Windows, Mac, or Linux (*i.e.*, R is working in the background). It makes working with R easier, more organised and productive, especially for new users. There are other front-ends, but RStudio is the most popular. To install:
 
 1.  Go to the [posit](https://posit.co/) website
 
@@ -38,13 +39,13 @@ Although R can run in its own console or in a terminal window (Mac and Linux; th
 
 6.  After downloading, follow the prompts to install RStudio
 
-As scientists, we are increasingly driven to analyse and manipulate datasets. As these datasets grow in size our analyses are becoming more sophisticated. There are many statistical packages on the market that one can use, but R is becoming the global standard. There are several reasons for this trend:
-
 ## Why R?
+
+As scientists, we are increasingly driven to analyse and manipulate larger and larger datasets. As these datasets grow in size our analyses are becoming more sophisticated. There are many statistical packages on the market that one can use, but R is one of the global standards. There are several reasons for this:
 
 ### The positives
 
-1.  It is **free**, which is nice if you despise commercial software such as Microsoft Office, as we do --- in fact, this entire document was written in Rmarkdown and the files supporting this Workshop material can be edited on *any* computer using a variety of operating systems such as Mac OS X, Linux and Microsoft Windows
+1.  It is **free**, which is nice if you despise commercial software (e.g. Microsoft Office)
 
 2.  It is powerful, flexible and robust; it is developed and used by leading academic statisticians
 
@@ -52,11 +53,11 @@ As scientists, we are increasingly driven to analyse and manipulate datasets. As
 
 4.  The cutting-edge statistical routines open up scientific possibilities in creative new ways
 
-5.  It has state-of-the-art graphics
+5.  It does not depend on a 'point and click' interface, such as SPSS, and requires one to write scripts
 
-6.  Users continually extend the functionality by updating existing packages and adding new ones and make these available for free
+6.  It has state-of-the-art graphics
 
-7.  It does not depend on a pointy-and-clicky interface, such as SPSS, and requires one to write scripts --- more on the advantages of scripts later
+7.  Users continually extend the functionality by updating existing packages and adding new ones; in fact, this entire website was written in Quarto (RStudio) and the files supporting this Workshop material can be edited on *any* computer using a variety of operating systems such as Mac OS X, Linux, and Microsoft Windows
 
 It is truly amazing that such a powerful and comprehensive software is freely available and we are indebted to the developers of R for going down this path.
 
@@ -64,13 +65,13 @@ It is truly amazing that such a powerful and comprehensive software is freely av
 
 Although there are many positives of using R, there are some negatives:
 
-1.  It can have a steep learning curve for those whom do not like statistics or data manipulation, and it does require frequent use to remain familiar with it and to develop advanced skills
+1.  It can have a steep learning curve for those who are not into statistics or data manipulation, and it does require frequent use to remain familiar with it and to develop advanced skills
 
 2.  Error trapping can be confusing and frustrating
 
 3.  Rudimentary debugging, although there are some packages available to enhance the process
 
-4.  Handles large datasets (100 MB), but can have some trouble with massive datasets (GBs)
+4.  Handles large datasets easily (eg. 100 MB), but can have some trouble with massive datasets (e.g. 100 GB)
 
 5.  Some simple tasks can be tricky to do in R
 
@@ -78,15 +79,15 @@ Although there are many positives of using R, there are some negatives:
 
 ### The challenges
 
-The big difference between R and many other statistical packages that you might have used is that it is not, and never will be, a menu-driven 'point and click' package. R requires you to write your own computer code to tell it exactly what you want to do. This means that there is a learning curve, but these are outweighed by numerous advantages:
+The big difference between R and many other statistical packages that you might have used is that it is not, and never will be, a menu-driven 'point and click' software. R requires you to write your own code to tell it exactly what you want to do. This means that there is a learning curve, but these are outweighed by numerous advantages:
 
 1.  To write new programs, you can modify your existing ones or those of others, saving you considerable time
 
 2.  You have a record of your statistical analyses and thus can re-run your previous analyses exactly at any time in the future, even if you can't remember what you did --- this is central to reproducible research
 
-3.  The recorded code can include the liberal use of internal documentation, which is often overlooked by practising scientists
+3.  The recorded code can include the liberal use of internal documentation, which is often overlooked by practicing scientists
 
-4.  It is more flexible in being able to manipulate data and graphics than menu-driven software
+4.  It is more flexible at manipulating data and graphics than menu-driven software
 
 5.  You will develop and improve your programming, which is a valuable general skill
 
@@ -94,25 +95,27 @@ The big difference between R and many other statistical packages that you might 
 
 7.  You can automate large problems
 
-8.  You can provide and share code that underpins published analyses; journals are starting to request the code for analyses in papers, to increase transparency and repeatability
+8.  You can provide and share code that underpins published analyses; more and more journals are requesting the code for analyses in papers, to increase transparency and reproduceability
 
-9.  Integration with tools like git (*e.g.* GitHub and Bitbucket) enable online collaboration in large statistical research programmes and they allow one to rely on version control systems
+9.  Integration with tools like Git (*e.g.* GitHub and Bitbucket) enable online collaboration in large statistical research programmes and they allow one to rely on version control systems
 
 10. Programming is simply heaps more fun than point-and-click!
 
 ## Why RStudio?
 
+One could, and some still do, use 'Base R'. This is the name used to describe the R software as it is shipped from the core R team. It is run generally via a Terminal and provides very rudimentary access to help files and visuals. The Base R software hasn't developed past this point because it is not in its mandate to do so. It is first and foremost a computer programming language. And while it is still constantly being updated and improved, it will likely never have much in the way of a user interface (UI). That is where RStudio enters the picture. It is an integrated development environment (IDE), which is more advanced than a simple UI in that it adds dozens of additional features to R that the base software itself is not capable of performing. We will not be covering most of these extended features in this workshop, but if you are interested in learning more about them feel free to ask the instructor. Though be sure that you are close to an exit door so you can escape if they don't stop talking about all of the benefits of RStudio.
+
 ### General settings
 
-Before we start using RStudio (which is a code editor and environment that runs R) let's first set it up properly. Find the 'Tools' ('Preferences') menu item, navigate to 'Global Options' ('Code Editing'). From here we have a very wide range of options for the functionality of RStudio. At the moment we will leave the general settings to their default.
+Before we start using RStudio let's set it up properly. In the menu at the top of the RStudio software, go to: *Tools (Preferences on Mac) \> Global Options...*. From here we have a very wide range of options for the functionality of RStudio. At the moment we will leave the general settings to their default.
 
 ### Customising appearance
 
-RStudio is highly customisable. Under the **Appearance** tab under 'Tools'/'Global Options' you can see all of the different themes that come with RStudio. We recommend choosing a theme with a black background (e.g. Chaos) as this will be easier on your eyes and your computer. It is also good to choose a theme with a sufficient amount of contrast between the different colours used to denote different types of objects/values in your code.
+RStudio is highly customisable. Under the **Appearance** tab in the Global Options you can see all of the different themes that come with RStudio. We recommend choosing a theme with a black background (e.g. 'Chaos') as this will be easier on your eyes and your computer. It is also good to choose a theme with a sufficient amount of contrast between the different colours used to denote different types of objects/values in your code. Take a moment now and chose a different them before accepting and closing the window.
 
 ### The RStudio Project
 
-A very nifty way of managing workflow in RStudio is through the built-in functionality of the Rproject. We do not need to install any packages or change any settings to use these. Creating a new project is a very simple task, as well. For this course we will be using the `Intro_R_Workshop.Rproj` file you downloaded with the course material so that we are all running identical projects. This will prevent a lot of issues by ensuring we are doing things by the same standard. Better yet, an Rproject integrates seamlessly into version control software (e.g. GitHub) and allows for instant world class collaboration on any research project. To initialise the 'Intro_R\_Workshop' project on your machine please find where you saved `Intro_R_Workshop.Rproj` file and click on it. We will cover the concepts and benefits of an Rproject more as we move through the course.
+A very nifty way of managing workflow in RStudio is through the built-in functionality of the RStudio Project. We do not need to install any packages or change any settings to use these. Creating a new project is a very simple task, as well. For this course we will be using the `R_Workshop.Rproj` file you will download tomorrow with the course material so that we are all running identical projects. This will prevent a lot of issues by ensuring we are doing things by the same standard. Better yet, an RStudio Project integrates seamlessly into version control software (e.g. GitHub) and allows for instant, world class collaboration on any research project. We will cover the concepts and benefits of an RStudio Project more as we move through the course.
 
 ### Installing packages
 
@@ -129,63 +132,39 @@ pkgs_lst <- read_html(url) %>%
 
 The most common functions used in R are contained within the **`base`** package; this makes R useful 'out of the box.' However, there is extensive additional functionality that is being expanded all the time through the use of packages. Packages are simply collections of code called functions that automate complex mathematical or statistical tasks. One of the most useful features of R is that users are continuously developing new packages and making them available for free. You can find a comprehensive list of available packages on the [CRAN website](https://cran.r-project.org/web/packages/). There are currently (`r Sys.Date()`) `r nrow(pkgs_lst)` packages available for R!
 
-If the thought of searching for and finding R packages is daunting, a good place to start is the [R Task View](http://cran.r-project.org/web/views/) page. This page curates collections of packages for general tasks you might encounter, such as Experimental Design, Meta-Analysis, or Multivariate Analysis. Go and have a look for yourself, you might be surprised to find a good explanation of what you need.
+If the thought of searching for and finding R packages is daunting, a good place to start is the [R Task View](http://cran.r-project.org/web/views/) page. This page curates collections of packages for general tasks you might encounter, such as Experimental Design, Meta-Analysis, or Multivariate Statistics. Go and have a look for yourself, you might be surprised to find a good explanation of what you need.
 
-After clicking 'Tools'/'Install Packages', type in the package name **`tidyverse`** in the 'Packages' text box (note that it is case sensitive) and select the Install button. The **Console** will run the code needed to install the package, and then provide some commentary on the installation of the package and any of its dependencies (*i.e.*, other R packages needed to run the required package).
+In the menu bar click *Tools \> Install Packages* type in the package name **`tidyverse`** in the 'Packages' text box (note that it is case sensitive) and select the Install button. The **Console** will run the code needed to install the package, and then provide some commentary on the installation of the package and any of its dependencies (*i.e.*, other R packages needed to run the required package).
 
 The installation process makes sure that the functions within the packages contained within the **`tidyverse`** are now available on your computer, but to avoid potential conflicts in the names of functions, it will not load these automatically. To make R 'know' about these functions in a particular session, you need either to load the package via ticking the checkbox for that package in the **Packages** tab, or execute:
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, eval=FALSE}
 library(tidyverse)
 ```
 
 Since we will develop the habit of doing all of our analyses from R scripts, it is best practice to simply list all of the libraries to be loaded right at the start of your script. Comments may be used to remind your future-self (to quote Hadley Wickham) what those packages are for.
 
-> **Copying code from RStudio**\
-> Here you saw RStudio execute the R code needed to install (using `install.packages()`) and load (using `library()`) the package, so if you want to include these in one of your programs, just copy the text it executes. Note that you need only install the current version of a package once, but it needs to be loaded at the beginning of each R session.
-
-> **Question** Why is it best practice to include packages you use in your R program explicitly?
+> **Question** Why is it best practice to explicitly include packages you use in your R program at the start of your script?
 
 ### The panes of RStudio
 
-RStudio has four main panes each in a quadrant of your screen: **Source Editor**, **Console**, **Workspace Browser** (and **History**), and **Plots** (and **Files**, **Packages**, **Help**). These can also be adjusted under the 'Preferences' menu. Note that there might be subtle differences between RStudio installations on different operating systems. We will discuss each of the panes in turn.
-
-#### Configuring panes
-
-You cannot rearrange panes in RStudio by dragging them, but you can alter their position via the **Pane Layout** tab in the 'Tools'/'Global Options' ('RStudio'/'Preferences' -- for Mac). You may arrange the panes as you would prefer however we recommend that during the duration of this workshop you leave them in the default layout.
+RStudio has four main panes, each in a quadrant of your screen: **Source Editor**, **Console**, **Environment** (and **History**, **Connections**), and **Plots** (and **Files**, **Packages**, **Help**, **Viewer**, **Presentations**). The layout of these four panes can be adjusted under the *Tools \> Global Options...\> Pane Layout* menu. For now we will keep the factory default layout, but note that there might be subtle differences between RStudio installations on different operating systems. We will discuss each of the panes in turn below.
 
 #### Source Editor
 
-Generally we will want to write programs longer than a few lines. The **Source Editor** can help you open, edit and execute these programs. Let us open a simple program:
+Generally we will want to write chunks of code longer than a few lines. The **Source Editor** can help you open, edit and execute the scripts that allow us to do this. To ensure that RStudio is working as expected, follow these three steps:
 
-1.  Use Windows Explorer (Finder on Mac) and navigate to the file `BONUS/the_new_age.R`.
+1.    Click the 'New File' icon in the top left, just under the menu bar, then select 'R Script'. This will open a new blank tab in the **Source Editor**. Save this file to your desktop and close RStudio. 
 
-2.  Now make RStudio the default application to open `.R` files (right click on the file Name and set RStudio to open it as the default if it isn't already)
+2.    Now make RStudio the default application to open `.R` files (right click on the file and set RStudio to open it as the default if it isn't already). 
 
-3.  Now double click on the file -- this will open it in RStudio in the **Source Editor** in the top left pane.
+3.    Double click on the file -- this will open it in RStudio in the **Source Editor** in the top left pane.
 
-Note `.R` files are simply standard text files and can be created in any text editor and saved with a `.R` (or `.r`) extension, but the Source editor in RStudio has the advantage of providing syntax highlighting, code completion, and smart indentation. You can see the different colours for numbers and there is also highlighting to help you count brackets (click your cursor next to a bracket and push the right arrow and you will see its partner bracket highlighted). We can execute R code directly from the Source Editor. Try the following (for Windows machines; for Macs replace **Ctrl** with **Cmd**):
-
--   Execute a single line (Run icon or **Ctrl+Enter**). Note that the cursor can be anywhere on the line and one does not need to highlight anything --- do this for the code on line 2
--   Execute multiple lines (Highlight lines with the cursor, then Run icon or **Ctrl+Enter**) --- do this for line 3 to 6
--   Execute the whole script (Source icon or **Ctrl+Shift+Enter**)
-
-Now, try changing the x and/or y axis labels on line 18 and re-run the script.
-
-Now let us save the program in the **Source Editor** by clicking on the file symbol (note that the file symbol is greyed out when the file has not been changed since it was last saved).
-
-At this point, it might be worth thinking a bit about what the program is doing. R requires one to think about what you are doing, not simply clicking buttons like in some other software systems which shall remain nameless for now... Scripts execute sequentially from top to bottom. Try and work out what each line of the program is doing and discuss it with your neighbour. Note, if you get stuck, try using R's help system; accessing the help system is especially easy within RStudio --- see if you can figure out how to use that too.
-
-> **Comments**\
-> The hash (`#`) tells R not to run any of the text on that line to the right of the symbol. This is the standard way of commenting R code; it is VERY good practice to comment in detail so that you can understand later what you have done.
+Note `.R` files are simply standard text files and can be created in any text editor and saved with a `.R` (or `.r`) extension, but the Source editor in RStudio has the advantage of providing syntax highlighting, code completion, and smart indentation. You can see the different colours for numbers and there is also highlighting to help you count brackets.
 
 #### Console
 
-This is where you can type code that executes immediately. This is also known as the command line. Throughout the notes, we will represent code for you to execute in R as a different font.
-
-> **Type it in!** Although it may appear that one could copy code from this PDF into the **Console**, you really shouldn't. The first reason is that you might unwittingly copy invisible PDF formatting errors into R, which will make the code fail. But more importantly, typing code into the **Console** yourself gives you the practice you need, and allows you to make (and correct) your own errors. This is an invaluable way of learning and taking shortcuts now will only hurt you in the long run.
-
-Entering code in the command line is intuitive and easy. For example, we can use R as a calculator by typing into the Console (and pressing **Enter** after each line):
+This is where you can type code that executes immediately. This is also known as the command line. Entering code in the command line is intuitive and easy. For example, we can use R as a calculator by typing into the Console (and pressing **Enter** after each line):
 
 ```{r}
 6 * 3
@@ -193,7 +172,7 @@ Entering code in the command line is intuitive and easy. For example, we can use
 2 ^ 3
 ```
 
-Note that spaces are optional around simple calculations.
+> Note that spaces are optional around simple calculations.
 
 We can also use the assignment operator `<-` to assign any calculation to a variable so we can access it later (the `=` sign would work, too, but it's bad practice to use it... and we'll talk about this as we go):
 
@@ -253,7 +232,7 @@ RStudio supports the automatic completion of code using the **Tab** key. For exa
 
 The code completion feature also provides brief inline help for functions whenever possible. For example, type `mean()` and press the **Tab** key.
 
-The RStudio **Console** automagically maintains a 'history' so that you can retrieve previous commands, a bit like your Internet browser or Google (*see the code in: BONUS/mapping_yourself.Rmd*). On a blank line in the **Console**, press the up arrow, and see what happens.
+The RStudio **Console** automagically maintains a 'history' so that you can retrieve previous commands, a bit like your Internet browser or Google. On a blank line in the **Console**, press the up arrow, and see what happens.
 
 If you wish to review a list of your recent commands and then select a command from this list you can use **Ctrl+Up** to review the list (**Cmd+Up** on the Mac). If you prefer a 'bird's eye' overview of the R command history, you may also use the RStudio History pane (see below).
 
@@ -267,7 +246,7 @@ The **Console** title bar has a few useful features:
 
 #### Environment and History panes
 
-The **Environment** pane is very useful as it shows you what objects (*i.e.*, dataframes, arrays, values and functions) you have in your environment (workspace). You can see the values for objects with a single value and for those that are longer R will tell you their class. When you have data in your environment that have two dimensions (rows and columns) you may click on them and they will appear in the **Source Editor** pane like a spreadsheet.
+The **Environment** pane is very useful as it shows you what objects (*i.e.*, dataframes, arrays, values, and functions) you have in your environment (i.e. workspace). You can see the values for objects with a single value and for those that are longer R will tell you their class. When you have data in your environment that have two dimensions (rows and columns) you may click on them and they will appear in the **Source Editor** pane like a spreadsheet.
 
 You can then go back to your program in the **Source Editor** by clicking its tab or closing the tab for the object you opened. Also in the **Environment** is the History tab, where you can see all of the code executed for the session. If you double-click a line or highlight a block of lines and then double-click those, you can send it to the **Console** (*i.e.*, run them).
 
@@ -279,9 +258,9 @@ ls()
 
 What do we have loaded into our environment? Did all of these objects come from one script, or more than one? How can we tell where an object was generated?
 
-#### Files, Plots, Packages, Help, and Viewer panes
+#### Files, Plots, Packages, Help, Viewer, and Presentation panes
 
-The last pane has a number of different tabs. The Files tab has a navigable file manager, just like the file system on your operating system. The **Plot** tab is where graphics you create will appear. The **Packages** tab shows you the packages that are installed and those that can be installed (more on this just now). The **Help** tab allows you to search the R documentation for help and is where the help appears when you ask for it from the **Console**.
+The last pane has a number of different tabs. The Files tab has a navigable file manager, just like the file system on your operating system. The **Plot** tab is where graphics you create will appear. The **Packages** tab shows you the packages that are installed and those that can be installed. The **Help** tab allows you to search the R documentation for help and is where the help appears when you ask for it from the **Console**. The **Viewer** tab is where more advanced/interactive visuals are generated, and if one is authoring presentations in RStudio, they will be visualised in the **Presentation** pane.
 
 Methods of getting help from the **Console** include...
 
@@ -295,41 +274,29 @@ Methods of getting help from the **Console** include...
 help(mean)
 ```
 
-We will go into this in more detail in the next session.
-
-To reproduced Figure \@ref(fig:ggplot2-1) in the **Plot** tab, simply copy and paste the following code into the **Console**:
-
-```{r ggplot2-1, fig.cap = "The same plot as above, but assembled with __ggplot2__."}
-library(tidyverse)
-x <- seq(0, 2, by = 0.01)
-y <- 2 * sin(2 * pi * (x - 1/4))
-ggplot() +
-  geom_point(aes(x = x, y = y), shape = 21, col = "salmon", fill = "white")
-```
+We will go into this in more detail in [R Workflow - I](https://face-it-project.github.io/R_workshop/workflow.html#r-workflow---i).
 
 ## Resources
 
-Below you can find the source code to some books and other links to websites about R. With some of the technical skills you'll learn in this course you'll be able to download the source code, compile the book on your own computer and arrive at the fully formatted (typeset) copy of the books that you can purchase for lots of money:
+Below you can find the source code to some books and other links to websites about R:
 
 -   [ggplot2. Elegant Graphics for Data Analysis](https://github.com/hadley/ggplot2-book) --- the gold-standard in R graphics
 -   [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html) --- data analysis using tidy principles
 -   [R Markdown](http://rmarkdown.rstudio.com) --- reproducible reports in R
--   [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown) --- writing books in R
--   [Shiny](https://shiny.rstudio.com) --- interactive website driven by R
+-   [bookdown: Authoring Books and Technical Documents with R](https://bookdown.org/yihui/bookdown) --- writing books in R
+-   [Shiny](https://shiny.rstudio.com) --- interactive web apps driven by R
 
+## Exercise
 
-::: application-exercise
+::: homework
 **It which shall not be named**
 
-<!-- Slides -->
-<!-- Add timer to last slide -->
-
-Now that we have covered the arguments about the merits of using R, let's double down and spend the next half-hour seeing first-hand why we think this. Please open the file 'course_material_data/sst_NOAA.csv' in MS Excel. Gasp! Yes I know. After all of that and now we are using MS Excel? But trust us, there is method to this madness. Your mission, should you choose to accept it, is to spend the next 30 minutes creating monthly climatologies and plotting them as a dot/line graph. The data we are using come from the NOAA OISST remotely sensed seawater temperature product. It contains data for three different regions, each about 38 years long. To complete this objective you will need to first split up the three different time series, and then figure out how to create a monthly climatology for each. A monthly climatology is the average temperature for a given month at a given place. So in this instance, because we have three time series, we will want 36 total values comprised of January - December monthly means for each site (if a time series is 30 years long, then a climatological December will be the mean temperature of all of the data within the 30 Decembers for which data are available). Once those values have been calculated, it should be a relatively easy task to plot them as a dot and line graph. Please keep an eye on the time, if you are not done within 30 minutes please stop anyway.
-
-Now that you've had some time to look at the data and work through the exercise in Excel, let's see how to do it in R.
+::: slides
+[Slides](https://github.com/FACE-IT-project/R_workshop/tree/main/course_material/_slides/intro_1_base.html)
+:::
 
 ::: source
-[Source](https://github.com/FACE-IT-project/R_workshop/tree/main/course_material/exercises/intro_1_base.R)
+[Source](https://github.com/FACE-IT-project/R_workshop/tree/main/course_material/_slides/intro_1_base.qmd)
 :::
 :::
 

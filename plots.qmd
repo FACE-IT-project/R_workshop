@@ -20,11 +20,11 @@ Though it may have started as statistical software, R has moved far beyond it's 
 **Plotting 1: Basics**
 
 ::: slides
-[Slides](https://face-it-project.github.io/R_workshop/course_material/_slides/plots_1_basics.html)
+[Slides](https://face-it-project.github.io/R_workshop/course_material/_slides/plots_1_basics.html){target="_blank"}
 :::
 
 ::: source
-[Source](https://github.com/FACE-IT-project/R_workshop/tree/main/course_material/_slides/plots_1_basics.qmd)
+[Source](https://github.com/FACE-IT-project/R_workshop/tree/main/course_material/_slides/plots_1_basics.qmd){target="_blank"}
 :::
 :::
 
@@ -32,7 +32,7 @@ Though it may have started as statistical software, R has moved far beyond it's 
 **To `aes()` or not to `aes()`...**
 
 ::: source
-[Source](https://github.com/FACE-IT-project/R_workshop/tree/main/course_material/exercises/plots_1_basics.R)
+[Source](https://github.com/FACE-IT-project/R_workshop/tree/main/course_material/exercises/plots_1_basics.R){target="_blank"}
 :::
 :::
 
@@ -40,11 +40,11 @@ Though it may have started as statistical software, R has moved far beyond it's 
 **Plotting 2: Facets**
 
 ::: slides
-[Slides](https://face-it-project.github.io/R_workshop/course_material/_slides/plots_2_facets.html)
+[Slides](https://face-it-project.github.io/R_workshop/course_material/_slides/plots_2_facets.html){target="_blank"}
 :::
 
 ::: source
-[Source](https://github.com/FACE-IT-project/R_workshop/tree/main/course_material/_slides/plots_2_facets.qmd)
+[Source](https://github.com/FACE-IT-project/R_workshop/tree/main/course_material/_slides/plots_2_facets.qmd){target="_blank"}
 :::
 :::
 
@@ -52,7 +52,7 @@ Though it may have started as statistical software, R has moved far beyond it's 
 **Oh yeah. It's all coming together.**
 
 ::: source
-[Source](https://github.com/FACE-IT-project/R_workshop/tree/main/course_material/exercises/plots_2_facets.R)
+[Source](https://github.com/FACE-IT-project/R_workshop/tree/main/course_material/exercises/plots_2_facets.R){target="_blank"}
 :::
 :::
 
@@ -60,11 +60,11 @@ Though it may have started as statistical software, R has moved far beyond it's 
 **Plotting 3: Colours**
 
 ::: slides
-[Slides](https://face-it-project.github.io/R_workshop/course_material/_slides/plots_3_colours.html)
+[Slides](https://face-it-project.github.io/R_workshop/course_material/_slides/plots_3_colours.html){target="_blank"}
 :::
 
 ::: source
-[Source](https://github.com/FACE-IT-project/R_workshop/tree/main/course_material/_slides/plots_3_colours.qmd)
+[Source](https://github.com/FACE-IT-project/R_workshop/tree/main/course_material/_slides/plots_3_colours.qmd){target="_blank"}
 :::
 :::
 
@@ -72,7 +72,7 @@ Though it may have started as statistical software, R has moved far beyond it's 
 **It's a colourful life.**
 
 ::: source
-[Source](https://github.com/FACE-IT-project/R_workshop/tree/main/course_material/exercises/plots_3_colours.R)
+[Source](https://github.com/FACE-IT-project/R_workshop/tree/main/course_material/exercises/plots_3_colours.R){target="_blank"}
 :::
 :::
 

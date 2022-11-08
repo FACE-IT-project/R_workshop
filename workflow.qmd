@@ -58,6 +58,21 @@ It is recommend that for each workshop session you start a new script (in the **
 
 Below we will learn how to import the file `laminaria.csv` into R, assign it to a dataframe named `laminaria`, and spend a while looking it over. These data reflect results of a sampling campaign on one of the species of kelps (*Laminaria pallida*) in the Western Cape designed to find the morphometric properties of populations at different sites. We visited 13 different locations along the Cape Peninsula (`site`), and at each site, collected *ca.* 13 specimens of the largest kelps we could find. We then brought the kelps back to the shore and measured/calculated nine morphometric properties of the plants (*e.g.* the mass of the fronds (`blade_weight`), the frond length (`blade_length`), *etc.*).
 
+ (click your cursor next to a bracket and push the right arrow and you will see its partner bracket highlighted). We can execute R code directly from the Source Editor. Try the following (for Windows machines; for Macs replace **Ctrl** with **Cmd**):
+
+-   Execute a single line (Run icon or **Ctrl+Enter**). Note that the cursor can be anywhere on the line and one does not need to highlight anything --- do this for the code on line 2
+-   Execute multiple lines (Highlight lines with the cursor, then Run icon or **Ctrl+Enter**) --- do this for line 3 to 6
+-   Execute the whole script (Source icon or **Ctrl+Shift+Enter**)
+
+Now, try changing the x and/or y axis labels on line 18 and re-run the script.
+
+Now let us save the program in the **Source Editor** by clicking on the file symbol (note that the file symbol is greyed out when the file has not been changed since it was last saved).
+
+At this point, it might be worth thinking a bit about what the program is doing. R requires one to think about what you are doing, not simply clicking buttons like in some other software systems which shall remain nameless for now... Scripts execute sequentially from top to bottom. Try and work out what each line of the program is doing and discuss it with your neighbour. Note, if you get stuck, try using R's help system; accessing the help system is especially easy within RStudio --- see if you can figure out how to use that too.
+
+> **Comments**\
+> The hash (`#`) tells R not to run any of the text on that line to the right of the symbol. This is the standard way of commenting R code; it is VERY good practice to comment in detail so that you can understand later what you have done.
+
 ### Reading data into R
 
 We will now see how easy it is to read data into R. R will read in many types of data, including spreadsheets, text files, binary files and files from other statistical packages and software.
@@ -142,6 +157,8 @@ laminaria <- read_csv2("data/laminaria.csv")
 > **Managing variables**\
 > It is good practice to remove variables from memory that you are not using, especially if they are large.
 
+	
+At this point, it might be worth thinking a bit about what the program is doing. R requires one to think about what you are doing, not simply clicking buttons like in some other software systems which shall remain nameless for now... Scripts execute sequentially from top to bottom. Try and work out what each line of the program is doing and discuss it with your neighbour. Note, if you get stuck, try using R's help system; accessing the help system is especially easy within RStudio --- see if you can figure out how to use that too.
 
 ## R Workflow - II
 

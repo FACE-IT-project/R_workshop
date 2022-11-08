@@ -8,6 +8,7 @@ $font-family-sans-serif: "Raleway", sans-serif !default;
 $link-color: #4472c4;
 $code-color: #008980;
 
+
 /*-- scss:rules --*/
 
 .application-exercise {
@@ -18,7 +19,6 @@ $code-color: #008980;
   background: #ffffff 5px center/3em no-repeat;
   background-image: url("style/icons/application-exercise.png");
 }
-
 .application-exercise:before {
   content: "Application exercise: ";
   clear: right;
@@ -26,7 +26,6 @@ $code-color: #008980;
   font-weight: bold;
   color: #80D4E6;
 }
-
 
 .slides {
   padding: 0em 1em 0em 2em;
@@ -40,7 +39,6 @@ $code-color: #008980;
   left: 5px;
   position: absolute;
 }
-
 
 .reading {
   padding: 1em 1em 1em 4em;
@@ -105,7 +103,6 @@ $code-color: #008980;
   position: absolute;
 }
 
-
 .lab{
   padding: 1em 1em 1em 4em;
   margin-bottom: 10px;
@@ -150,7 +147,6 @@ $code-color: #008980;
   position: absolute;
 }
 
-
 .tutorial{
   padding: 1em 1em 1em 4em;
   margin-bottom: 10px;
@@ -160,7 +156,6 @@ $code-color: #008980;
   background-image: url("style/icons/tutorial.png");
 }
 
-
 .exam{
   padding: 1em 1em 1em 4em;
   margin-bottom: 10px;
@@ -169,7 +164,6 @@ $code-color: #008980;
   background: #ffffff 5px center/3em no-repeat;
   background-image: url("style/icons/exam.png");
 }
-
 
 .rstudio-cloud {
   padding: 1em 1em 1em 4em;

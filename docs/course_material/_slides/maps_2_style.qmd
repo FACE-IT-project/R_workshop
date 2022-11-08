@@ -6,7 +6,7 @@ format:
     # slide-number: true
     # show-slide-number: print
     # preview-links: true
-    theme: FACE-IT.scss
+    theme: FACE-IT_pres.scss
     self-contained: true
     transition: slide
 editor: source
