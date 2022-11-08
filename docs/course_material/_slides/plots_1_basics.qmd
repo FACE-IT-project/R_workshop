@@ -12,6 +12,10 @@ format:
 editor: source
 ---
 
+# Basics of **`ggplot2`** {background-color="#008980" style="text-align: center"}
+
+*Robert Schlegel*
+
 ```{r plots-1-opts, echo=FALSE}
 knitr::opts_chunk$set(
   warning = FALSE, 
@@ -19,10 +23,6 @@ knitr::opts_chunk$set(
   echo = TRUE
 )
 ```
-
-# Basics of **`ggplot2`** {background-color="#008980" style="text-align: center"}
-
-*Robert Schlegel*
 
 ## Problem
 
