@@ -2,6 +2,7 @@
 title: "GitHub with RStudio"
 editor: source
 sidebar: false
+link-external-newwindow: true
 ---
 
 It may seem like a detour to be setting up a [GitHub](https://github.com/) account on our way to an **R** workshop, but this online tool is centrally important to the best practices for working in RStudio, as we shall see below. If you already have a GitHub account, wonderful! Much of the following information is probably already known to you. So rather spend this time helping the people next to you through the process. Much of the content in this module is taken from the wonderful online book [Happy Git and GitHub for the useR](https://happygitwithr.com/index.html), which provides a much more in-depth view of what Git is, the many ways we can use it, and many tips and tricks for any errors encountered below. For practical purposes, in this module we are going to focus directly on what we need to know to connect RStudio to GitHub in order to manage RStudio Projects.
@@ -168,17 +169,21 @@ The process of uploading the changes to our code to GitHub is not complex, but t
     -   This is generally used when we are collaborating with other people
     -   If you are only working by yourself, on just one computer, you won't use this often
 
+## Exercise 1
+
 ::: application-exercise
 **Push your repo from RStudio to GitHub**
 
 Using the definitions for the key-terms above successfully upload your changes to Github. Once you think you have succeeded, go to the repo page on your GitHub account and check that the changes have appeared.
 :::
 
-### More options
+## More options
 
 There are many things that can be done via Git, GitHub, and/or RStudio. We won't go into all of them here, but we will look at one example. Go to the [repository](https://github.com/FACE-IT-project/R_workshop) for this workshop and copy the 'Code' link. Start a new RStudio Project following the same steps as above but use the new link.
 
 After following the prompts it should download all of the source code for this site, and the extra course content, to your local computer. This is just one example of how we can share code and documents with a wide range of collaborators.
+
+## Exercise 2
 
 ::: application-exercise
 **Collaboration via GitHub**

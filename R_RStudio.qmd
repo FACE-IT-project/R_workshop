@@ -292,7 +292,7 @@ Below you can find the source code to some books and other links to websites abo
 **It which shall not be named**
 
 ::: slides
-[Slides](https://github.com/FACE-IT-project/R_workshop/tree/main/course_material/_slides/intro_1_base.html)
+[Slides](https://face-it-project.github.io/R_workshop/course_material/_slides/intro_1_base.html)
 :::
 
 ::: source

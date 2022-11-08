@@ -204,8 +204,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#github-and-rstudio" id="toc-github-and-rstudio" class="nav-link" data-scroll-target="#github-and-rstudio">GitHub and RStudio</a>
   <ul class="collapse">
   <li><a href="#specific-terms" id="toc-specific-terms" class="nav-link" data-scroll-target="#specific-terms">Specific terms</a></li>
-  <li><a href="#more-options" id="toc-more-options" class="nav-link" data-scroll-target="#more-options">More options</a></li>
   </ul></li>
+  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
+  <li><a href="#more-options" id="toc-more-options" class="nav-link" data-scroll-target="#more-options">More options</a></li>
+  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
   </ul>
 </nav>
     </div>
@@ -278,7 +280,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>While it is possible to connect RStudio to GitHub using the username and password we created above for GitHub (i.e.&nbsp;HTTPS connection), this quickly becomes tedious because we must provide this info every time we upload something. Rather it is better to spend a few minutes now setting up an SSH key so that we can focus more on our work, and not remembering usernames and passwords. There are best practices on the management of SSH keys (i.e.&nbsp;changing them once a year), but we won’t get into that here.</p>
 <section id="create-a-key" class="level3">
 <h3 class="anchored" data-anchor-id="create-a-key">Create a key</h3>
-<p>Open RStudio and got t: <em>Go to Tools &gt; Global Options…&gt; Git/SVN &gt; Create RSA Key…</em>. Note that if there is a file pathway in the text box above the ‘Create RSA Key…’ button this means you already have an SSH key. If not, click ‘Create’ and RStudio will generate one for you. It will prompt you for a passphrase. This isn’t necessary for now and can be skipped. If you want to create a new SSH key with a passphrase later circle back to this step. Adding a passphrase will require additional steps that are not listed below and can be found <a href="https://happygitwithr.com/ssh-keys.html">here</a>.</p>
+<p>Open RStudio and go to: <em>Tools &gt; Global Options…&gt; Git/SVN &gt; Create RSA Key…</em>. Note that if there is a file pathway in the text box above the ‘Create RSA Key…’ button this means you already have an SSH key. If not, click ‘Create’ and RStudio will generate one for you. It will prompt you for a passphrase. This isn’t necessary for now and can be skipped. If you want to create a new SSH key with a passphrase later circle back to this step. Adding a passphrase will require additional steps that are not listed below and can be found <a href="https://happygitwithr.com/ssh-keys.html">here</a>.</p>
 </section>
 <section id="add-key-to-ssh-agent" class="level3">
 <h3 class="anchored" data-anchor-id="add-key-to-ssh-agent">Add key to ssh-agent</h3>
@@ -347,22 +349,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>If you are only working by yourself, on just one computer, you won’t use this often</li>
 </ul></li>
 </ul>
+</section>
+</section>
+<section id="exercise-1" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1">Exercise 1</h2>
 <div class="application-exercise">
 <p><strong>Push your repo from RStudio to GitHub</strong></p>
 <p>Using the definitions for the key-terms above successfully upload your changes to Github. Once you think you have succeeded, go to the repo page on your GitHub account and check that the changes have appeared.</p>
 </div>
 </section>
-<section id="more-options" class="level3">
-<h3 class="anchored" data-anchor-id="more-options">More options</h3>
+<section id="more-options" class="level2">
+<h2 class="anchored" data-anchor-id="more-options">More options</h2>
 <p>There are many things that can be done via Git, GitHub, and/or RStudio. We won’t go into all of them here, but we will look at one example. Go to the <a href="https://github.com/FACE-IT-project/R_workshop">repository</a> for this workshop and copy the ‘Code’ link. Start a new RStudio Project following the same steps as above but use the new link.</p>
 <p>After following the prompts it should download all of the source code for this site, and the extra course content, to your local computer. This is just one example of how we can share code and documents with a wide range of collaborators.</p>
+</section>
+<section id="exercise-2" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2">Exercise 2</h2>
 <div class="application-exercise">
 <p><strong>Collaboration via GitHub</strong></p>
 <p>Pair up with a buddy and practice pulling each others repositories, making changes, and pushing them back. Once you are comfortable with this, find a new buddy and repeat the process.</p>
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -612,6 +620,20 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+      }
+    }
 });
 </script>
 </div> <!-- /content -->

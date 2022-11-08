@@ -1,6 +1,7 @@
 ---
 title: "workflow"
 editor: source
+link-external-newwindow: true
 ---
 
 Learning to perform analyses in R and create figures is great, but without a useful workflow we won't get far. The ideal is that we can develop good habits around which we can organise and optimise our workflows. To that end, this page lays out some thoughts on the philosophy of workflows in R. It is broken into three parts that are designed to be consider sequentially, one day at a time.
