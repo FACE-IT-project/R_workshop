@@ -49,12 +49,12 @@ website:
 format:
   html:
     theme:
-      light: [cosmo, style/dsbox.scss]
-      dark: [cosmo, style/dsbox.scss, style/dark.scss]
+      light: [cosmo, style/FACE-IT_light.scss]
+      dark: [cosmo, style/FACE-IT_light.scss, style/FACE-IT_dark.scss]
     toc: true
     code-copy: true
     code-overflow: wrap
-    mainfont: "Atkinson Hyperlegible"
+    mainfont: "Raleway"
     include-in-header: "style/fontawesome.html"
 
 freeze: auto
