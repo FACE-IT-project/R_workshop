@@ -1,0 +1,14 @@
+{
+  "hash": "0cdfee0d996a71d1603db14aad8bc592",
+  "result": {
+    "markdown": "---\ntitle: \"Wild Data\"\neditor: source\n---\n\n::: {.cell}\n\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

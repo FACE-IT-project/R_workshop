@@ -88,7 +88,7 @@ This workshop will take place from **18 November -- 28 November 2022**, **9:00--
 -   Exercise: Tidiest data
 -   -- break --
 -   Interactive Session: R workflow - III
--   Assignment: DIY data
+-   Assignment: DIY tidy data
 -   -- end --
 
 ### Day 6 *2022-11-24* -- Wild Data
@@ -101,7 +101,7 @@ This workshop will take place from **18 November -- 28 November 2022**, **9:00--
 -   -- lunch --
 -   Presentation: Guest lecture on policy briefs
 -   -- break --
--   Assignment: Source data for a policy brief topic
+-   Assignment: Choose a policy brief topic and source wild data
 -   -- end --
 
 ### Day 7 *2022-11-25* -- Recap
