@@ -76,30 +76,32 @@ This workshop will take place from **18 November -- 28 November 2022**, **9:00--
 -   Assignment: DIY maps
 -   -- end --
 
-### Day 5 *2022-11-23* -- Data
+### Day 5 *2022-11-23* -- Domestic Data
 
--   Interactive Session: Tidy data
--   Exercise: Tidy
+-   Presentation: Wrangling data
+-   Exercise: Tidy data
 -   -- break --
--   Interactive Session: Tidier data
--   Exercise: Tidier
+-   Presentation: Taming data
+-   Exercise: Tidier data
 -   -- lunch --
--   Interactive Session: Tidiest data
--   Exercise: Tidiest
+-   Presentation: Domesticating data
+-   Exercise: Tidiest data
 -   -- break --
 -   Interactive Session: R workflow - III
 -   Assignment: DIY data
 -   -- end --
 
-### Day 6 *2022-11-24* -- 
+### Day 6 *2022-11-24* -- Wild Data
 
--   
+-   Presentation: Roaming data
+-   Exercise: Wild and free
 -   -- break --
--   
+-   Presentation: Local data
+-   Exercise: Full analyses  
 -   -- lunch --
 -   Presentation: Guest lecture on policy briefs
 -   -- break --
--   Assignment: Select a policy brief topic
+-   Assignment: Source data for a policy brief topic
 -   -- end --
 
 ### Day 7 *2022-11-25* -- Recap
@@ -122,9 +124,9 @@ This workshop will take place from **18 November -- 28 November 2022**, **9:00--
 
 ### Day 0 *2022-11-28* -- Departure
 
--   Check out from accommodation by 08:00
+-   Check out of accommodation by 08:00
 
-## Acknowledements {.unnumbered}
+## Acknowledements
 
 ![](images/h2020.png){style="float: left;" fig-align="left" width="500"}
 

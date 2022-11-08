@@ -41,6 +41,7 @@ website:
         - file: plots.qmd
         - file: maps.qmd
         - file: tidy.qmd
+        - file: wild.qmd
         - file: workflow.qmd
         - file: summary.qmd
         - file: brief.qmd
