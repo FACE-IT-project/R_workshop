@@ -3,13 +3,4 @@ title: "Wild Data"
 editor: source
 ---
 
-```{r wild-opts, echo=FALSE}
-knitr::opts_chunk$set(
-  comment = "R>", 
-  warning = FALSE, 
-  message = FALSE,
-  eval = FALSE
-)
-```
-
 When we start out with the processes of finding data 'in the wild' and sourcing them it can feel very overwhelming. With a few considerations however we can drastically cut down on the feelings of uncertainty that enshroud this process. For starters, the vast majority of the environmental and biological data that we may want (on a global scale, local scale can be a bit more specific) can be found in just a handful of places. The methods for accessing these data are also not as varied as they may first appear. The two presentations+exercises in this unit will cover 1) where we may find the majority of the wild data we may need, and 2) the most common methods of accessing those data.

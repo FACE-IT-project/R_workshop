@@ -77,7 +77,7 @@ This workshop will take place from **18 November -- 28 November 2022**, **9:00--
 -   Assignment: DIY maps
 -   -- end --
 
-### Day 5 *2022-11-23* -- Domestic Data
+### Day 5 *2022-11-23* -- Tidy Data
 
 -   Presentation: Wrangling data
 -   Exercise: Tidy data

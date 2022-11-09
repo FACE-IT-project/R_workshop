@@ -1,5 +1,5 @@
 ---
-title: "workflow"
+title: "Workflows in R"
 editor: source
 link-external-newwindow: true
 ---

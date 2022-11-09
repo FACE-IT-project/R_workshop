@@ -1,16 +1,7 @@
 ---
-title: "Domestic Data"
+title: "Tidy Data"
 editor: source
 ---
-
-```{r tidy-opts, echo=FALSE}
-knitr::opts_chunk$set(
-  comment = "R>", 
-  warning = FALSE, 
-  message = FALSE,
-  eval = FALSE
-)
-```
 
 The [Tidyverse](http://tidyverse.org) is a collection of R packages that adhere to the *tidy data* principles of data analysis and graphing. The purpose of these packages is to make working with data more efficient. The core Tidyverse packages were created by Hadley Wickham, but over the years others have added more to the collective, which has significantly expanded our data analytical capabilities through improved ease of use and efficiency. The Tidyverse packages can be loaded collectively by calling the **`tidyverse`** package, as we have seen throughout this workshop.
 
