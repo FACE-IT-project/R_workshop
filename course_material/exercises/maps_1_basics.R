@@ -5,40 +5,41 @@
 
 # Libraries ---------------------------------------------------------------
 
-library(tidyverse)
-library(palmerpenguins)
+# Which libraries should be loaded?
 
 
 # Data --------------------------------------------------------------------
 
-# Load the dataset into the local environment
-penguins <- penguins
+# Call the global data to the environment
+map_data_world <- map_data("world")
 
 
 # Example -----------------------------------------------------------------
 
 # The basic plot
-ggplot(data = penguins,
-       aes(x = body_mass_g, y = bill_length_mm)) +
-  geom_point(aes(colour = species))
+map_data_world %>% 
+  filter(region == "Germany") %>% 
+  ggplot(aes(x = long, y = lat)) +
+  geom_polygon(aes(group = group))
 
 
 # Exercise 1 --------------------------------------------------------------
 
-# Create a basic plot with different x and y axes
+# Create maps of four regions and combine
 
 
 # Exercise 2 --------------------------------------------------------------
 
-# Change the aes() arguments
+# Create a map that benefits from a scale bar and add a North arrow
+# Hint: use annotate() to accomplish this
 
 
 # Exercise 3 --------------------------------------------------------------
 
-# Change the labels
+# Create a meaningful inset map
 
 
 # BONUS -------------------------------------------------------------------
 
-# Create a ridgeplot
+# Plot maps using Google Maps
 
