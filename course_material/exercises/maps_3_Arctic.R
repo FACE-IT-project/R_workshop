@@ -5,40 +5,38 @@
 
 # Libraries ---------------------------------------------------------------
 
-library(tidyverse)
-library(palmerpenguins)
+# ???
 
 
 # Data --------------------------------------------------------------------
 
-# Load the dataset into the local environment
-penguins <- penguins
+# ???
 
 
 # Example -----------------------------------------------------------------
 
-# The basic plot
-ggplot(data = penguins,
-       aes(x = body_mass_g, y = bill_length_mm)) +
-  geom_point(aes(colour = species))
+# The basic map
+ggplot() +
+  borders(fill = "grey70", colour = "black") +
+  coord_polar()
 
 
 # Exercise 1 --------------------------------------------------------------
 
-# Create a basic plot with different x and y axes
+# Directly access the shape of a region near a pole and plot with polar projection
 
 
 # Exercise 2 --------------------------------------------------------------
 
-# Change the aes() arguments
+# Add a data layer to a polar projection plot
 
 
 # Exercise 3 --------------------------------------------------------------
 
-# Change the labels
+# Use ggoceanmaps to create a similar plot
 
 
 # BONUS -------------------------------------------------------------------
 
-# Create a ridgeplot
+# Create a workflow for creating a polar plot for any region
 

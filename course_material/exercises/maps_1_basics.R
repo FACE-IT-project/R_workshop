@@ -16,7 +16,7 @@ map_data_world <- map_data("world")
 
 # Example -----------------------------------------------------------------
 
-# The basic plot
+# The basic map
 map_data_world %>% 
   filter(region == "Germany") %>% 
   ggplot(aes(x = long, y = lat)) +
