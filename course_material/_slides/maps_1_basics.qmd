@@ -29,9 +29,9 @@ knitr::opts_chunk$set(
 
 ## Solution
 
-* **`tidyverse`** contains a wealth of mapping support
-* **`ggsn`** provides code for scale bars etc.
-* Maps are created the same as basic plots, so can be combined
+* **`tidyverse`** contains default mapping support
+* **`ggsn`** provides code for scale bars
+* Maps are the same as basic plots, so can be combined as `grob`'s
 
 ## Setup
 
@@ -62,7 +62,7 @@ green_1 <- ggplot() +
 green_1
 ```
 
-## Regions
+## Extract a region
 
 ```{r}
 map_data('world') %>% 
@@ -71,17 +71,18 @@ map_data('world') %>%
   arrange(region)
 ```
 
-## Direct access
+## Extract a region
 
 ```{r}
 map_data_green <- map_data('world') %>% 
-  filter(region == "Greenland")
+  filter(region == "Greenland") # Why '==' and not '='?
+head(map_data_green)
 ```
 
 ## A new concept?
 
--   A basic map is the same as a scatterplot with an x and y axis. 
--   Compare a dot plot of penguin weight data against a dot plot of the coastline of Greenland.
+-   A basic map is the same as a scatterplot with an x and y axis
+-   Compare a dot plot of penguin weight data against a dot plot of the coastline of Greenland
 
 ::: columns
 ::: {.column}
@@ -116,35 +117,28 @@ ggplot(data = map_data_green,
 ```{r}
 green_2 <- ggplot(data = map_data_green, aes(x = long, y = lat)) +
   geom_polygon(aes(group = group), # What is this doing?
-               fill = "green", colour = "black") # Note these are outside of aes() 
+               fill = "chartreuse4", colour = "black") # Note these are outside of aes() 
 green_2
 ```
 
 ## Specific labels
 
--   A map is almost always going to need some labels and other visual cues. 
--   The following code chunk shows how this differs if we want to add just one label at a time. 
--   This can be useful if each label needs to be different from all other labels for whatever reason. 
--   We may also see that the text labels we are creating have `\n` in them. 
--   When R sees these two characters together like this it reads this as an instruction to return down a line.
+-   A map is almost always going to need some labels and other visual cues
+-   The following code chunk shows how we can add one label at a time
+-   This is useful if each label needs to be different from the others
+-   We also see that some text labels have `\n` in them
+-   This is how we tell R to return down a line
 
 ## Specific labels
 
 ```{r}
 green_3 <- green_2 +
     annotate("text", label = "Greenland", 
-           x = -40, y = 75.0, 
-           size = 7.0, 
-           fontface = "bold.italic") +
+           x = -40, y = 75.0, size = 7.0, fontface = "bold.italic") +
   annotate("text", label = "North\nAtlantic\nOcean", 
-           x = -20, y = 64.0, 
-           size = 5.0, 
-           angle = 330, 
-           colour = "navy") +
+           x = -20, y = 64.0, size = 5.0,  angle = 330, colour = "navy") +
   annotate("label", label = "Baffin\nBay", 
-           x = -62, y = 70, 
-           size = 5.0,
-           fill = "springgreen") +
+           x = -62, y = 70, size = 5.0, fill = "springgreen") +
   annotate("segment", 
            x = -50, xend = -30, y = 73, yend = 73)
 green_3
@@ -157,6 +151,8 @@ green_3
 -   There are heaps of options so we'll just focus on one of them for now
 -   We may see the list of available North arrow shapes by running `northSymbols()`.
 
+## Scale bars
+
 ```{r}
 green_4 <- green_3 +
   scalebar(data = map_data_green, location = "bottomleft", # Set location of bar,
@@ -167,11 +163,10 @@ green_4
 
 ## Insetting
 
--   To inset a map we must learn how to create a 'grob'
 -   **`ggplot2`** objects are different from normal objects (i.e. dataframes)
 -   They have their own way of storing and accessing data
--   To convert to the **`ggplot2`** format we convert it into a 'grob' 
--   Once converted, we may then plop it onto our figure/map wherever we please
+-   To convert to the **`ggplot2`** format we convert it into a `grob` 
+-   Once converted, we may add anything to our figure/map wherever we please
 -   Both of these steps are accomplished with the single function `annotation_custom()`
 -   This is also a good way to add logos or any other sort of image to a map/figure
 -   It's even possible to add GIFs (see Bonus content)
@@ -179,7 +174,10 @@ green_4
 ## Insetting
 
 ```{r}
-earth_2 <- earth_1 + theme_void()
+earth_2 <- earth_1 + 
+  geom_rect(aes(xmin = -75, xmax = -10, ymin = 58, ymax = 85),
+            fill = NA, colour = "red") +
+  theme_void() # What does this do?
 earth_2
 ```
 
@@ -203,13 +201,14 @@ green_final <- green_5 +
   scale_y_continuous(breaks = seq(60, 80, 10),
                      labels = c("60°N", "70°N", "80°N"),
                      position = "right") +
-  labs(x = "", y = "")
+  labs(x = "", y = "") +
+  theme_bw()
 green_final
 ```
 
 ## Rounding it out
 
--   And lastly we save the fruits of our labours.
+-   And lastly we save the fruits of our labours
 
 ```{r maps-final-save, eval=FALSE}
 ggsave(plot = sa_final, filename = "figures/green_final.pdf", 

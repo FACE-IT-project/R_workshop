@@ -26,12 +26,13 @@ map_data_world %>%
 # Exercise 1 --------------------------------------------------------------
 
 # Create maps of four regions and combine
+# Use a mix of cropping and direct access 
 
 
 # Exercise 2 --------------------------------------------------------------
 
 # Create a map that benefits from a scale bar and add a North arrow
-# Hint: use annotate() to accomplish this
+# Hint: use annotate("segment", ...) to accomplish this
 
 
 # Exercise 3 --------------------------------------------------------------
