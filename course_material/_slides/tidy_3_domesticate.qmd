@@ -2,10 +2,6 @@
 # title: Domesticating data
 format:
   revealjs:
-    # logo: ../logo/FACE-IT_Logo_900.png
-    # slide-number: true
-    # show-slide-number: print
-    # preview-links: true
     theme: FACE-IT_pres.scss
     self-contained: true
     transition: slide
@@ -25,21 +21,23 @@ knitr::opts_chunk$set(
 )
 ```
 
+## Problem
+
+-   How do we summarise our data if they have multiple categories?
+
+## Solution
+
+-   `group_by()` provides powerful options for data analysis
+
 ## Setup
 
 For this presentation we will only need the **`tidyverse`** package.
 
 ```{r}
-library(tidyverse)
+library(tidyverse) # All-in-one
 ```
 
-## Problem
-
--   
-
-## Solution
-
--   
+## The next level
 
 In the previous session we covered the five main transformation functions one would use in a typical tidy workflow. But to really unlock their power we need to learn how to use them with `group_by()`. This is how we may calculate statistics based on the different grouping variables within our data, such as sites or species or soil types, for example. Let's begin by loading the **`tidyverse`** package and the SACTN data if we haven't already.
 
@@ -147,7 +145,8 @@ We can do some rather imaginative things when we combine all of these tools toge
 ```{r tidiest-group-6, eval=FALSE}
 SACTN_30_years <- SACTN %>%
   group_by(site, src) %>%
-  filter(n() > 360)
+  filter(n() > 360) %>% 
+  ungroup()
 ```
 
 Or what if we wanted to calculate anomaly data for each site?
@@ -327,7 +326,6 @@ SACTN %>%
   geom_density(fill = "seagreen", alpha = 0.6) +
   labs(x = "Temperature (°C)")
 ```
-
 
 ### Select observations (rows) by number with `slice()`
 
