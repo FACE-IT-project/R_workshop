@@ -1,6 +1,6 @@
 ---
 title: "Bonus"
-editor: visual
+editor: source
 ---
 
 ```{r bonus-opts, echo=FALSE}
@@ -108,6 +108,7 @@ system.time(saveGIF(animate.walk.plot(), interval = 0.2,
 ```
 
 # Basic statistics
+
 In this quick tutorial we are going to look at how to perform some basic statistical tests. Before we do so, let's remind ourselves how to test the two most common assumptions we must make for any comparison of means test. These are kurtosis and homoscedasticity. Or rather in common parlance, normality of distribution and equality of variance.
 
 We will use the `laminaria` and `SACTN` data for our examples below in order to practice running the numbers.
@@ -139,7 +140,7 @@ lam_2 <- laminaria %>%
 
 To test the normality of the distribution of a set of data we may use the `shapiro.test()` function. This produces a 'w' score as well as a *p*-value, but for now we are only interested in the later. Anything above *p* = 0.05 may considered to be normally distributed.
 
-To test for similarity of variance we will run the `var()` function. As long as no group of data has ~4 times greater variance than any other group we are comparing it against it will pass this test.
+To test for similarity of variance we will run the `var()` function. As long as no group of data has \~4 times greater variance than any other group we are comparing it against it will pass this test.
 
 With the help of the `%>%` we may test all of our assumptions in one pass.
 
@@ -182,8 +183,8 @@ Happily the Laminaria data, when separated by region, pass our assumption tests.
 wilcox.test(total_length ~ region, data = laminaria)
 ```
 
-
 ## Comparison of multiple means
+
 The function we use to compare multiple means that pass our assumption tests (parametric data) are `aov()` for an ANOVA and for non-parametric data we use `kruskal.test()` for a Kruskal-Wallis test. To see the difference between the individual factor levels within our multiple means comparisons tests we use `TukeyHSD()` for parametric data and `kruskalmc()` for non-parametric data. Note that `aov()` does not by defalut output the information we are after so we wrap it inside of `summary()`. Note that the Laminaria and SACTN data violate our assumptions. We should therefore not perform paramteric tests on them. We do so below to highlight how these tests work should one have parametric data to use.
 
 ```{r}
@@ -242,7 +243,7 @@ ggplot(data = laminaria, aes(x = stipe_mass, y = stipe_diameter)) +
 
 # Data mangling
 
-This script shows the steps I took to prepare the mangled dataframes used in the tidy data chapters in the workshop GitBook.
+This script shows the steps I took to prepare the mangled dataframes used in the tidy data examples in this workshop.
 
 ```{r mangle-load}
 # Load libraries
@@ -250,7 +251,7 @@ library(tidyverse)
 library(lubridate)
 
 # Load data
-load("../data/SACTNmonthly_v4.0.RData")
+sst_NOAA <- read_csv("course_material/data/sst_NOAA.csv")
 ```
 
 ## Mangle
@@ -259,39 +260,39 @@ And now begins the mangling.
 
 ```{r mangle-main, eval=FALSE}
 # Sites to extract
-sites <- c("Port Nolloth", "Umtentweni", "Amanzimtoti")
+sites <- c("Med", "NW_Atl", "WA")
 
 # Create tidy base
-SACTN_tidy <- SACTNmonthly_v4.0 %>%
-  mutate(year = year(date)) %>%
+OISST_tidy <- sst_NOAA %>%
+  mutate(year = year(t)) %>%
   filter(site %in% sites,
-         year %in% c(1998, 1999)) %>%
+         year %in% c(2008, 2009)) %>%
   select(-year)
 
 # First mangle
   # Normal tidy data
-SACTN1 <- SACTN_tidy
+OISST1 <- OISST_tidy
 
 # Second mangle
-SACTN2 <- SACTN_tidy %>%
-  spread(key = src, value = temp)
+OISST2 <- OISST_tidy %>%
+  pivot_wider(names_from = site, values_from = temp)
 
 # Third mangle
-SACTN3 <- SACTN_tidy %>%
-  gather(depth, type, key = "var", value = "val")
+OISST3 <- OISST_tidy %>%
+  mutate(t = as.character(t)) %>% 
+  pivot_longer(cols = c(site, t), names_to = "idx", values_to = "val") %>% 
+  dplyr::select(idx, val, temp)
 
 ## Fourth two part mangle
 # A
-SACTN4a <- SACTN_tidy %>%
-  mutate(date = as.character(date)) %>%
-  unite(index, site, src, sep = "/ ") %>%
-  select(-depth, -type)
+OISST4a <- OISST_tidy %>%
+  mutate(t = as.character(t)) %>%
+  unite(index, site, t, sep = " ")
 
 # B
-SACTN4b <- SACTN_tidy %>%
-  mutate(date = as.character(date),
-         site = as.character(site)) %>%
-  separate(col = date, into = c("year", "month", "day"), sep = "-") %>%
+OISST4b <- OISST_tidy %>%
+  mutate(t = as.character(t)) %>%
+  separate(col = t, into = c("year", "month", "day"), sep = "-") %>%
   select(-temp)
 ```
 
@@ -300,7 +301,7 @@ SACTN4b <- SACTN_tidy %>%
 Here we save all five of the newly mangled dataframes as one .RData object for ease of loading in the tutorial.
 
 ```{r, eval=FALSE}
-save(list = c("SACTN1", "SACTN2", "SACTN3", "SACTN4a", "SACTN4b"), file = "data/SACTN_mangled.RData")
+save(list = c("OISST1", "OISST2", "OISST3", "OISST4a", "OISST4b"), file = "course_material/data/OISST_mangled.RData")
 ```
 
 # Dates
@@ -454,7 +455,6 @@ Jip. Simple as that.
 image_write(animation, "../BONUS/carlton.gif")
 ```
 
-
 # Mapping yourself
 
 Yes friends, it is true. Through the magic of the evil empire that is Google, we may indeed map ourselves. Because Google is kind enough to allow us to access our own data, we may see every single thing it records about where we go, what we do, what we say, etc. Isn't that exciting! For today we are only interested in the data Google collects about where we have gone. But don' worry, we aren't going to be zooming in on the data very closely, so the person sitting next to you won't be able to tell if you've been going anywhere particularly naughty.
@@ -487,7 +487,7 @@ library(ggmap)
 source("markdown/mapping_yourself_func.R")
 ```
 
-To download your Google location history please sign in to your Google account (if you aren't already) and then click the following link: <https://takeout.google.com/settings/takeout>. Once you are at the download page please make sure you select _only_ “location history” for download, otherwise you will be waiting a long time for the download to finish.
+To download your Google location history please sign in to your Google account (if you aren't already) and then click the following link: <https://takeout.google.com/settings/takeout>. Once you are at the download page please make sure you select *only* "location history" for download, otherwise you will be waiting a long time for the download to finish.
 
 The format of the data you will download is .json. Don't worry about this as we now have the `jsonlite` package to do the hard work for us. It may take your computer a couple of minutes to load your data into R. Some of your files may be quite large if Google has been tracking you more closely...
 
@@ -501,6 +501,7 @@ load("../data/location_history.RData")
 ```
 
 ## Check the data
+
 With our Google location history data loaded into R we may now start to clean it up so we can create maps and perform analyses.
 
 ```{r}
@@ -677,7 +678,6 @@ morph_frames <- image_morph(c(oldlogo, newlogo), frames = 100)
 morph_animate <- image_animate(frames, fps = 20)
 ```
 
-
 ## Morph save
 
 ```{r}
@@ -686,9 +686,9 @@ image_write(morph_animate, "../BONUS/morph.gif")
 
 # Multivariate stats
 
-> To err is human, but to really foul things up you need a computer.   
+> To err is human, but to really foul things up you need a computer.
 >
-> ---_Paul R. Ehrlich_
+> ---*Paul R. Ehrlich*
 
 In this brief tutorial we are going to walk through the steps necessary to perform a most basic ordination. We will be using MDS for this as it produces, in my opinion, the most straight forward results. There is of course an entire school of thought on this and I, a mere climate scientists, am in no way an authoritative voice on the matter.
 
@@ -726,7 +726,7 @@ dune_MDS_2 <- metaMDS(dune_dist)
 
 ## Stress
 
-No, not that stress. We are talking about the stress of the MDS model now. This is an important value to check. If the stress is high (>0.3) the MDS model is doing a poor job of modeling the dissimilarities in the data. If it is low (<0.1) the model is doing a very good job of displaying the relationships within the data. To check the stress of our results we use the following line of code.
+No, not that stress. We are talking about the stress of the MDS model now. This is an important value to check. If the stress is high (\>0.3) the MDS model is doing a poor job of modeling the dissimilarities in the data. If it is low (\<0.1) the model is doing a very good job of displaying the relationships within the data. To check the stress of our results we use the following line of code.
 
 ```{r}
 # Default MDS settings
@@ -764,7 +764,7 @@ dune_envfit <- envfit(dune_MDS_2 ~ Moisture + Use, data = dune.env)
 dune_envfit
 ```
 
-In the printout above we see the results for the R^2 (here r2) and _p_-values for the fit of each abiotic variable to the species assemblage data. Which relationships are significant? Which variable(s) appears to best explain the variance in the species assemblages? Which of the axes of the MDS have the strongest relationship with which variable?
+In the printout above we see the results for the R\^2 (here r2) and *p*-values for the fit of each abiotic variable to the species assemblage data. Which relationships are significant? Which variable(s) appears to best explain the variance in the species assemblages? Which of the axes of the MDS have the strongest relationship with which variable?
 
 To plot the results of our fitted abiotic variables on top of our species MDS we need to quickly prep it to play nice with **`ggplot2`** and then we need only append a couple of lines onto the chunk we wrote to display our MDS results.
 
@@ -870,7 +870,7 @@ anosim(dune_dist, dune_grp)
 
 # R Markdown
 
-The workshop pdf we have been using for the last three days is actually produced from R Markdown and you may view the R Markdown document (the .Rmd file) to see all of the code that created this pdf in its native state. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. R Markdown is based on the language Markdown, which is another computer language, somewhere in between \LaTeX\ and Microsoft Word. R Markdown differs from Markdown in that it is also able to understand the R code we give it. Furthermore, RStudio has built into it the capabilities necessary to use R Markdown 'out of the box'. For more details on using R Markdown see <http://rmarkdown.rstudio.com>. In order to use this tutorial effectively, please examine the R Markdown file ('Intro_R_2017.Rmd') in conjunction with the output document ('Intro_R_2017.pdf'). If you double click on the 'Intro_R_2017.Rmd' file it will open in the RStudio editor.
+The workshop pdf we have been using for the last three days is actually produced from R Markdown and you may view the R Markdown document (the .Rmd file) to see all of the code that created this pdf in its native state. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. R Markdown is based on the language Markdown, which is another computer language, somewhere in between \LaTeX and Microsoft Word. R Markdown differs from Markdown in that it is also able to understand the R code we give it. Furthermore, RStudio has built into it the capabilities necessary to use R Markdown 'out of the box'. For more details on using R Markdown see <http://rmarkdown.rstudio.com>. In order to use this tutorial effectively, please examine the R Markdown file ('Intro_R\_2017.Rmd') in conjunction with the output document ('Intro_R\_2017.pdf'). If you double click on the 'Intro_R\_2017.Rmd' file it will open in the RStudio editor.
 
 ## Quick examples
 
@@ -878,7 +878,7 @@ Below is just a quick overview of the many common things one will need to know t
 
 ### Text
 
-This is text in _italics_.
+This is text in *italics*.
 
 And this text is in **bold**.
 
@@ -903,8 +903,6 @@ library(ggmap)
 You can also embed R output directly into sentences as in this example:
 
 Some site details are in this list:
-
-
 
 ### Tables
 
@@ -947,8 +945,8 @@ ggmap(cape_point) +
 
 Notice above how the first line specifying the start of the R code includes some specifications with regards to the size of the figure, its caption, etc. Note too that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot. The options `results = TRUE`, `message = TRUE` and `warning = TRUE` have similar functions. Info on the other code chunk options can be found at the [R Markdown website](http://rmarkdown.rstudio.com/authoring_rcodechunks.html) or in the Cheatsheets and other documentation accessible via the RStudio 'Help' in the menu bar.
 
-> HTML hyperlinks  
-See how the code above also demonstrates how to embed links to external websites.
+> HTML hyperlinks\
+> See how the code above also demonstrates how to embed links to external websites.
 
 ### References
 
@@ -961,6 +959,5 @@ Even though we may immediately begin authoring documents with RStudio, we are li
 Whether or not you have 'LaTeX' installed, when you click the **Knit** button (with the option to create multiple document kinds) a document will be generated that includes both content as well as the output of any embedded R code chunks (portions of R code surrounded by code that denotes the R commands) within the document. R code chunks can be used to render R output into documents or to simply display code for illustration, as outlined above.
 
 This is a terribly basic demonstration, but since beautiful documentation already exists I suggest you go and find the necessary examples on the R Markdown website indicated above for a more in-depth account of how to use it.
-
 
 # References

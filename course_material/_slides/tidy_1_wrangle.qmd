@@ -16,11 +16,9 @@ editor: source
 knitr::opts_chunk$set(
   warning = FALSE, 
   message = FALSE,
-  echo = TRUE,
-  eval = FALSE
+  echo = TRUE
 )
 ```
-
 
 ## Problem
 
@@ -52,20 +50,20 @@ But what exactly are **tidy data**?  It is not just a a buzz word, there is a re
 
 
 ```{r tidy-structure, echo = FALSE, out.width = "100%", fig.align = "center", fig.cap = "Following three rules make a dataset tidy --- variables are in columns, observations are in rows, and values are in cells. Reproduced from [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html)"}
-knitr::include_graphics("figures/tidy-1.png")
+knitr::include_graphics("slide_images/tidy-1.png")
 ```
 
 One will generally satisfy these three rules effortlessly simply by never putting more than one dataset in a file, and never putting more (or less) than one variable in the same column. We will go over this several more times today so do not fret if those guidelines are not immediately clear.
 
-## tidy workflow
+## Tidy workflow
 
 The tidying of ones data should be the second step in any workflow, after the loading of the data.
 
 ```{r tidy, echo = FALSE, out.width = "100%", fig.align = "center", fig.cap = "Data tidying in the data processing pipeline. Reproduced from [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html)"}
-knitr::include_graphics("figures/data-science-wrangle.png")
+knitr::include_graphics("slide_images/data-science-wrangle.png")
 ```
 
-## the basics
+## The basics
 
 -   To illustrate the implementation of this three part definition in a workflow we are going to learn how to manipulate a non-tidy dataset into a tidy one
 -   We will use the NOAA OISST data for the three time series from 2008 - 2009, with some notable (untidy) changes 
@@ -80,7 +78,7 @@ knitr::include_graphics("figures/data-science-wrangle.png")
 -   Some are easier to tidy than others
 
 ```{r tidy-data-load}
-load("data/SACTN_mangled.RData")
+load("../data/OISST_mangled.RData")
 ```
 
 ```{r tidy-data-peek, eval=FALSE}
@@ -101,8 +99,8 @@ SACTN4b
 -   Making a time series plot, for example
 
 ```{r tidy-1}
-ggplot(data = SACTN1, aes(x = date, y = temp)) +
-  geom_line(aes(colour = site, group = paste0(site, src))) +
+ggplot(data = OISST1, aes(x = t, y = temp)) +
+  geom_line(aes(colour = site)) +
   labs(x = "", y = "Temperature (°C)", colour = "Site") +
   theme_bw()
 ```
@@ -116,22 +114,31 @@ Before *tidy* became the adjective used to describe neatly formatted data, peopl
 
 As we sit here and read through these examples it may seem odd that so much effort is being spent on something so straightforward as tidy data. Surely this is too obvious to devote an entire day of work to it? Unfortunately not. As we go out into the wild world of 'wild data', we tend to find that very few datasets (especially those collected by hand) are tidy. Rather they are plagued by any number of issues. The first step then for tidying up the data are to have a look at them and discern what are the observations that were made/recorded, and what are the variables within those observations. Let's have a look now at `OISST2` for an example of what *wide* data looks like, and how to fix it.
 
-### `pivot_longer()`
+## When data are too wide
 
-In `OISST2` we can see that the `src` column has been removed and that the temperatures are placed in columns that denote the collecting source. This may at first seem like a reasonable way to organise these data, but it is not tidy because the collecting source is one variable, and so should not take up more than one column. We need to `gather()` these source columns back together. We do this by telling `gather()` what the names of the columns are we want to squish together. We then tell it the name of the 'key' column. This is the column that will contain all of the old column names we are gathering. In this case we will call it 'date'. The last piece of this puzzle is the 'value' column. This is where we decide what the name of the column will be for values we are gathering up. In this case we will name it 'temp', because we are gathering up the temperature values that were incorrectly spread out by month.
+-   In `OISST2` we can see that the `site` column has been removed
+-   Temperatures are placed in columns that denote the site
+-   This may seem like a reasonable organisation, but it is not tidy because the collecting source is one variable and should not take up more than one column
+-   We need to `pivot_longer()` these site columns back together
+-   We do this by telling `pivot_longer()` what the names of the columns are we want to squish together
+-   We then tell it the name of the identification and value columns
 
 ```{r tidy-2, eval=FALSE}
-SACTN2_tidy <- SACTN2 %>%
-  gather(DEA, KZNSB, SAWS, key = "src", value = "temp")
+OISST2_tidy <- OISST2 %>%
+  pivot_longer(cols = c(Med, NW_Atl, WA), names_to = "site", values_to = "temp")
 ```
 
-### `pivot_wider()`
+## When data are too long
 
-Should ones data be too long, meaning when individual observations are spread across multiple rows, we will need to use `spread()` to rectify the situation. This is generally the case when we have two or more variables stored within the same column, as we may see in `OISST3`. This is not terribly common as it would require someone to put quite a bit of time into making a dataframe this way. But never say never. To spread data we first tell R what the name of the column is that contains more than one variable, in this case the 'var' column. We then tell R what the name of the column is that contains the values that need to be spread, in this case the 'val' column. Notice here that these two column names are not given in inverted commas. This is because with gather, we were creating two new columns, and so we fed them to R as character vectors (i.e. inside of inverted commas). With the spread function we are naming existing columns and so we give them to R without inverted commas.
+-   If data are too long, meaning individual observations are spread across multiple rows, we will need to use `pivot_wider()`
+-   This is generally the case when we have two or more variables stored within the same column, as we may see in `OISST3`
+-   This is not common as it requires someone to put more effort into making a dataframe this way
+-   To widen data we tell R what the name of the column is that contains more than one variable, in this case the 'idx' column
+-   We then tell R what the name of the column is that contains the values that need to be spread, in this case the 'val' column
 
 ```{r tidy-3, eval=FALSE}
-SACTN3_tidy <- SACTN3 %>% 
-  spread(key = var, value = val)
+OISST3_tidy <- OISST3 %>% 
+  pivot_wider(names_from = idx, values_from = val)
 ```
 
 ## Separating and uniting
@@ -140,34 +147,50 @@ We've now covered how to make our dataframes longer or wider depending on their 
 
 ### Separate
 
-If we look at `OISST4a` we see that we no longer have a `site` and `src` column. Rather these have been replaced by an `index` column. This is an efficient way to store these data, but it is not tidy because the site and source of each observation are separate variables. To re-create our `site` and `src` columns we must `separate()` the `index` column. First we give R the name of the column we want to separate, in this case `index`. Next we must say what the names of the new columns will be. Remember that because we are creating new column names we feed these into R within inverted commas. Lastly we should tell R how to separate the `index` column. If we look at the data we may see that the values we want to split up are separated with '/ ', so that is what we give to R. Often times the `separate()` function is able to guess correctly, but it is better to be explicit.
+-   `OISST4a` has`site` and `t` column replaced by `index`
+-   This is an efficient way to store these data, but it is not tidy because the site and source of each observation are separate variables
+-   To re-create our `site` and `t` columns `separate()` the `index` column
+-   Because we are creating new column names we tell these to R within inverted commas
+-   Lastly we should tell R how to separate the `index` column
+-   Often times the `separate()` function is able to guess correctly, but it is better to be explicit
 
 ```{r tidy-4a}
-SACTN4a_tidy <- SACTN4a %>% 
-  separate(col = index, into = c("site", "src"), sep = "/ ")
+OISST4a_tidy <- OISST4a %>% 
+  separate(col = index, into = c("site", "t"), sep = " ")
 ```
 
 ### Unite
 
-It is not uncommon that field/lab instruments split values across multiple columns while they are making recordings. I see this most often with date values. Often the year, month, and day values are given in different columns. There are uses for the data in this way, though it is not terribly tidy. We usually want the date of any observation to be shown in just one column. If we look at `OISST4b` we will see that there is a `year`, `month`, and `day` column. To `unite()` them we must first tell R what we want the united column to be labelled, in this case we will use 'date'. We then list the columns to be united, her this is `year`, `month`, and `day`. Lastly we must specify if we want the united values to have a separator between them. The standard separator for date values is '-'.
+-   It is not uncommon that field/lab instruments split values across multiple columns
+-   We see this most often with date values when the year, month, and day values are given in different columns
+-   There are uses for the data in this way, though it is not terribly tidy
+-   We usually want the date of any observation to be shown in just one column
+-   If we look at `OISST4b` we will see that there is a `year`, `month`, and `day` column
 
 ```{r tidy-4b}
-SACTN4b_tidy <- SACTN4b %>% 
-  unite(year, month, day, col = "date", sep = "-")
+OISST4b_tidy <- OISST4b %>% 
+  unite(year, month, day, col = "t", sep = "-")
 ```
 
 ## Joining
 
-We will end this session with the concept of joining two different dataframes. Remember that one of the rules of tidy data is that only one complete dataset is saved per dataframe. This rule then is violated not only when additional data are stored where they don't belong, but also when necessary data are saved elsewhere. If we look back at `OISST4a` and `OISST4b` we will see that they are each missing different columns. Were we to **join** these dataframes together they would complete each other. The `tidyverse` provides us with several methods of doing this, but we will demonstrate here only the most common technique. The function `left_join()` is so named because it joins two or more dataframes together based on the matching of columns from the left to the right. It combines values together where it sees that they match up, and adds new rows and columns where they do not.
+-   Remember that one of the rules of tidy data is that only one complete dataset is saved per dataframe
+-   This rule then is violated not only when additional data are stored where they don't belong, but also when necessary data are saved elsewhere
+-   If we look back at `OISST4a` and `OISST4b` we will see that they are each missing different columns
+-   Were we to **join** these dataframes together they would complete each other
+-   The **`tidyverse`** provides us with several methods of doing this, but we will demonstrate here only the most common technique
+-   The function `left_join()` is so named because it joins two or more dataframes together based on the matching of columns from the left to the right
+-   It combines values together where it sees that they match up, and adds new rows and columns where they do not
 
 ```{r tidy-5a, message=TRUE, warning=TRUE}
-SACTN4_tidy <- left_join(SACTN4a_tidy, SACTN4b_tidy)
+OISST4_tidy <- left_join(OISST4a_tidy, OISST4b_tidy)
 ```
 
-As we see above, if we let `left_join()` do it's thing it will make a plan for us and find the common columns and match up the values and observations for us best it thinks. It then returns a message letting us know what it's done. That is a pleasant convenience, but we most likely want to exert more control over this process than that. In order to specify the columns to be used for joining we must add one more argument to `left_join()`. The `by` argument must be fed a list of column names in inverted commas if we want to specify how to join our dataframes. Not that when we run this it does not produce a message as we have provided enough explicit information that the machine is no longer needing to think for itself.
+-   `left_join()` will often guess what we want to do and provide a message in the Console
+-   But it is better to be explicit
 
 ```{r tidy-5b, message=TRUE, warning=TRUE, eval=FALSE}
-OISST4_tidy <- left_join(OISST4a_tidy, OISST4b_tidy, by = c("site", "src", "date"))
+OISST4_tidy <- left_join(OISST4a_tidy, OISST4b_tidy, by = c("site", "t"))
 ```
 
 ## But why though?
