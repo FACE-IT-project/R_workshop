@@ -279,9 +279,10 @@ OISST2 <- OISST_tidy %>%
 
 # Third mangle
 OISST3 <- OISST_tidy %>%
-  mutate(t = as.character(t)) %>% 
-  pivot_longer(cols = c(site, t), names_to = "idx", values_to = "val") %>% 
-  dplyr::select(idx, val, temp)
+  mutate(t = as.character(t),
+         idx = 1:n()) %>% 
+  pivot_longer(cols = c(site, t), names_to = "type", values_to = "name") %>% 
+  dplyr::select(idx, type, name, temp)
 
 ## Fourth two part mangle
 # A
@@ -291,7 +292,8 @@ OISST4a <- OISST_tidy %>%
 
 # B
 OISST4b <- OISST_tidy %>%
-  mutate(t = as.character(t)) %>%
+  mutate(t = as.character(t),
+         idx = 1:n()) %>%
   separate(col = t, into = c("year", "month", "day"), sep = "-") %>%
   select(-temp)
 ```

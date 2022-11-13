@@ -22,14 +22,14 @@ knitr::opts_chunk$set(
 
 ## Problem
 
--   What actually are 'tidy data'?
+-   What actually are **tidy data**?
 -   How does one tidy data?
 -   Is there a basic approach to doing this?
 
 ## Solution
 
--   We cover the definition for tidy data here
--   We are introduced to the main functions we'll need
+-   We cover the definition for **tidy data** here
+-   We are introduced to the main functions we'll need for tidying
 -   We go over some tidy workflows to clarify
 
 ## Setup
@@ -40,22 +40,21 @@ For these slides we will only need the **`tidyverse`** package.
 library(tidyverse) # All-in-one
 ```
 
-## tidy data
+## **tidy data**
 
-But what exactly are **tidy data**?  It is not just a a buzz word, there is a real definition. In three parts, to be exact. Taken from Hadley Wickham's [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html):
+So what exactly are **tidy data**?  It is not just a a buzz word, there is a real definition. In three parts, to be exact. Taken from Hadley Wickham's [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html):
 
-> 1.  Each variable must have its own column.  
-2.  Each observation must have its own row.  
-3.  Each value must have its own cell.  
+> 1.  Each variable must have its own column  
+2.  Each observation must have its own row  
+3.  Each value must have its own cell  
 
+## **tidy data**
 
 ```{r tidy-structure, echo = FALSE, out.width = "100%", fig.align = "center", fig.cap = "Following three rules make a dataset tidy --- variables are in columns, observations are in rows, and values are in cells. Reproduced from [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html)"}
 knitr::include_graphics("slide_images/tidy-1.png")
 ```
 
-One will generally satisfy these three rules effortlessly simply by never putting more than one dataset in a file, and never putting more (or less) than one variable in the same column. We will go over this several more times today so do not fret if those guidelines are not immediately clear.
-
-## Tidy workflow
+## **tidy workflow**
 
 The tidying of ones data should be the second step in any workflow, after the loading of the data.
 
@@ -63,18 +62,22 @@ The tidying of ones data should be the second step in any workflow, after the lo
 knitr::include_graphics("slide_images/data-science-wrangle.png")
 ```
 
-## The basics
+## The basics {auto-animate=true}
 
--   To illustrate the implementation of this three part definition in a workflow we are going to learn how to manipulate a non-tidy dataset into a tidy one
--   We will use the NOAA OISST data for the three time series from 2008 - 2009, with some notable (untidy) changes 
--   The secondary purpose of these exercises is to illustrate that these steps may be done more quickly in R than excel
--   Thereby allowing for ones raw data to remain exactly how they were collected and having all of the manipulations performed on them documented in an R script
--   This is a centrally important part of reproducible research.
+To illustrate the implementation of this three part definition in a workflow we are going to learn how to manipulate a non-tidy dataset into a tidy one.
 
-## load data
+We will use NOAA OISST data for the three time series from 2008 - 2009, with some notable (untidy) changes 
+
+## The basics {auto-animate=true}
+
+The secondary purpose of these exercises is to illustrate that these steps may be done more quickly in R than excel.
+Thereby allowing for ones raw data to remain exactly how they were collected and having all of the manipulations performed on them documented in an R script.
+This is a centrally important part of reproducible research.
+
+## Load data
 
 -   Note that this loads five different objects
--   Each object contains the same data in different states of disrepair
+-   Each object contains similar data in different states of disrepair
 -   Some are easier to tidy than others
 
 ```{r tidy-data-load}
@@ -91,106 +94,194 @@ SACTN4a
 SACTN4b
 ```
 
-## `OISST1`
+## `OISST1` {auto-animate=true}
 
--   If these data look like the previous data we've used thus far that's because they are
--   These are how tidy data should look. No surprises. 
--   In fact, because these data are already tidy it is very straightforward to use them for whatever purposes we may want
--   Making a time series plot, for example
+-   These are how tidy data should look
+-   If this looks familiar, it is because they are the same data from the first exercise
+
+```{r}
+head(OISST1)
+```
+
+## `OISST1` {auto-animate=true}
 
 ```{r tidy-1}
 ggplot(data = OISST1, aes(x = t, y = temp)) +
   geom_line(aes(colour = site)) +
-  labs(x = "", y = "Temperature (°C)", colour = "Site") +
+  labs(x = NULL, y = "Temperature (°C)", colour = "Site") +
   theme_bw()
 ```
 
-> **`%>%`**  
-Remember that this funny series of symbols is the pipe operator. It combines consequetive rows of code together so that they run as though they were one 'chunk'. We will be seeing this symbol a lot today. The keyboard shortcut for `%>%` is **ctrl shift m**. 
+## Long vs wide
 
-## pivoting
+-   Generally, **tidy data** are considered **long**
+-   This is because tidy dataframes tend to be longer than they are wide (with some exceptions) 
+-   The opposite of **long** data therefore are **wide** data
+-   When one finds a dataset that is wider than long it is probably not **tidy**
 
-Before *tidy* became the adjective used to describe neatly formatted data, people used to say *long*. This is because well organised dataframes tend to always be longer than they are wide (with the exception of species assemblage data). The opposite of *long* data are *wide* data. If one ever finds a dataset that is wider than it is long then this is probably because the person that created them saved one variable across many columns. 
+## When data are too wide {auto-animate=true}
 
-As we sit here and read through these examples it may seem odd that so much effort is being spent on something so straightforward as tidy data. Surely this is too obvious to devote an entire day of work to it? Unfortunately not. As we go out into the wild world of 'wild data', we tend to find that very few datasets (especially those collected by hand) are tidy. Rather they are plagued by any number of issues. The first step then for tidying up the data are to have a look at them and discern what are the observations that were made/recorded, and what are the variables within those observations. Let's have a look now at `OISST2` for an example of what *wide* data looks like, and how to fix it.
+-   In `OISST2` we can see that temperatures are placed in columns by `site`
+-   This may seem like a reasonable organisation, but it is not **tidy** because temperature is one variable and should not take up more than one column
 
-## When data are too wide
+::: columns
+::: {.column}
+```{r, eval=FALSE}
+head(OISST2)
+```
+:::
 
--   In `OISST2` we can see that the `site` column has been removed
--   Temperatures are placed in columns that denote the site
--   This may seem like a reasonable organisation, but it is not tidy because the collecting source is one variable and should not take up more than one column
+::: {.column}
+```{r, echo=FALSE}
+head(OISST2)
+```
+:::
+:::
+
+## When data are too wide {auto-animate=true}
+
 -   We need to `pivot_longer()` these site columns back together
 -   We do this by telling `pivot_longer()` what the names of the columns are we want to squish together
--   We then tell it the name of the identification and value columns
 
-```{r tidy-2, eval=FALSE}
+```{r tidy-2}
 OISST2_tidy <- OISST2 %>%
-  pivot_longer(cols = c(Med, NW_Atl, WA), names_to = "site", values_to = "temp")
+  pivot_longer(cols = c(Med, NW_Atl, WA), 
+               names_to = "site", values_to = "temp")
+head(OISST2_tidy)
 ```
 
-## When data are too long
+## When data are too long {auto-animate=true}
 
--   If data are too long, meaning individual observations are spread across multiple rows, we will need to use `pivot_wider()`
--   This is generally the case when we have two or more variables stored within the same column, as we may see in `OISST3`
--   This is not common as it requires someone to put more effort into making a dataframe this way
--   To widen data we tell R what the name of the column is that contains more than one variable, in this case the 'idx' column
--   We then tell R what the name of the column is that contains the values that need to be spread, in this case the 'val' column
+-   If data are too **long** they have individual observations in multiple rows
+-   This happens when we have two or more variables stored within the same column
 
-```{r tidy-3, eval=FALSE}
+::: columns
+::: {.column}
+```{r, eval=FALSE}
+head(OISST3)
+```
+:::
+
+::: {.column}
+```{r, echo=FALSE}
+head(OISST3)
+```
+:::
+:::
+
+## When data are too long {auto-animate=true}
+
+-   We use `pivot_wider()` to fix this issue
+-   Note the necessity of an `idx` column to identify individual samples
+
+```{r tidy-3}
 OISST3_tidy <- OISST3 %>% 
-  pivot_wider(names_from = idx, values_from = val)
+  pivot_wider(id_cols = idx, names_from = type, values_from = name)
+head(OISST3)
 ```
 
 ## Separating and uniting
 
-We've now covered how to make our dataframes longer or wider depending on their tidiness. Now we will look at how to manage our columns when they contain more (or less) than one variable, but the overall dataframe does not need to be made wider or longer. This is generally the case when one has a column with two variables, or two or more variables are spread out across multiple columns, but there is still only one observation per row. Let's see some examples to make this more clear.
+We've now covered how to make our dataframes longer or wider depending on their tidiness. Now we will look at how to manage our columns when they contain more (or less) than one variable, but the overall dataframe does not need to be made wider or longer. This is generally the case when a column has two variables, or two or more variables are spread across multiple columns, with only one observation per row.
 
-### Separate
+## Separate {auto-animate=true}
 
--   `OISST4a` has`site` and `t` column replaced by `index`
--   This is an efficient way to store these data, but it is not tidy because the site and source of each observation are separate variables
--   To re-create our `site` and `t` columns `separate()` the `index` column
--   Because we are creating new column names we tell these to R within inverted commas
--   Lastly we should tell R how to separate the `index` column
--   Often times the `separate()` function is able to guess correctly, but it is better to be explicit
+-   `OISST4a` has `site` and `t` column replaced by `index`
+-   This is an efficient way to store these data, but it is not **tidy** because the site and source of each observation are separate variables
+
+::: columns
+::: {.column}
+```{r, eval=FALSE}
+head(OISST4a)
+```
+:::
+
+::: {.column}
+```{r, echo=FALSE}
+head(OISST4a)
+```
+:::
+:::
+
+## Separate {auto-animate=true}
+
+-   Often times the `separate()` function is able to guess how to split text, but it is better to be explicit
 
 ```{r tidy-4a}
 OISST4a_tidy <- OISST4a %>% 
   separate(col = index, into = c("site", "t"), sep = " ")
+head(OISST4a_tidy)
 ```
 
-### Unite
+## Unite {auto-animate=true}
 
--   It is not uncommon that field/lab instruments split values across multiple columns
--   We see this most often with date values when the year, month, and day values are given in different columns
--   There are uses for the data in this way, though it is not terribly tidy
--   We usually want the date of any observation to be shown in just one column
+-   We see this issue most often with date values when the year, month, and day values are given in different columns
 -   If we look at `OISST4b` we will see that there is a `year`, `month`, and `day` column
+
+::: columns
+::: {.column}
+```{r, eval=FALSE}
+head(OISST4b)
+```
+:::
+
+::: {.column}
+```{r, echo=FALSE}
+head(OISST4b)
+```
+:::
+:::
+
+## Unite {auto-animate=true}
+
+-   There are uses for the data in this way, though it is not terribly **tidy**
+-   We usually want to `unite()` the date of any observation to be shown in one column
 
 ```{r tidy-4b}
 OISST4b_tidy <- OISST4b %>% 
   unite(year, month, day, col = "t", sep = "-")
+head(OISST4b_tidy)
 ```
 
-## Joining
+## Joining {auto-animate=true}
 
 -   Remember that one of the rules of tidy data is that only one complete dataset is saved per dataframe
--   This rule then is violated not only when additional data are stored where they don't belong, but also when necessary data are saved elsewhere
--   If we look back at `OISST4a` and `OISST4b` we will see that they are each missing different columns
+-   Looking at `OISST4a_tidy` and `OISST4b_tidy` we see that they are each missing different columns
+
+::: columns
+::: {.column}
+```{r}
+head(OISST4a_tidy)
+```
+:::
+
+::: {.column}
+```{r}
+head(OISST4b_tidy)
+```
+:::
+:::
+
+## Joining {auto-animate=true}
+
 -   Were we to **join** these dataframes together they would complete each other
--   The **`tidyverse`** provides us with several methods of doing this, but we will demonstrate here only the most common technique
--   The function `left_join()` is so named because it joins two or more dataframes together based on the matching of columns from the left to the right
+-   The **`tidyverse`** provides us with several methods of doing this, but we will demonstrate here only `left_join()`
+-   This function joins two dataframes together based on the matching of columns from the left to the right
 -   It combines values together where it sees that they match up, and adds new rows and columns where they do not
 
-```{r tidy-5a, message=TRUE, warning=TRUE}
+## Joining {auto-animate=true}
+
+-   `left_join()` will often guess what we want to do and provide a message in the Console
+
+```{r tidy-5a, message=TRUE, warning=TRUE, eval=FALSE}
 OISST4_tidy <- left_join(OISST4a_tidy, OISST4b_tidy)
 ```
 
--   `left_join()` will often guess what we want to do and provide a message in the Console
 -   But it is better to be explicit
 
-```{r tidy-5b, message=TRUE, warning=TRUE, eval=FALSE}
+```{r tidy-5b, message=TRUE, warning=TRUE}
 OISST4_tidy <- left_join(OISST4a_tidy, OISST4b_tidy, by = c("site", "t"))
+head(OISST4_tidy)
 ```
 
 ## But why though?
