@@ -406,6 +406,16 @@ You will notice that the function `na.omit()` removes NAs from the variable that
 
 > **DIY: Using `na.omit()`** Using this new information, *calculate* the mean stipe mass and the corresponding standard error.
 
+### Code chunks
+
+Not only does this keep our workflow tidier, it also makes it easier to read for ourselves, our colleagues, and most importantly, our future selves. When we look at the previous code chunk we can think of it as a paragraph in a research report, with each line a sentence. If I were to interpret this chunk of code in plain English it would sound something like this: 
+  
+<!-- > In order to create the `sst_NOAA_site_mean` dataframe I first started by taking the original sst_NOAA data.   -->
+<!-- I then grouped the data into different sites.   -->
+<!-- After this I calculated the mean temperature for each site, as well as counting the number of observations within each site. -->
+
+Just like paragraphs in a human language may vary in length, so too may code chunks. There really is no limit. This is not to say that it is encouraged to attempt to reproduce a code chunk of comparable length to anything Marcel Proust would have written. It is helpful to break things up into pieces of a certain size. The best size is up to the discretion of the person writing the code. It is up to you to find out for yourself what works best for you.
+
 ### Saving data
 
 A major advantage of R over many other statistics packages is that you can generate exactly the same answers time and time again by simply re-running saved code. However, there are times when you will want to output data to a file that can be read by a spreadsheet program such as Excel (but try not to... please). The simplest general format is .csv (comma-separated values). This format is easily read by Excel, and also by many other software programs. To output a .csv type:
