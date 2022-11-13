@@ -207,6 +207,10 @@ SACTN %>%
 
 As one may imagine, performing intricate logical arguments like this may get out of hand rather quickly. It is advisable to save intermediate steps in a complex workflow to avoid too much heartache. Where exactly these 'fire breaks' should be made is up to the person writing the code.
 
+## Expand
+
+## Applied stats
+
 ## Pipe into **`ggplot2`**
 
 It is also possible to combine piped code chunks and **`ggplot2`** chunks into one 'combi-chunk'. I prefer not to do this as I like saving the new dataframe I have created as an object in my environment before visualising it so that if anything has gone wrong (as things tend to do) I can more easily find the problem.
