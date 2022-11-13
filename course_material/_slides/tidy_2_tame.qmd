@@ -2,10 +2,6 @@
 # title: Taming data
 format:
   revealjs:
-    # logo: ../logo/FACE-IT_Logo_900.png
-    # slide-number: true
-    # show-slide-number: print
-    # preview-links: true
     theme: FACE-IT_pres.scss
     self-contained: true
     transition: slide
@@ -16,12 +12,11 @@ editor: source
 
 *Robert Schlegel*
 
-```{r maps-1-opts, echo=FALSE}
+```{r tidy-2-opts, echo=FALSE}
 knitr::opts_chunk$set(
   warning = FALSE, 
   message = FALSE,
-  echo = TRUE,
-  eval = FALSE
+  echo = TRUE
 )
 ```
 
@@ -39,104 +34,106 @@ knitr::opts_chunk$set(
 
 ## Setup
 
-For these slides we will only need the **`tidyverse`** package.
-
 ```{r}
 library(tidyverse) # All-in-one
+
+library(lubridate) # For working with dates
+
+load("../data/OISST_mangled.RData") # For examples
 ```
 
-On Day 1 already we walked ourselves through a tidy workflow. We saw how to import data, how to manipulate it, run a quick analysis or two, and create figures. In the previous session we filled in the missing piece of the workflow by also learning how to tidy up our data within R. For the remainder of today we will be revisiting the 'transform' portion of the tidy workflow. In this session we are going to go into more depth on what we learned in Day 1, and in the last session we will learn some new tricks. Over these two sessions we will also become more comfortable with the *pipe* command `%>%`, while practising writing tidy code.
+## **tidy workflow**
+
+The transformation of ones data should be the third step in any workflow, after the tidying of the data.
+
+```{r, echo = FALSE, out.width = "100%", fig.align = "center", fig.cap = "Data transforming in the data processing pipeline. Reproduced from [R for Data Science](http://r4ds.had.co.nz/workflow-basics.html)"}
+knitr::include_graphics("slide_images/data-science-wrangle.png")
+```
+
+## **tidy transformation**
 
 There are five primary data transformation functions that we will focus on here:  
 
-* Arrange observations (rows)  with `arrange()`  
-* Filter observations (rows) with `filter()`  
-* Select variables (columns) with`select()`  
-* Create new variables (columns) with `mutate()`  
-* Summarise variables (columns) with `summarise()`  
-
-We will use the full South African Coastal Temperature Network dataset for these exercises. Before we begin however we will need to cover two new concepts.
-
-```{r tidier-load}
-# Load libraries
-library(tidyverse)
-library(lubridate)
-
-# Load the data from a .RData file
-load("data/SACTNmonthly_v4.0.RData")
-
-# Copy the data as a dataframe with a shorter name
-SACTN <- SACTNmonthly_v4.0
-
-# Remove the original
-rm(SACTNmonthly_v4.0)
-```
+-   Arrange observations (rows) with `arrange()`  
+-   Filter observations (rows) with `filter()`  
+-   Select variables (columns) with`select()`  
+-   Create new variables (columns) with `mutate()`  
+-   Summarise data (rows+columns) with `summarise()`  
 
 ## Comparison operators
 
-The assignment operator (`<-`) is a symbol that we use to assign some bit of code to an object in our environment. Likewise, comparison operators are symbols we use to compare different objects. This is how we tell R how to decide to do many different things. We will see these symbols often out in the 'real world' so let's spend a moment now getting to know them better. Most of these should be very familiar to us:  
+-   We use the assignment operator (`<-`) to assign code to an object in our environment
+-   Likewise, comparison operators are symbols used to compare different objects
+-   We will see these symbols often in the 'real world'
 
-* Greater than: `>`  
-* Greater than or equal to: `>=`  
-* Less than: `<`  
-* Less than or equal to: `<=`  
-* Equal to: `==`  
-* Not equal to: `!=`  
+## Comparison operators
 
-It is important here to note that `==` is for comparisons and `=` is for maths. They are **not** interchangeable, as we may see in the following code chunk. This is one of the more common mistakes one makes when writing code. Luckily the error message this creates should provide us with the clues we need to figure out that we have made this specific mistake.
+-   Greater than: `>`  
+-   Greater than or equal to: `>=`  
+-   Less than: `<`  
+-   Less than or equal to: `<=`  
+-   Equal to: `==`  
+-   Not equal to: `!=`  
 
-```{r tidier-comp, error=TRUE}
-SACTN %>% 
-  filter(site = "Amanzimtoti")
+## Comparison operators
+
+It is important here to note that `==` is for comparisons and `=` is for maths. They are **not** interchangeable, as we may see in the following code chunk. This is one of the more common mistakes one makes when writing code.
+
+```{r, error=TRUE}
+OISST1 %>% 
+  filter(site = "Svalbard")
 ```
 
 ## Logical operators
 
-Comparison operators are used to make direct comparisons between specific things, but logical operators are used more broadly when making logical arguments. Logic is central to most computing so it is worth taking the time to cover these symbols explicitly here. R makes use of the same *Boolean logic* symbols as many other platforms, including Google, so some (or all) of these will likely be familiar. We will generally only use three:  
+-   Comparison operators are used to make direct comparisons between specific things
+-   Logical operators are used more broadly when making logical arguments
+-   R makes use of the same *Boolean logic* as many other platforms, including Google
 
-* and: `&`  
-* or: `|`  
-* not: `!`  
+## Logical operators
+
+-   and: `&`  
+-   or: `|`  
+-   not: `!`  
   
-When writing a line of tidy code we tend to use these logical operator to combine two or more arguments that use comparison operators. For example, the following code chunk uses the `filter()` function to find all temperatures recorded at Pollock Beach during December **OR** January. Don't worry if the following line of code is difficult to piece out, but make sure you can locate which symbols are comparison operators and which are logical operators. Please note that for purposes of brevity all of the outputs in this section are limited to ten lines, but when one runs these code chunks on ones own computer they will be much longer.
+## Logical operators
 
-```{r tidier-logic-1, eval=FALSE}
-SACTN %>% 
-  filter(site == "Pollock Beach", month(date) == 12 | month(date) == 1)
-```
-```{r tidier-logic-1-ghost, echo=FALSE}
-filter(SACTN, site == "Pollock Beach", month(date) == 12 | month(date) == 1)[1:10,]
+```{r}
+OISST1_sub <- OISST1 %>% 
+  filter(site == "Med", month(t) == 12 | month(t) == 1)
 ```
 
-We will look at the interplay between comparison and logical operators in more depth in the following session after we have reacquainted ourselves with the main transformation functions we need to know.
-
-## Arrange observations (rows)  with `arrange()`
-
-First up in our greatest hits reunion tour is the function `arrange()`. This very simply arranges the observations (rows) in a dataframe based on the variables (columns) it is given. If we are concerned with ties in the ordering of our data we provide additional columns to `arrange()`. The importance of the columns for arranging the rows is given in order from left to right.
-
-```{r tidier-arrange, eval=FALSE}
-SACTN %>% 
-  arrange(depth, temp)
+::: columns
+::: {.column}
+```{r}
+head(OISST1_sub)
 ```
-```{r tidier-arrange-ghost, echo=FALSE}
-arrange(SACTN, depth, temp)[1:10,]
+:::
+
+::: {.column}
+```{r, echo=FALSE}
+tail(OISST1_sub)
 ```
+:::
+:::
 
-If we would rather arrange our data in descending order, as is perhaps more often the case, we simply wrap the column name we are arranging by with the `desc()` function as shown below.
+## `arrange()` observations (rows) 
 
-```{r tidier-desc, eval=FALSE}
-SACTN %>% 
-  arrange(desc(temp))
+::: columns
+::: {.column}
+```{r}
+OISST1 %>% arrange(site, temp) %>% head()
 ```
-```{r tidier-desc-ghost, echo=FALSE}
-arrange(SACTN, desc(temp))[1:10,]
+:::
+
+::: {.column}
+```{r}
+OISST1 %>% arrange(site, desc(temp)) %>% head()
 ```
+:::
+:::
 
-It must also be noted that when arranging data in this way, any rows with `NA` values will be sent to the bottom of the dataframe. This is not always ideal and so must be kept in mind.
-
-## Filter observations (rows) with `filter()`
-
-When simply arranging data is not enough, and we need to remove rows of data we do not want, `filter()` is the tool to use. For example, we can select all monthly temperatures recorded at the `site` Humewood during the `year` 1990 with the following code chunk:
+## `filter()` observations (rows)
 
 ```{r tidier-filter, eval=FALSE}
 SACTN %>% 
