@@ -434,6 +434,134 @@ Of course, you could remove an individual object by placing only its name within
 
 ## R Workflow - III
 
+### Additional useful functions
+
+There is an avalanche of useful functions to be found within the **`tidyverse`**. In truth, we have only looked at functions from three packages: **`ggplot2`**, **`dplyr`**, and **`tidyr`**. There are far, far too many functions even within these three packages to cover within a week. But that does not mean that the functions in other packages, such as **`purrr`** are not also massively useful for our work. More on that tomorrow. For now we will see how the inclusion of a handful of choice extra functions may help to make our workflow even tidier.
+
+#### Rename variables (columns) with `rename()`
+
+We have seen that we select columns in a dataframe with `select()`, but if we want to rename columns we have to use, you guessed it, `rename()`. This functions works by first telling R the new name you would like, and then the existing name of the column to be changed. This is perhaps a bit back to front, but such is life on occasion.
+
+```{r tidiest-rename, eval=FALSE}
+SACTN %>% 
+  rename(source = src)
+```
+```{r tidiest-rename-ghost, echo=FALSE}
+rename(SACTN, source = src)[1:10,]
+```
+
+#### Create a new dataframe for a newly created variable (column) with `transmute()`
+
+If for whatever reason one wanted to create a new variable (column), as one would do with `mutate()`, but one does not want to keep the dataframe from which the new column was created, the function to use is `transmute()`.
+
+```{r tidiest-transmute-1, eval=FALSE}
+SACTN %>% 
+  transmute(kelvin = temp + 273.15)
+```
+```{r tidiest-transmute-1-ghost, echo=FALSE}
+transmute(SACTN, kelvin = temp + 273.15)[1:10,]
+```
+
+This makes a bit more sense when paired with `group_by()` as it will pull over the grouping variables into the new dataframe. Note that when it does this for us automatically it will provide a message in the console.
+
+```{r tidiest-transmute-2, eval=FALSE}
+SACTN %>% 
+  group_by(site, src) %>% 
+  transmute(kelvin = temp + 273.15)
+```
+```{r tidiest-transmute-2-ghost, echo=FALSE}
+SACTN_trans <- SACTN %>% 
+  group_by(site, src) %>% 
+  transmute(kelvin = temp + 273.15)
+SACTN_trans[1:10,]
+```
+
+#### Count observations (rows) with `n()`
+
+We have already seen this function sneak it's way into a few of the code chunks in the previous session. We use `n()` to count any grouped variable automatically. It is not able to be given any arguments, so we must organise our dataframe in order to satisfy it's needs. It is the diva function of the **`tidyverse`**; however, it is terribly useful as we usually want to know how many observations our summary stats are based. First we will run some stats and create a figure without documenting `n`. Then we will include `n` and see how that changes our conclusions.
+
+```{r tidiest-n-1, fig.cap="Dot plot showing range of mean temperatures for the time series in the SACTN dataset."}
+ SACTN_n <- SACTN %>% 
+  group_by(site, src) %>% 
+  summarise(mean_temp = round(mean(temp, na.rm = T))) %>% 
+  arrange(mean_temp) %>% 
+  ungroup() %>% 
+  select(mean_temp) %>% 
+  unique()
+
+ggplot(data = SACTN_n, aes(x = 1:nrow(SACTN_n), y = mean_temp)) +
+  geom_point() +
+  labs(x = "", y = "Temperature (°C)") +
+  theme(axis.text.x = element_blank(), 
+        axis.ticks.x = element_blank())
+```
+
+This looks like a pretty linear distribution of temperatures within the SACTN dataset. But now let's change the size of the dots to show how frequently each of these mean temperatures is occurring.
+
+```{r tidiest-n-2, fig.cap="Dot plot showing range of mean temperatures for the time series in the SACTN dataset with the size of each dote showing the number of occurences of each mean."}
+ SACTN_n <- SACTN %>% 
+  group_by(site, src) %>% 
+  summarise(mean_temp = round(mean(temp, na.rm = T))) %>% 
+  ungroup() %>% 
+  select(mean_temp) %>% 
+  group_by(mean_temp) %>% 
+  summarise(count = n())
+
+ggplot(data = SACTN_n, aes(x = 1:nrow(SACTN_n), y = mean_temp)) +
+  geom_point(aes(size = count)) +
+  labs(x = "", y = "Temperature (°C)") +
+  theme(axis.text.x = element_blank(), 
+        axis.ticks.x = element_blank())
+```
+
+We see now when we include the count (`n`) of the different mean temperatures that this distribution is not so even. There appear to be humps around 17°C and 22°C. Of course, we've created dot plots here just to illustrate this point. In reality if one were interested in a distribution like this one would use a histogram, or better yet, a density polygon.
+
+```{r  tidiest-n-3, fig.cap="Frequency distribution of mean temperature for each time series in the SACTN dataset."}
+SACTN %>% 
+  group_by(site, src) %>% 
+  summarise(mean_temp = round(mean(temp, na.rm = T))
+            ) %>% 
+  ungroup() %>% 
+  ggplot(aes(x = mean_temp)) +
+  geom_density(fill = "seagreen", alpha = 0.6) +
+  labs(x = "Temperature (°C)")
+```
+
+#### Select observations (rows) by number with `slice()`
+
+If one wants to select only specific rows of a dataframe, rather than using some variable like we do for `filter()`, we use `slice()`. The function expects us to provide it with a series of integers as seen in the following code chunk. Try playing around with these values and see what happens
+
+```{r tidiest-slice-1, eval=FALSE}
+# Slice a seqeunce of rows
+SACTN %>% 
+  slice(10010:10020)
+
+# Slice specific rows
+SACTN %>%
+  slice(c(1,8,19,24,3,400))
+
+# Slice all rows except these
+SACTN %>% 
+  slice(-(c(1,8,4)))
+
+# Slice all rows except a sequence
+SACTN %>% 
+  slice(-(1:1000))
+```
+
+It is discouraged to use slice to remove or select specific rows of data as this does not discriminate against any possible future changes in ones data. Meaning that if at some point in the future new data are added to a dataset, re-running this code will likely no longer be selecting the correct rows. This is why `filter()` is a main function, and `slice()` is not. This auxiliary function can however still be quite useful when combined with arrange.
+
+```{r tidiest-slice-2}
+# The top 5 variable sites as measured by SD
+SACTN %>% 
+  group_by(site, src) %>% 
+  summarise(sd_temp = sd(temp, na.rm = T)) %>% 
+  ungroup() %>% 
+  arrange(desc(sd_temp)) %>% 
+  slice(1:5)
+```
+
+
 ### Working directories
 
 At the beginning of this session we glossed over this topic by setting the working directory via RStudio's project functionality. This concept is however critically important to understand so we must now cover it in more detail. The current working directory, where R will read and write files, is displayed by RStudio within the title region of the Console. There are a number of ways to change the current working directory:

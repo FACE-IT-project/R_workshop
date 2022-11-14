@@ -44,7 +44,7 @@ This workshop will take place from **18 November -- 28 November 2022**, **9:00--
 
 -   Interactive Session: Git and Github functioning on all machines
 -   -- break --
--   Exercise: Collaboration via GitHub 
+-   Exercise: Collaboration via GitHub
 -   -- lunch/end --
 
 ### Day 3 *2022-11-21* -- Plots
@@ -98,7 +98,7 @@ This workshop will take place from **18 November -- 28 November 2022**, **9:00--
 -   Exercise: Wild and free
 -   -- break --
 -   Presentation: Local data
--   Exercise: Full analyses  
+-   Exercise: Full analyses
 -   -- lunch --
 -   Presentation: Guest lecture on policy briefs
 -   -- break --
