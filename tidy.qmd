@@ -73,3 +73,5 @@ library(tidyverse)
 
 ## DIY tidy data
 
+Now that we have learned the code for basic to intermediate **tidy analyses**, let's apply this to our own data. Find a dataset somewhere on your computer, load, wrangle, and analyse it in a way that is interesting to you. A particularly interesting idea is to use the code we've learned thus far to recreate an analysis + visualisation from an old assignment, project, or publication that we performed manually in Excel (or something similar).
+

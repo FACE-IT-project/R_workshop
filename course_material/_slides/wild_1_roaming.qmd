@@ -1,0 +1,39 @@
+---
+# title: Roaming data
+format:
+  revealjs:
+    theme: FACE-IT_pres.scss
+    self-contained: true
+    transition: slide
+editor: source
+---
+
+# Roaming data {background-color="#008980" style="text-align: center"}
+
+*Robert Schlegel*
+
+```{r tidy-3-opts, echo=FALSE}
+knitr::opts_chunk$set(
+  warning = FALSE, 
+  message = FALSE,
+  echo = TRUE
+)
+```
+
+## Problem
+
+-   There are a lot of data out there, how do we access them?
+-   Are there tools to help us with this?
+-   What are the policies around this?
+
+## Solution
+
+-   We look at the **R** resources available to us
+-   We go over some example implementations
+-   A brief discussion on access rights is provided
+
+## Setup
+
+```{r}
+library(tidyverse) # All-in-one
+```
