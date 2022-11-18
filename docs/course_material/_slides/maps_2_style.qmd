@@ -2,10 +2,6 @@
 # title: Mapping with style
 format:
   revealjs:
-    # logo: ../logo/FACE-IT_Logo_900.png
-    # slide-number: true
-    # show-slide-number: print
-    # preview-links: true
     theme: FACE-IT_pres.scss
     self-contained: true
     transition: slide
@@ -25,21 +21,61 @@ knitr::opts_chunk$set(
 )
 ```
 
+## Problem
+
+-   A blank map is rarely enough; how do we add data layers?
+-   How do we manage these multiple different colour palettes?
+-   Are there any tricks for making complex maps?
+
+## Solution
+
+-   We may import data, or use built-in options
+-   There are best practices in **`ggplot2`** for this
+-   Yes, heaps!
+
+
 ## Setup
 
-Now that we have learned the basics of creating a beautiful map in **`ggplot2`** it is time to look at some of the more particular things we will need to make our maps extra stylish. There are also a few more things we need to learn how to do before our maps can be truly publication quality.
-
-If we have not yet loaded the **`tidyverse`** let's do so.
-
 ```{r maps-load}
-# Load libraries
-library(tidyverse)
-library(scales)
-library(ggsn)
 
-# Load Africa map
-load("data/africa_map.RData")
+library(tidyverse) # The base
+
+library(ggsn) # Scale bars
+
+library(scales) # Functions for formatting faster
+
+# library()
 ```
+
+## Base map
+
+```{r}
+
+```
+
+## Bathymetry
+
+
+## Ocean temperature
+
+
+## Ocean colour
+
+
+## Facetting layers
+
+
+## Combining layers
+
+
+## Advanced labeling
+
+
+## Finishing touches
+
+
+
+
 
 ## Land mask
 

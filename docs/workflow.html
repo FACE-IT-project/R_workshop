@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.36">
+<meta name="generator" content="quarto-1.1.189">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -53,7 +58,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -66,7 +71,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -132,9 +137,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="./index.html">
-    <img src="./images/FACE-IT_Logo_900.png" alt="">
-  </a>
+      <div class="navbar-brand-container">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./images/FACE-IT_Logo_900.png" alt="" class="navbar-logo">
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -232,7 +239,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -246,6 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#r-workflow---ii" id="toc-r-workflow---ii" class="nav-link" data-scroll-target="#r-workflow---ii">R Workflow - II</a>
   <ul class="collapse">
   <li><a href="#working-with-data" id="toc-working-with-data" class="nav-link" data-scroll-target="#working-with-data">Working with data</a></li>
+  <li><a href="#code-chunks" id="toc-code-chunks" class="nav-link" data-scroll-target="#code-chunks">Code chunks</a></li>
   <li><a href="#saving-data" id="toc-saving-data" class="nav-link" data-scroll-target="#saving-data">Saving data</a></li>
   <li><a href="#clearing-the-memory" id="toc-clearing-the-memory" class="nav-link" data-scroll-target="#clearing-the-memory">Clearing the memory</a></li>
   </ul></li>
@@ -284,13 +292,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="r-workflow---i">R Workflow - I</h2>
 <section id="style-and-code-conventions" class="level3">
 <h3 class="anchored" data-anchor-id="style-and-code-conventions">Style and code conventions</h3>
-<p>Early on, develop the habit of unambiguous and consistent style and formatting when writing your code, or anything else for that matter. Pay attention to detail and be pedantic. This will benefit your scientific writing in general. Although many R commands rely on precisely formatted statements (code blocks), style can nevertheless to <em>some extent</em> have a personal flavour to it. The key is <em>consistency</em>. In this book we use certain conventions to improve readability. We use a consistent set of conventions to refer to code, and in particular to typed commands and package names.</p>
+<p>Early on, develop the habit of unambiguous and consistent style and formatting when writing your code, or anything else for that matter. Pay attention to detail and be pedantic, as with scientific writing in general. Although many R commands rely on precisely formatted statements (code blocks), style can nevertheless to <em>some extent</em> have a personal flavour to it. The key is <em>consistency</em>. One may notice that the content for this workshop follows a certain convention to improve readability.</p>
 <ul>
 <li>Package names are shown in a bold font over a grey box, <em>e.g.</em> <strong><code>tidyr</code></strong>.</li>
 <li>Functions are shown in normal font followed by parentheses and also over a grey box , <em>e.g.</em> <code>plot()</code>, or <code>summary()</code>.</li>
 <li>Other R objects, such as data, function arguments or variable names are again in normal font over a grey box, but without parentheses, <em>e.g.</em> <code>x</code> and <code>apples</code>.</li>
-<li>Sometimes we might directly specify the package that contains the function by using two colons, <em>e.g.</em> <code>dplyr::filter()</code>.</li>
-<li>Commands entered onto the R command line (console) and the output that is returned will be shown in a code block, which is a light grey background with code font.</li>
+<li>Sometimes a package that contains a specific function is referenced using two colons, <em>e.g.</em> <code>dplyr::filter()</code>.</li>
+<li>Commands entered into the R command line (console) and the output that it returns will be shown in a code block, which is a light grey background with coloured code font.</li>
 </ul>
 <p>Consult these resources for more about R code style :</p>
 <ul>
@@ -301,8 +309,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="help" class="level3">
 <h3 class="anchored" data-anchor-id="help">Help</h3>
-<p>The help files in R are not readily clear. It requires a bit of work to understand them well. There is method however to what appears to be madness. The figure below shows the beginning of a help file for a function in R. Please type <code>?read.table()</code> in your console now to bring up this help file in your RStudio GUI.</p>
-<p>The first thing we see at the top of the help file in small font is the name of the function, and the package it comes from in curly braces. After this, in very large text, is a very short description of what the function is used for. After this is the ‘Description’ section, which gives a sentence or two more fully explaining the use(s) of the function. The ‘Usage’ then shows all of the arguments that may be given to the function, and what their default settings are. When we write a function in our script we do <em>not</em> need to include all of the possible arguments. The help file shows us all of them so that we know what our options are. In some cases a help file will show the usage of several different functions together. This is done, as is the case here, if these functions forma a sort of ‘family’ and share many common purposes. The ‘Arguments’ section gives a long explanation for what each individual argument may do. The Arguments section here is particularly verbose. Up next is the ‘Details’ section that gives a more in depth description of what the function does. The ‘Value’ section tells us what sort of output we may expect from the function. Some of the more well documented functions, such as this one, will have additional sections that are not a requirement for function documentation. In this case the ‘Memory usage’ and ‘Note’ sections are not things one should always expect to see in help files. Also not always present is a ‘References’ section. Should there be actual published documentation for the function, or the function has been used in a publication for some other purpose, these references tend to be listed here. There are many functions in the <strong><code>vegan</code></strong> package that have been used in dozens of publications. If there is additional reading relevant to the function in question, the authors may also have included a ‘See also’ section, but this is not standard. Lastly, any well documented function should end with an ‘Examples’ section. The code is this section is designed to be able to be copy-pasted directly from the help file into the users R script or console and run <em>as is</em>. It is perhaps a bad habit, but when I am looking up a help file for a function, I tend to look first at the Examples section. And only if I can’t solve my problem with the examples do I actually read the documentation.</p>
+<p>The help files in R are not always clear. It requires a bit of work to understand them well. There is method however to what appears to be madness. Please type <code>?read.table()</code> in your console now to bring up this help file in your RStudio GUI.</p>
+<p>The first thing we see at the top of the help file in small font is the name of the function, and the package it comes from in curly braces. After this, in very large text, is a very short description of what the function is used for. After this is the ‘Description’ section, which gives a sentence or two more fully explaining the use(s) of the function. The ‘Usage’ then shows all of the arguments that may be given to the function, and what their default settings are. When we write a function in our script we do <em>not</em> need to include all of the possible arguments. The help file shows us all of them so that we know what our options are. In some cases a help file will show the usage of several different functions together. This is done, as is the case here, if these functions form a sort of ‘family’ and share many common purposes. The ‘Arguments’ section gives a long explanation for what each individual argument may do. The Arguments section here is particularly verbose. Up next is the ‘Details’ section that gives a more in depth description of what the function does. The ‘Value’ section tells us what sort of output we may expect from the function. Some of the more well documented functions, such as this one, will have additional sections that are not a requirement for function documentation. In this case the ‘Memory usage’ and ‘Note’ sections are not things one should always expect to see in help files. Also not always present is a ‘References’ section. Should there be actual published documentation for the function, or the function has been used in a publication for some other purpose, these references tend to be listed here. There are many functions in the <strong><code>vegan</code></strong> package that have been used in dozens of publications. If there is additional reading relevant to the function in question, the authors may also have included a ‘See also’ section, but this is not standard. Lastly, any well documented function should end with an ‘Examples’ section. The code is this section is designed to be able to be copy-pasted directly from the help file into the users R script or console and run <em>as is</em>. It is perhaps a bad habit, but when I am looking up a help file for a function, I tend to look first at the Examples section. And only if I can’t solve my problem with the examples do I actually read the documentation.</p>
 </section>
 <section id="r-scripts" class="level3">
 <h3 class="anchored" data-anchor-id="r-scripts">R Scripts</h3>
@@ -618,6 +626,14 @@ Friends don’t let friends use Excel.</p>
 </blockquote>
 </section>
 </section>
+<section id="code-chunks" class="level3">
+<h3 class="anchored" data-anchor-id="code-chunks">Code chunks</h3>
+<p>Not only does this keep our workflow tidier, it also makes it easier to read for ourselves, our colleagues, and most importantly, our future selves. When we look at the previous code chunk we can think of it as a paragraph in a research report, with each line a sentence. If I were to interpret this chunk of code in plain English it would sound something like this:</p>
+<!-- > In order to create the `sst_NOAA_site_mean` dataframe I first started by taking the original sst_NOAA data.   -->
+<!-- I then grouped the data into different sites.   -->
+<!-- After this I calculated the mean temperature for each site, as well as counting the number of observations within each site. -->
+<p>Just like paragraphs in a human language may vary in length, so too may code chunks. There really is no limit. This is not to say that it is encouraged to attempt to reproduce a code chunk of comparable length to anything Marcel Proust would have written. It is helpful to break things up into pieces of a certain size. The best size is up to the discretion of the person writing the code. It is up to you to find out for yourself what works best for you.</p>
+</section>
 <section id="saving-data" class="level3">
 <h3 class="anchored" data-anchor-id="saving-data">Saving data</h3>
 <p>A major advantage of R over many other statistics packages is that you can generate exactly the same answers time and time again by simply re-running saved code. However, there are times when you will want to output data to a file that can be read by a spreadsheet program such as Excel (but try not to… please). The simplest general format is .csv (comma-separated values). This format is easily read by Excel, and also by many other software programs. To output a .csv type:</p>
@@ -695,11 +711,17 @@ For every R project, set up a separate directory that includes the scripts, data
 <span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a quick scatterplot</span></span>
 <span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> urine, <span class="fu">aes</span>(<span class="at">x =</span> osmo, <span class="at">y =</span> ph)) <span class="sc">+</span></span>
 <span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> cond))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="workflow_files/figure-html/brew-1-1.png" class="img-fluid" width="672"></p>
+</div>
 </div>
 <p>And now we have a scatterplot that is showing the relationship between the osmolarity and pH of urine, with the conductivity of those urine samples shown in shades of blue. What is important to note here is that the colour scale is continuous. How can we now this by looking at the figure? Let’s look at the same figure but use a discrete variable for colouring.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> urine, <span class="fu">aes</span>(<span class="at">x =</span> osmo, <span class="at">y =</span> ph)) <span class="sc">+</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> <span class="fu">as.factor</span>(r)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="workflow_files/figure-html/brew-2-1.png" class="img-fluid" width="672"></p>
+</div>
 </div>
 <p>What is the first thing you notice about the difference in the colours? Why did we use <code>as.factor()</code> for the colour aesthetic for our points? What happens if we don’t use this? Try it now.</p>
 
@@ -778,6 +800,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
           toggle.classList.remove("alternate");
         }
       }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
     }
   }
   const isFileUrl = () => { 
@@ -880,7 +912,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);

@@ -132,3 +132,5 @@ This workshop will take place from **18 November -- 28 November 2022**, **9:00--
 ![](images/h2020.png){style="float: left;" fig-align="left" width="500"}
 
 This workshop was developed as a contribution of WP1 to the [FACE-IT project](https://www.face-it-project.eu/). FACE-IT has received funding from the European Union's Horizon 2020 research and innovation programme under grant agreement no. 869154.
+
+Note that much of the content in this workshop was developed from the [BCBC honours class](https://robwschlegel.github.io/Intro_R_Workshop/) taught at the University of the Western Cape in South Africa.
