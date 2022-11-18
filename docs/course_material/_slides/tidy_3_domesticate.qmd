@@ -23,24 +23,12 @@ knitr::opts_chunk$set(
 ## Problem
 
 -   How do we summarise our data if they have multiple categories?
-<<<<<<< HEAD
-=======
 -   What are the limitations of this approach?
 -   Does this really help with our workflow?
->>>>>>> fbf7096585c5ec67d4d40972a54a62933968c7f0
 
 ## Solution
 
 -   `group_by()` provides powerful options for data analysis
-<<<<<<< HEAD
-
-## Setup
-
-```{r}
-library(tidyverse) # All-in-one
-
-sst_NOAA <- read_csv("course_material/data/sst_NOAA.csv") # SST data
-=======
 -   The only limits are our imagination, but be cautious
 -   We end with the example exercise from Day 1
 
@@ -52,7 +40,6 @@ library(tidyverse) # All-in-one
 library(lubridate) # Working with dates
 
 sst_NOAA <- read_csv("../data/sst_NOAA.csv") # SST data
->>>>>>> fbf7096585c5ec67d4d40972a54a62933968c7f0
 ```
 
 ## The next level
@@ -72,7 +59,6 @@ sst_NOAA_site <- sst_NOAA %>% group_by(site)
 ::: {.column}
 ```{r}
 sst_NOAA %>% head()
-<<<<<<< HEAD
 ```
 :::
 
@@ -111,120 +97,6 @@ sst_NOAA_site %>%
 
 ```{r}
 sst_NOAA_ungroup <- sst_NOAA_site %>% ungroup()
-=======
-```
-:::
-
-::: {.column}
-```{r}
-sst_NOAA_site %>% head()
->>>>>>> fbf7096585c5ec67d4d40972a54a62933968c7f0
-```
-:::
-:::
-
-<<<<<<< HEAD
-::: columns
-::: {.column}
-```{r}
-sst_NOAA_site %>% 
-  summarise(mean_temp = mean(temp, na.rm = TRUE)) %>% 
-  head()
-```
-:::
-
-::: {.column}
-```{r}
-sst_NOAA_ungroup %>% 
-  summarise(mean_temp = mean(temp, na.rm = TRUE)) %>% 
-  head()
-```
-:::
-:::
-
-## Multiple groups
-
--   As one may have guessed by now, grouping is not confined to a single column
--   One may use any number of columns to perform elaborate grouping measures
-
-
-```{r, eval=FALSE}
-# Create groupings based on temperatures
-sst_NOAA_temp_group <- sst_NOAA %>% 
-  group_by(round(temp))
-
-# Create groupings based on site and month
-sst_NOAA_temp_month_group <- sst_NOAA %>% 
-  mutate(month = month(t)) %>% 
-  group_by(site, month)
-=======
-## `group_by()`
-
--   But when we `summarise()` the data...
-
-::: columns
-::: {.column}
-```{r}
-sst_NOAA %>% 
-  summarise(mean_temp = mean(temp, na.rm = TRUE)) %>% 
-  head()
-```
-:::
-
-::: {.column}
-```{r}
-sst_NOAA_site %>% 
-  summarise(mean_temp = mean(temp, na.rm = TRUE)) %>% 
-  head()
->>>>>>> fbf7096585c5ec67d4d40972a54a62933968c7f0
-```
-:::
-:::
-
-<<<<<<< HEAD
-## Chain functions
-
--   Generally we do not group objects separately
--   Grouping is performed within code chunks
-
-```{r}
-sst_NOAA_site_mean <- sst_NOAA %>% # Choose a base dataframe
-  group_by(site) %>% # Group by the site column
-  summarise(mean_temp = mean(temp, na.rm = TRUE), # Calculate means
-            count = n() # Count observations
-            ) # Safety measure
-sst_NOAA_site_mean
-```
-
-## Grouped transformations
-
-We've played around quite a bit with grouping and summarising, but that's not all we can do. We can use `group_by()` very nicely with `filter()` and `mutate()` as well. Not so much with `arrange()` and `select()` as these are designed to work on the entire dataframe at once, without any subsetting.
-
-We can do some rather imaginative things when we combine all of these tools together. In fact, we should be able to accomplish almost any task we can think of. For example, what if we wanted to create a new object that was a subset of only the sites in the `SACTN` that had at least 30 years (360 months) of data?
-
-```{r tidiest-group-6, eval=FALSE}
-SACTN_30_years <- SACTN %>%
-  group_by(site, src) %>%
-  filter(n() > 360) %>% 
-  ungroup()
-```
-
-Or what if we wanted to calculate anomaly data for each site?
-
-```{r tidiest-group-7, eval=FALSE}
-SACTN_anom <- SACTN %>%
-  group_by(site, src) %>% 
-  mutate(anom = temp - mean(temp, na.rm = T)) %>% 
-  select(site:date, anom, depth, type) %>% 
-  ungroup()
-=======
-## `ungroup() `
-
--   One must explicitly tell R to remove a group
-
-```{r}
-sst_NOAA_ungroup <- sst_NOAA_site %>% ungroup()
->>>>>>> fbf7096585c5ec67d4d40972a54a62933968c7f0
 ```
 
 ::: columns
@@ -262,59 +134,24 @@ sst_NOAA_temp_month_group <- sst_NOAA %>%
   group_by(site, month)
 ```
 
-<<<<<<< HEAD
-As one may imagine, performing intricate logical arguments like this may get out of hand rather quickly. It is advisable to save intermediate steps in a complex workflow to avoid too much heartache. Where exactly these 'fire breaks' should be made is up to the person writing the code.
-
-<!-- ## Expand -->
-
-<!-- ## Applied stats -->
-
-## Pipe into **`ggplot2`**
-
-It is also possible to combine piped code chunks and **`ggplot2`** chunks into one 'combi-chunk'. I prefer not to do this as I like saving the new dataframe I have created as an object in my environment before visualising it so that if anything has gone wrong (as things tend to do) I can more easily find the problem.
-=======
 ## Chain functions
->>>>>>> fbf7096585c5ec67d4d40972a54a62933968c7f0
 
 -   Generally we do not group objects separately
 -   Grouping is performed within code chunks
 
 ```{r}
-<<<<<<< HEAD
-SACTN %>% # Choose starting dataframe
-  filter(site %in% c("Bordjies", "Tsitsikamma", "Humewood", "Durban")) %>% # Select sites
-  select(-depth, -type) %>% # Remove depth and type columns
-  mutate(month = month(date), # Create month column
-         index = paste(site, src, sep = "/ ")) %>% # Create individual site column
-  group_by(index, month) %>% # Group by individual sites and months
-  summarise(mean_temp = mean(temp, na.rm = TRUE), # Calculate mean temperature
-            sd_temp = sd(temp, na.rm = TRUE)) %>% # Calculate standard deviation
-  ggplot(aes(x = month, y = mean_temp)) + # Begin with ggplot, switch from '%>%' to '+'
-  geom_ribbon(aes(ymin = mean_temp - sd_temp, ymax = mean_temp + sd_temp), 
-              fill = "black", alpha = 0.4) + # Create a ribbon
-  geom_line(col = "red", size = 0.3) + # Create lines within ribbon
-  facet_wrap(~index) + # Facet by individual sites
-  scale_x_continuous(breaks = seq(2, 12, 4)) + # Control x axis ticks
-  labs(x = "Month", y = "Temperature (°C)") + # Change labels
-  theme_dark() # Set theme
-=======
 sst_NOAA_site_mean <- sst_NOAA %>% # Choose a base dataframe
   group_by(site) %>% # Group by the site column
   summarise(mean_temp = mean(temp, na.rm = TRUE), # Calculate means
             count = n()) # Count observations
 sst_NOAA_site_mean
->>>>>>> fbf7096585c5ec67d4d40972a54a62933968c7f0
 ```
 
 ## Grouped transformations
 
 We've played around quite a bit with grouping and summarising, but that's not all we can do. We can use `group_by()` very nicely with `filter()` and `mutate()` as well. Not so much with `arrange()` and `select()` as these are designed to work on the entire dataframe at once, without any subsetting. We can do some rather imaginative things when we combine all of these tools together. In fact, we should be able to accomplish almost any task we can think of.
 
-<<<<<<< HEAD
-## Rename variables (columns) with `rename()`
-=======
 ## Examples {auto-animate=true}
->>>>>>> fbf7096585c5ec67d4d40972a54a62933968c7f0
 
 -   Filter sites that don't have a max temperature above 20°C
 
@@ -326,11 +163,7 @@ sst_NOAA_20 <- sst_NOAA %>%
 unique(sst_NOAA_20$site)
 ```
 
-<<<<<<< HEAD
-## Create a new dataframe for a newly created variable (column) with `transmute()`
-=======
 ## Examples {auto-animate=true}
->>>>>>> fbf7096585c5ec67d4d40972a54a62933968c7f0
 
 -   Calculate anomalies for each site
 
@@ -343,13 +176,7 @@ head(sst_NOAA_anom)
 ```
 ## Examples {auto-animate=true}
 
-<<<<<<< HEAD
-## Count observations (rows) with `n()`
-
-We have already seen this function sneak it's way into a few of the code chunks in the previous session. We use `n()` to count any grouped variable automatically. It is not able to be given any arguments, so we must organise our dataframe in order to satisfy it's needs. It is the diva function of the **`tidyverse`**; however, it is terribly useful as we usually want to know how many observations our summary stats are based. First we will run some stats and create a figure without documenting `n`. Then we will include `n` and see how that changes our conclusions.
-=======
 -   Calculate mean and standard deviations for two sites
->>>>>>> fbf7096585c5ec67d4d40972a54a62933968c7f0
 
 ```{r}
 sst_NOAA %>% 
@@ -363,20 +190,6 @@ sst_NOAA %>%
 
 -   Calculate mean and standard deviations for two sites
 
-<<<<<<< HEAD
-```{r  tidiest-n-3, fig.cap="Frequency distribution of mean temperature for each time series in the SACTN dataset."}
-SACTN %>% 
-  group_by(site, src) %>% 
-  summarise(mean_temp = round(mean(temp, na.rm = T))
-            ) %>% 
-  ungroup() %>% 
-  ggplot(aes(x = mean_temp)) +
-  geom_density(fill = "seagreen", alpha = 0.6) +
-  labs(x = "Temperature (°C)")
-```
-
-### Select observations (rows) by number with `slice()`
-=======
 ```{r}
 # First create a character vector containing the desired sites
 selected_sites <- c("Med", "WA")
@@ -392,7 +205,6 @@ sst_NOAA %>%
 ## Examples {auto-animate=true}
 
 -   Only days with temperatures above 10°C and below 15°C
->>>>>>> fbf7096585c5ec67d4d40972a54a62933968c7f0
 
 ::: columns
 ::: {.column}
@@ -404,27 +216,12 @@ sst_NOAA %>%
 ```
 :::
 
-<<<<<<< HEAD
-## Summary functions
-
-There is a near endless sea of possibilities when one starts to become comfortable with writing R code. We have seen several summary functions used thus far. Mostly in straightforward ways. But that is one of the fun things about R, the only limits to what we may create are within our mind, not the program. Here is just one example of a creative way to answer a straightforward question: 'What is the proportion of recordings above 15°C per source?'. Note how we may refer to columns we have created within the same chunk. There is no need to save the intermediate dataframes if we choose not to.
-    
-```{r tidiest-summary}
-SACTN %>% 
-  na.omit() %>% 
-  group_by(src) %>%
-  summarise(count = n(), 
-            count_15 = sum(temp > 15)) %>% 
-  mutate(prop_15 = count_15/count) %>% 
-  arrange(prop_15)
-=======
 ::: {.column}
 ```{r}
 sst_NOAA %>% 
   filter(site == "Med", 
          !(temp <= 10 | temp  >= 15)) %>% 
   nrow()
->>>>>>> fbf7096585c5ec67d4d40972a54a62933968c7f0
 ```
 :::
 :::
@@ -443,9 +240,6 @@ read_csv("../data/sst_NOAA.csv") %>% # Load the SACTN Day 1 data
   geom_point(aes(colour = site)) + # Create dots
   geom_line(aes(colour = site, group = site)) + # Create lines
   labs(x = "Month", y = "Temperature (°C)", colour = "Site") # Change labels
-<<<<<<< HEAD
-```
-=======
 ```
 
 ## Summary functions
@@ -462,4 +256,3 @@ sst_NOAA %>%
   mutate(prop_15 = count_15/count) %>% 
   arrange(prop_15)
 ```
->>>>>>> fbf7096585c5ec67d4d40972a54a62933968c7f0
