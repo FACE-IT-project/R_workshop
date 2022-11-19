@@ -40,21 +40,148 @@ knitr::opts_chunk$set(
 
 library(tidyverse) # The base
 
-library(ggsn) # Scale bars
+library(marmap) # For downloading bathymetry data
 
 library(scales) # Functions for formatting faster
-
-# library()
 ```
 
 ## Base map
 
-```{r}
+-   Did anyone notice the x-axis in the default global map?
 
+```{r}
+ggplot() +
+  borders(fill = "grey70", colour = "black") +
+  coord_equal()
 ```
 
-## Bathymetry
+## Base map
 
+-   This happens primarily because the Kamchatka peninsula goes over the date line
+-   We can fix this with the following code chunk
+
+```{r}
+map_global_fix <- map_data('world') %>% 
+  rename(lon = long) %>% 
+  mutate(group = ifelse(lon > 180, group+2000, group), # Why +2000?
+         lon = ifelse(lon > 180, lon-360, lon))
+```
+
+## Base map
+
+-   Note that Antarctica still doesn't look great
+
+```{r}
+ggplot(data = map_global_fix, aes(x = lon, y = lat)) +
+  geom_polygon(aes(group = group), colour = "black", fill = "grey60") +
+  # The default coordinate system, with specific limits
+  coord_cartesian(xlim = c(-180, 180), ylim = c(-90, 90), expand = FALSE)
+```
+
+## Bathymetry data
+
+-   Generally we don't want to download data every time we run our script
+-   Better to download it once and save it
+
+```{r, eval=FALSE}
+# Download bathy data
+bathy_WA <-  getNOAA.bathy(lon1 = 111, lon2 = 117, 
+                           lat1 = -36, lat2 = -19, # NB: smaller value first, i.e. more negative
+                           resolution = 4) # In degree minutes
+
+# Convert to data.frame for use with ggplot2
+bathy_WA_df <- fortify.bathy(bathy_WA) %>% 
+  filter(z <= 0) # Remove altimetry data
+
+# Save
+save(bathy_WA_df, file = "../data/bathy_WA_df.RData")
+```
+
+## Bathymetry data
+
+-   It is however good to keep a record of the download
+-   One option is to 'comment out' the lines of code, but keep them
+
+```{r}
+# Download bathy data
+# bathy_WA <-  getNOAA.bathy(lon1 = 111, lon2 = 117, 
+#                            lat1 = -36, lat2 = -19, # NB: smaller value first, i.e. more negative
+#                            resolution = 4) # In degree minutes
+
+# Convert to data.frame for use with ggplot2
+# bathy_WA_df <- fortify.bathy(bathy_WA)
+
+# Save
+# save(bathy_WA_df, file = "../data/bathy_WA_df.RData")
+
+# Load
+load("../data/bathy_WA_df.RData")
+```
+
+## Mapping bathymetry {auto-animate=true}
+
+-   Add 200 m contour
+
+```{r}
+ggplot(dat = map_global_fix, aes(x = lon, y = lat)) +
+  geom_polygon(aes(group = group), colour = "black", fill = "grey60") +
+  geom_contour(data = bathy_WA_df, 
+               aes(x = x, y = y, z = z),
+               breaks = c(-200), linewidth = c(0.3), colour = "grey") +
+  coord_cartesian(xlim = c(111, 117), ylim = c(-36, -19), expand = FALSE)
+```
+## Mapping bathymetry {auto-animate=true}
+
+-   Add 200 and 2000 m contours
+
+```{r}
+ggplot(dat = map_global_fix, aes(x = lon, y = lat)) +
+  geom_polygon(aes(group = group), colour = "black", fill = "grey60") +
+  geom_contour(data = bathy_WA_df, 
+               aes(x = x, y = y, z = z),
+               breaks = c(-200, -2000), linewidth = c(0.3), colour = "grey") +
+  coord_cartesian(xlim = c(111, 117), ylim = c(-36, -19), expand = FALSE)
+```
+## Mapping bathymetry {auto-animate=true}
+
+-   Assign colours
+
+```{r}
+ggplot(dat = map_global_fix, aes(x = lon, y = lat)) +
+  geom_polygon(aes(group = group), colour = "black", fill = "grey60") +
+  geom_contour(data = bathy_WA_df, 
+               aes(x = x, y = y, z = z),
+               breaks = c(-200), linewidth = c(0.3), colour = "black") +
+    geom_contour(data = bathy_WA_df, 
+               aes(x = x, y = y, z = z),
+               breaks = c(-2000), linewidth = c(0.3), colour = "blue") +
+  coord_cartesian(xlim = c(111, 117), ylim = c(-36, -19), expand = FALSE)
+```
+## Mapping bathymetry {auto-animate=true}
+
+-   Rather use `aes()`
+
+```{r}
+ggplot(dat = map_global_fix, aes(x = lon, y = lat)) +
+  geom_polygon(aes(group = group), colour = "black", fill = "grey60") +
+  geom_contour(data = bathy_WA_df, 
+               aes(x = x, y = y, z = z, colour = ..level..), 
+               linewidth = c(0.3)) +
+  coord_cartesian(xlim = c(111, 117), ylim = c(-36, -19), expand = FALSE)
+```
+## Mapping bathymetry {auto-animate=true}
+
+-   Combine `aes()` and `breaks = c()` for more control
+-   Can also change colours 
+
+```{r}
+ggplot(dat = map_global_fix, aes(x = lon, y = lat)) +
+  geom_polygon(aes(group = group), colour = "black", fill = "grey60") +
+  geom_contour(data = bathy_WA_df, 
+               aes(x = x, y = y, z = z, colour = ..level..), 
+               breaks = c(-50, -200, -1000, -2000), linewidth = c(0.3)) +
+  coord_cartesian(xlim = c(111, 117), ylim = c(-36, -19), expand = FALSE)
+```
 
 ## Ocean temperature
 
