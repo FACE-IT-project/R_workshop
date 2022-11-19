@@ -42,3 +42,5 @@ library(tidyverse) # All-in-one
 
 ## Applied statistics
 
+<!-- Perform an ANOVA and show how to filter out non-significant results -->
+

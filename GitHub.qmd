@@ -141,7 +141,7 @@ Now that we have Git sorted on our computers and we have created an SSH key for 
 
 Start with the following info for testing purposes:
 
--   Repository name: `winter_school` (or whatever you like)
+-   Repository name: `winter_school_yourname` (or whatever you like)
 -   Description: Repository for code and notes taken during FACE-IT 2022 winter R workshop
 -   Public
 -   Initialize this repository with: (X) Add a README file
