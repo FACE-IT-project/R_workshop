@@ -130,9 +130,8 @@ This is all well and good. But didn't we claim that this should give us complete
 
 -   <http://tristen.ca/hcl-picker/#/hlc/6/0.95/48B4B6/345363>
 -   <http://tools.medialab.sciences-po.fr/iwanthue/index.php>
--   <http://jsfiddle.net/d6wXV/6/embedded/result/>
 
-I find the first link the easiest to use. But the second and third links are better at generating discrete colour palettes. During the following exercise spend several minutes playing with the different websites and decide for yourself which one(s) you like.
+I find the first link the easiest to use. But the second is better at generating discrete colour palettes. During the following exercise spend several minutes playing with the different websites and decide for yourself which one(s) you like.
 
 ## Continuous palettes {auto-animate=true}
 
