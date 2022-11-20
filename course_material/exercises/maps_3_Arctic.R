@@ -15,20 +15,19 @@
 
 # Example -----------------------------------------------------------------
 
-# The basic map
-ggplot() +
-  borders(fill = "grey70", colour = "black") +
-  coord_polar()
+# An Arctic plot
+basemap(limits = c(-160, -80, 60, 85), rotate = TRUE)
 
 
 # Exercise 1 --------------------------------------------------------------
 
-# Directly access the shape of a region near a pole and plot with polar projection
+# Directly access the shape of a region near a pole
+# Plot with coord_map(projection = "ortho")
 
 
 # Exercise 2 --------------------------------------------------------------
 
-# Add a data layer to a polar projection plot
+# Add bathymetry to this plot
 
 
 # Exercise 3 --------------------------------------------------------------
@@ -39,4 +38,6 @@ ggplot() +
 # BONUS -------------------------------------------------------------------
 
 # Create a workflow for creating a polar plot for any region
+# Add a red bounding box to highlight a region
+# And different coloured points to show study sites
 

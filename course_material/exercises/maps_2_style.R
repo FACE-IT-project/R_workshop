@@ -24,19 +24,13 @@ ggplot() +
 # Exercise 1 --------------------------------------------------------------
 
 # Choose a coastal region somewhere within 30°N/S of the equator
-
-# Download bathymetry data and another data layer
-
-# Plot them
+# Download bathymetry data and plot them
 
 
 # Exercise 2 --------------------------------------------------------------
 
-# Chose a different region
-
-# Download two different data layers
-
-# Plot and combine the data
+# Chose a different region and get bathymetry
+# Plot and combine the two figures
 
 
 # Exercise 3 --------------------------------------------------------------

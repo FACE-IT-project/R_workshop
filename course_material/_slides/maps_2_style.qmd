@@ -36,7 +36,6 @@ knitr::opts_chunk$set(
 ## Setup
 
 ```{r maps-load}
-
 library(tidyverse) # The base
 
 library(marmap) # For downloading bathymetry data

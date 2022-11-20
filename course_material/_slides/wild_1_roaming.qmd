@@ -41,7 +41,7 @@ library(tidyverse) # All-in-one
 library(oceanexplorer) # Access World Ocean Atlas (WOA)
 
 # https://bio-oracle.org/code.php
-library(sdmpredictors)
+library(sdmpredictors) # Layers used in modelling
 
 library(rerddap) # For easily downloading subsets of data
 ```
@@ -55,13 +55,13 @@ library(rerddap) # For easily downloading subsets of data
 ## NOAA
 
 ```{r}
-OISST_sub_dl <- function(time_df){
+OISST_sub_dl <- function(date_sub, lon_sub, lat_sub){
   OISST_dat <- griddap(datasetx = "ncdcOisst21Agg_LonPM180", 
                        url = "https://coastwatch.pfeg.noaa.gov/erddap/", 
-                       time = c(time_df$start, time_df$end), 
+                       time = date_sub, 
                        zlev = c(0, 0),
-                       longitude = c(110, 118),
-                       latitude = c(-37, -18),
+                       longitude = lon_sub,
+                       latitude = lat_sub,
                        fields = "sst")$data %>% 
     mutate(time = as.Date(stringr::str_replace(time, "T12:00:00Z", ""))) %>%
     dplyr::rename(t = time, temp = sst, lon = longitude, lat = latitude) %>%
@@ -69,13 +69,21 @@ OISST_sub_dl <- function(time_df){
     na.omit()
 }
 
-# Download dates
-dates_df <- data.frame(start = "2000-01-01",
-                       end = "2000-01-01")
+# Set specific ranges for downloading
+## WA
+lon_WA <- c(110, 118)
+lat_WA <- c(-37, -18)
+## Global
+lon_globe <- c(-179.875, 179.875)
+lat_globe <- c(-89.875, 89.875)
 
 # Download
-OISST_2000 <- OISST_sub_dl(dates_df)
+OISST_2000 <- OISST_sub_dl(date_sub = c("2000-01-01", "2000-01-01"),
+                           lon_sub = lon_WA, lat_sub = lat_WA)
 save(OISST_2000, file = "../data/OISST_2000.RData")
+OISST_2022 <- OISST_sub_dl(date_sub = c("2022-01-01", "2022-01-01"),
+                           lon_sub = lon_globe, lat = lat_globe)
+save(OISST_2022, file = "../data/OISST_2022.RData")
 ```
 
 
