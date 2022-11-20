@@ -148,7 +148,7 @@ Start with the following info for testing purposes:
 
 Then click the green `Create repository` button.
 
-To connect this repo to our RStudio we must first copy the link. Do so by clicking on the green 'Code' button in the top right. Select the 'SSH' option and cop the text below. It should look something like: `git@github.com:yourusername/winter_school.git`
+To connect this repo to our RStudio we must first copy the link. Do so by clicking on the green 'Code' button in the top right. Select the 'SSH' option and cop the text below. It should look something like: `git@github.com:yourusername/winter_school_yourname.git`
 
 In RStudio: *File \> New Project \> Version Control \> Git* and paste the link in 'Repository URL'. Before you click ' Create Project' note where RStudio intends to save the files and change this if desired.
 
