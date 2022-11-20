@@ -298,7 +298,7 @@
     "href": "plots.html",
     "title": "Plotting in R",
     "section": "",
-    "text": "Though it may have started as statistical software, R has moved far beyond it’s mundane origins. The language is now capable of a wide range of applications, some of which you have already seen, and some others you will see over the rest of this course. For Day 2 we are going to go more in-depth on the concept of data visualisation via ggplot2. One should also note that there is a staggering amount of support for this package in the form of extension packages covering a range of visualisations and applications. A full gallery of the possible visualisations has been assembled and is worth a look."
+    "text": "Though it may have started as statistical software, R has moved far beyond it’s mundane origins. The language is now capable of a wide range of applications, some of which you have already seen, and some others you will see over the rest of this workshop. For Day 3 we are going to go more in-depth on the concept of data visualisation via ggplot2. One should also note that there is a staggering amount of support for this package in the form of extension packages covering a range of visualisations and applications. A full gallery of the possible visualisations has been assembled and is worth a look."
   },
   {
     "objectID": "plots.html#slides-and-application-exercises",
@@ -312,7 +312,7 @@
     "href": "plots.html#diy-figures",
     "title": "Plotting in R",
     "section": "DIY figures",
-    "text": "DIY figures\nToday we learned the basics of ggplot2, how to facet, how to brew colours, and how to plot stats. Sjog, that’s a lot of stuff to remember! Which is why we will now spend the rest of Day 3 putting our new found skills to use. Please group up as you see fit to produce your very own ggplot2 figures. We’ve not yet learned how to manipulate/tidy up our data so it may be challenging to grab any dataset and make a plan with it. To that end we recommend using the sst_NOAA dataset we saw on Day 1. You are of course free to use whatever dataset(s) you would like, including your own. The goal by the end of today is to have created at least two figures (first prize for four figures) and join them together via faceting. We will be walking the room to help with any issues that may arise."
+    "text": "DIY figures\nToday we learned the basics of ggplot2, how to facet, how to brew colours, and how to plot stats. That’s a lot of stuff to remember! Which is why we will now spend the rest of Day 3 putting our new found skills to use. Please group up as you see fit to produce your very own ggplot2 figures. We’ve not yet learned how to manipulate/tidy up our data so it may be challenging to grab any dataset and make it work. To that end we recommend using the sst_NOAA dataset we saw on Day 1. You are of course free to use whatever dataset(s) you would like, including your own. The goal by the end of today is to have created at least two figures (first prize for four figures) and join them together via faceting. We will be walking the room to help with any issues that may arise."
   },
   {
     "objectID": "maps.html",

@@ -3,6 +3,7 @@
 # Date
 
 
+# NB: Create these section breaks by pressing: ctrl+shift+r
 # Libraries ---------------------------------------------------------------
 
 library(tidyverse)
@@ -37,7 +38,7 @@ ggarrange(lm_1, lm_1)
 
 # Exercise 2 --------------------------------------------------------------
 
-# Create a new plot type and facet by two categories
+# Create a new plot type and facet by three categories
 
 
 # Exercise 3 --------------------------------------------------------------

@@ -3,11 +3,11 @@
 # Date
 
 
+# NB: Create these section breaks by pressing: ctrl+shift+r
 # Libraries ---------------------------------------------------------------
 
 library(tidyverse)
 library(ggpubr)
-library(RColorBrewer)
 library(palmerpenguins)
 
 
@@ -40,8 +40,8 @@ ggplot(data = penguins, aes(x = species, y = bill_length_mm)) +
 # Exercise 2 --------------------------------------------------------------
 
 # Create two versions of the same figure and combine
-# Use a viridis colour palette against a default palette in a way that 
-# allows features in the data to be more pronounced
+# Use a viridis colour palette against a default palette in a way 
+# that allows features in the data to be more pronounced
 
 
 # Exercise 3 --------------------------------------------------------------
@@ -53,5 +53,5 @@ ggplot(data = penguins, aes(x = species, y = bill_length_mm)) +
 
 # BONUS -------------------------------------------------------------------
 
-# Create a correlogram
+# Create a correlogram between the two northern hemisphere sites in sst_NOAA
 

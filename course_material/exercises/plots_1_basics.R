@@ -3,6 +3,9 @@
 # Date
 
 
+# NB: Create these section breaks by pressing: ctrl+shift+r
+  # A prompt will ask you for the section label
+  # Type what you want then press enter
 # Libraries ---------------------------------------------------------------
 
 library(tidyverse)
