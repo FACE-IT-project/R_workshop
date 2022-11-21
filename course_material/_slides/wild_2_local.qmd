@@ -38,9 +38,19 @@ knitr::opts_chunk$set(
 library(tidyverse) # All-in-one
 ```
 
+## rasters
+
+<!-- Manually download data from Bio-oracle and load into R -->
+
+## NetCDF
+
 ## Expand
 
-## Applied statistics
+## tidy statistics
 
-<!-- Perform an ANOVA and show how to filter out non-significant results -->
+<!-- Perform a posthoc ANOVA and show how to filter out non-significant results -->
+
+## Grouped statistics
+
+<!-- Show how to perform a grouped linear model -->
 

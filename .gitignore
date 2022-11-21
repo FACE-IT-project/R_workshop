@@ -5,3 +5,4 @@
 
 /.quarto/
 course_material/data/winter_temp.RData
+course_material/data/OISST_2020.RData

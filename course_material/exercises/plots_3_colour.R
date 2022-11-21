@@ -16,6 +16,26 @@ library(palmerpenguins)
 # Load the dataset into the local environment
 penguins <- penguins
 
+# SST NOAA data
+sst_NOAA <- read_csv("course_material/data/sst_NOAA1.csv")
+
+# Or from Excel
+sst_NOAA <- read_csv2("course_material/data/sst_NOAA1.csv")
+
+# Or for anything
+sst_NOAA <- read_delim("course_material/data/sst_NOAA1.csv", delim = "\t")
+
+
+# Analyses ----------------------------------------------------------------
+
+# Look at parts of the data frame
+sst_NOAA
+head(sst_NOAA)
+tail(sst_NOAA, 2)
+
+# Quick summaries
+glimpse(sst_NOAA)
+summary(sst_NOAA)
 
 # Example -----------------------------------------------------------------
 
