@@ -294,6 +294,27 @@
     "text": "Creating a document\nEven though we may immediately begin authoring documents with RStudio, we are limited to .html and .doc file types. If we want to author .pdf files, such as the one we are reading now, we must install ‘LaTeX’ on our computers. This installation process is beyond the scope of this course but there are many resources available online to aid one in the process and the software is, of course, free.\nWhether or not you have ‘LaTeX’ installed, when you click the Knit button (with the option to create multiple document kinds) a document will be generated that includes both content as well as the output of any embedded R code chunks (portions of R code surrounded by code that denotes the R commands) within the document. R code chunks can be used to render R output into documents or to simply display code for illustration, as outlined above.\nThis is a terribly basic demonstration, but since beautiful documentation already exists I suggest you go and find the necessary examples on the R Markdown website indicated above for a more in-depth account of how to use it."
   },
   {
+    "objectID": "bonus.html#expand",
+    "href": "bonus.html#expand",
+    "title": "Bonus",
+    "section": "Expand",
+    "text": "Expand"
+  },
+  {
+    "objectID": "bonus.html#tidy-statistics",
+    "href": "bonus.html#tidy-statistics",
+    "title": "Bonus",
+    "section": "tidy statistics",
+    "text": "tidy statistics"
+  },
+  {
+    "objectID": "bonus.html#grouped-statistics",
+    "href": "bonus.html#grouped-statistics",
+    "title": "Bonus",
+    "section": "Grouped statistics",
+    "text": "Grouped statistics"
+  },
+  {
     "objectID": "plots.html",
     "href": "plots.html",
     "title": "Plotting in R",
