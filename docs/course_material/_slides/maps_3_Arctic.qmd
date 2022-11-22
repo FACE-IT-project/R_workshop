@@ -31,7 +31,7 @@ knitr::opts_chunk$set(
 
 -   We must learn more about map projections
 -   We will look at packages that help us project raster layers etc.
--   **`ggoceanmaps`** provides the full suite of solutions
+-   **`ggOceanMaps`** provides the full suite of solutions
 
 ## Setup
 
@@ -232,14 +232,14 @@ map_global_fix %>%
 
 ## All-in-one
 
--   Better yet, just use [**`ggoceanmaps`**](https://mikkovihtakari.github.io/ggOceanMaps/articles/ggOceanMaps.html)
+-   Better yet, just use [**`ggOceanMaps`**](https://mikkovihtakari.github.io/ggOceanMaps/articles/ggOceanMaps.html)
 -   Click the package name to see the intro tutorial
 
 ```{r}
 basemap(limits = 60)
 ```
 
-## **`ggoceanmaps`**
+## **`ggOceanMaps`**
 
 -   Works everywhere
 
@@ -247,7 +247,7 @@ basemap(limits = 60)
 basemap(limits = c(100, 160, -20, 30), bathymetry = TRUE)
 ```
 
-## **`ggoceanmaps`**
+## **`ggOceanMaps`**
 
 -   Has glaciers, too
 
@@ -255,7 +255,7 @@ basemap(limits = c(100, 160, -20, 30), bathymetry = TRUE)
 basemap(limits = 60, glaciers = TRUE, bathymetry = TRUE)
 ```
 
-## **`ggoceanmaps`**
+## **`ggOceanMaps`**
 
 -   Fundamentally designed to plot the Arctic
 
