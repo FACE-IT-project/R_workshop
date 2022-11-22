@@ -5,7 +5,9 @@
 
 # Libraries ---------------------------------------------------------------
 
-# ???
+# The two packages require for 'marmap' to work
+library(rgdal)
+library(raster)
 
 
 # Data --------------------------------------------------------------------

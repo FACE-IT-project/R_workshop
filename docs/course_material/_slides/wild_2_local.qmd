@@ -42,9 +42,16 @@ library(tidyverse) # All-in-one
 
 <!-- Manually download data from Bio-oracle and load into R -->
 
+## Shape files
+
+<!-- Show how to load them and plot them -->
+
 ## NetCDF
 
 ## Expand
+
+<!-- Show how to fill in the gaps in a dataset -->
+<!-- DO this by using geom_line in a time series -->
 
 ## tidy statistics
 

@@ -64,7 +64,7 @@ map_global_fix <- map_data('world') %>%
   mutate(group = ifelse(lon > 180, group+2000, group),
          lon = ifelse(lon > 180, lon-360, lon))
 
-# Load sea surface temperatures for 2000-01-01
+# Load SST from 2022-12-25 to 2022-12-31
 load("../data/OISST_2022.RData")
 ```
 
