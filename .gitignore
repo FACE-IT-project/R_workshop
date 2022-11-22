@@ -4,5 +4,9 @@
 .Ruserdata
 
 /.quarto/
+course_material/data/GSHHG
 course_material/data/winter_temp.RData
 course_material/data/OISST_2020.RData
+course_material/data/2100AOGCM.RCP85.Surface.Temperature.Mean.asc.BOv2_1.asc
+course_material/data/masie_all_r00_4km.nc
+course_material/data/oisst-avhrr-v02r01.20221121_preliminary.nc

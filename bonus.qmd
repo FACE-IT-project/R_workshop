@@ -962,4 +962,17 @@ Whether or not you have 'LaTeX' installed, when you click the **Knit** button (w
 
 This is a terribly basic demonstration, but since beautiful documentation already exists I suggest you go and find the necessary examples on the R Markdown website indicated above for a more in-depth account of how to use it.
 
+## Expand
+
+<!-- Show how to fill in the gaps in a dataset -->
+<!-- DO this by using geom_line in a time series -->
+
+## tidy statistics
+
+<!-- Perform a posthoc ANOVA and show how to filter out non-significant results -->
+
+## Grouped statistics
+
+<!-- Show how to perform a grouped linear model -->
+
 # References
