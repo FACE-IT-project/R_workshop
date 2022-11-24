@@ -7,7 +7,10 @@
 
 # ???
 library(tidyverse)
+library(sf)
+library(sfheaders)
 library(tidync)
+
 
 # Data --------------------------------------------------------------------
 
@@ -28,6 +31,15 @@ ggplot(sst_NOAA_recent, aes(x = lon, y = lat)) +
   # geom_tile(data = na.omit(sst_NOAA_recent), fill = "lightskyblue") +
   scale_fill_gradient2(low = "blue", high = "red") +
   coord_quickmap(expand = FALSE)
+
+# Svalbard shape file
+sval_coast <- read_sf("course_material/data/sval_coast/Coast2021.shp")
+sval_coast_df <- sf_to_df(sval_coast, fill = TRUE)
+
+ggplot(data = sval_coast_df) +
+  geom_polygon(aes(x = x, y = y, group = polygon_id)) +
+  coord_map(projection = "ortho", orientation = c(90, 0, 0))
+
 
 # Exercise 1 --------------------------------------------------------------
 

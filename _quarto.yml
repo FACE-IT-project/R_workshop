@@ -44,7 +44,7 @@ website:
         - file: wild.qmd
         - file: workflow.qmd
         - file: summary.qmd
-        - file: brief.qmd
+        # - file: brief.qmd
         - file: bonus.qmd
       
 format:

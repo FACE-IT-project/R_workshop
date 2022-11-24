@@ -4,7 +4,11 @@
 .Ruserdata
 
 /.quarto/
+course_material/ant_walk.gif
+course_material/EU_ants.gif
+course_material/morph.gif
 course_material/data/GSHHG
+course_material/data/sval_coast
 course_material/data/winter_temp.RData
 course_material/data/OISST_2020.RData
 course_material/data/2100AOGCM.RCP85.Surface.Temperature.Mean.asc.BOv2_1.asc

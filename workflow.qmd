@@ -165,6 +165,16 @@ If we wanted only the names of the variables (columns) in the dataframe, we coul
 names(sst_NOAA)
 ```
 
+### Summary of all variables in a dataframe
+
+Once we're happy that we know what the variables are called and what sorts of data they contain, we can dig a little deeper. Try typing:
+
+```{r}
+summary(sst_NOAA)
+```
+
+The output is quite informative. It tabulates variables by name, and for each provides summary statistics. For continuous variables, the name, minimum, maximum, first, second (median) and third quartiles, and the mean are provided. For factors (categorical variables), a list of the levels of the factor and the count of each level are given. In either case, the last line of the table indicates how many NAs are contained in the variable. The function `summary()` is useful to remember as it can be applied to many different R objects (*e.g.*, variables, dataframes, models, arrays, *etc.*) and will give you a summary of that object. We will use it liberally throughout the workshop.
+
 ## R Workflow - II
 
 If you are starting at this point, rather than continuing directly from above, please load the `workflow.R` script we created during 'R Workflow - I'.
@@ -273,6 +283,7 @@ head(sst_NOAA, 5) # First five lines
 tail(sst_NOAA, 2) # Last two lines
 glimpse(sst_NOAA) # A more thorough summary
 names(sst_NOAA) # The names of the columns
+summary(sst_NOAA) # A brief summary of the data
 
 # Subsetting data
 sst_NOAA %>% # Tell R which dataframe to use
@@ -296,16 +307,6 @@ Making sure all the latest edits in your R script have been saved, close your R 
 
 > **Remember...**\
 > Friends don't let friends use Excel.
-
-### Summary of all variables in a dataframe
-
-Once we're happy that we know what the variables are called and what sorts of data they contain, we can dig a little deeper. Try typing:
-
-```{r}
-summary(sst_NOAA)
-```
-
-The output is quite informative. It tabulates variables by name, and for each provides summary statistics. For continuous variables, the name, minimum, maximum, first, second (median) and third quartiles, and the mean are provided. For factors (categorical variables), a list of the levels of the factor and the count of each level are given. In either case, the last line of the table indicates how many NAs are contained in the variable. The function `summary()` is useful to remember as it can be applied to many different R objects (*e.g.*, variables, dataframes, models, arrays, *etc.*) and will give you a summary of that object. We will use it liberally throughout the workshop.
 
 ### Summary statistics by variable
 
@@ -531,7 +532,7 @@ At the beginning of this page we glossed over this topic by setting the working 
 
 2.  From within the **Files** pane, navigate to the directory you want to set as the working directory and then select 'More'/'Set As Working Directory' menu item (navigation within the Files pane alone will not change the working directory)
 
-3.  Use `setwd()`, providing the name of your desired working directory as a character string - this is the reccomended option of the three
+3.  Use `setwd()`, providing the name of your desired working directory as a character string - this is the recommended option of the three
 
 In the **Files** tab, use the directory structure to navigate to the R Workshop directory (this will differ from person to person). Then under 'More', select the small upside down (drill-down) triangle and select 'Set As Working Directory'. This means that whenever you read or write a file it will always be working in that directory. This gives us the code for setting the directory (below is the code that I would enter in the **Console** on my computer):
 
@@ -576,32 +577,5 @@ data(package = .packages(all.available = TRUE))
 datasets::
 ```
 
-We have an amazing amount of data available to us. So the challenge is not to find a dataframe that works for us, but to just decide on one. My preferred method is to read the short descriptions of the dataframes and pick the one that sounds the funniest. But please use whatever method makes the most sense to you. Remember that in R there are generally two different forms of data: **wide** *OR* **long**, and **`ggplot2`** works much better with long data. To look at a dataframe of interest we use the same method we would use to look up a help file for a function.
-
-Over the years I've installed so many packages on my computer that it is difficult to chose a dataframe. The package **`boot`** has some particularly interesting dataframes with a biological focus. Please install this now to access to these data. I have decided to load the `urine` dataframe here. Note that `library(boot)` will not work on your computer if you have not installed the package yet. With these data we will now make a scatterplot with two of the variables, while changing the colour of the dots with a third variable.
-
-```{r brew-1}
-# Load libraries
-library(tidyverse)
-library(boot)
-
-# Load data
-urine <- boot::urine
-
-# Look at help file for more info
-# ?urine
-
-# Create a quick scatterplot
-ggplot(data = urine, aes(x = osmo, y = ph)) +
-  geom_point(aes(colour = cond))
-```
-
-And now we have a scatterplot that is showing the relationship between the osmolarity and pH of urine, with the conductivity of those urine samples shown in shades of blue. What is important to note here is that the colour scale is continuous. How can we know this by looking at the figure? Let's look at the same figure but use a discrete variable for colouring.
-
-```{r brew-2}
-ggplot(data = urine, aes(x = osmo, y = ph)) +
-  geom_point(aes(colour = as.factor(r)))
-```
-
-What is the first thing you notice about the difference in the colours? Why did we use `as.factor()` for the colour aesthetic for our points? What happens if we don't use this? Try it now. This is a brief recap of what we learned on Day 3.
+We have an amazing amount of data available to us. So the challenge is not to find a dataframe that works for us, but to just decide on one. My preferred method is to read the short descriptions of the dataframes and pick the one that sounds the funniest. But please use whatever method makes the most sense to you. Remember that in R there are generally two different forms of data: **wide** *OR* **long**, and **`ggplot2`** works much better with long data. To look at a dataframe of interest we use the same method we would use to look up a help file for a function. Over the years I've installed so many packages on my computer that it is difficult to chose a dataframe. The package **`boot`** has some particularly interesting dataframes with a biological focus.
 
