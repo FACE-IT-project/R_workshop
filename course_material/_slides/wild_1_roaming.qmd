@@ -94,7 +94,7 @@ library(oceanexplorer)
 winter_temp <- get_NOAA(var = "temperature", spat_res = 1, av_period = "winter")
 
 # Plot
-plot_NOAA(WA_temp)
+plot_NOAA(winter_temp)
 ```
 
 ## Bio-oracle

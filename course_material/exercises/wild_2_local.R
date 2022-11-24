@@ -6,7 +6,8 @@
 # Libraries ---------------------------------------------------------------
 
 # ???
-
+library(tidyverse)
+library(tidync)
 
 # Data --------------------------------------------------------------------
 
@@ -15,8 +16,18 @@
 
 # Example -----------------------------------------------------------------
 
-# ???
+# Load sst data
+sst_NOAA_recent <- tidync("course_material/data/oisst-avhrr-v02r01.20221121_preliminary.nc") %>% 
+  # Use this to convert to a tibble (i.e. fancy data.frame)
+  hyper_tibble()
 
+# Plot
+ggplot(sst_NOAA_recent, aes(x = lon, y = lat)) +
+  geom_tile(aes(fill = anom)) +
+  borders(fill = "grey70", colour = NA) +
+  # geom_tile(data = na.omit(sst_NOAA_recent), fill = "lightskyblue") +
+  scale_fill_gradient2(low = "blue", high = "red") +
+  coord_quickmap(expand = FALSE)
 
 # Exercise 1 --------------------------------------------------------------
 

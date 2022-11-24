@@ -6,6 +6,8 @@
 # Libraries ---------------------------------------------------------------
 
 # ???
+# The library containing these functions
+library(pangaear)
 
 
 # Data --------------------------------------------------------------------
@@ -15,8 +17,12 @@
 
 # Example -----------------------------------------------------------------
 
-# ???
+# Search for PAR data within Kongsfjorden
+# NB: Bounding box is: minlon, minlat, maxlon, maxlat
+search_res <- pg_search(query = "PAR", bbox = c(11, 78, 13, 80), count = 10)
+head(search_res)
 
+kong_PAR_dl <- pg_data(doi = "10.1594/PANGAEA.945341")
 
 # Exercise 1 --------------------------------------------------------------
 
